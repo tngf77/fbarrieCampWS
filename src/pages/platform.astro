@@ -1,0 +1,231 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { donateUrl } from '../data/navigation';
+---
+
+<PageLayout title="Platform | Fatmata Barrie for Montgomery County Council" description="Six priorities for Montgomery County — Fatmata Barrie's platform on democracy, education, affordability, business, transportation, and health.">
+
+  <HeroSection title="The Platform" subtitle="Six priorities for Montgomery County." />
+
+  <!-- DEMOCRACY -->
+  <section class="section platform-section" id="democracy">
+    <div class="container platform-row">
+      <div class="platform-badge">
+        <span class="platform-number">01</span>
+      </div>
+      <div class="platform-content">
+        <h2>Defending Democracy</h2>
+        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
+        <p class="platform-lead">Protecting civil liberties and standing against federal overreach — so Montgomery County stays the inclusive community we've built together.</p>
+        <ul class="platform-list">
+          <li>Ensure county and local law enforcement don't collaborate with federal agencies to violate civil liberties</li>
+          <li>No participation in ICE raids, protest policing, or political investigations</li>
+          <li>Combat the impacts of "DOGE" and government shutdowns on county services</li>
+          <li>Maintain a diverse, inclusive community free from racism, hate, discrimination, and bigotry</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section section-alt platform-section" id="education">
+    <div class="container platform-row">
+      <div class="platform-badge">
+        <span class="platform-number">02</span>
+      </div>
+      <div class="platform-content">
+        <h2>Education</h2>
+        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
+        <p class="platform-lead">Every student in Montgomery County deserves world-class schools — fully funded, fully staffed, and ready for growth.</p>
+        <ul class="platform-list">
+          <li>Protect against Department of Education cuts through budget reallocation</li>
+          <li>Increase funding for ASL, BASL, and language access services</li>
+          <li>Champion community schools with resources and outreach</li>
+          <li>Support educators with resources and address the teacher shortage</li>
+          <li>Revise school planning to accommodate growth — fewer portable classrooms</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFORDABILITY -->
+  <section class="section platform-section" id="affordability">
+    <div class="container platform-row">
+      <div class="platform-badge">
+        <span class="platform-number">03</span>
+      </div>
+      <div class="platform-content">
+        <h2>Affordability</h2>
+        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
+        <p class="platform-lead">Montgomery County should be affordable for everyone — families, retirees, and working people who make this community run.</p>
+        <ul class="platform-list">
+          <li>Combat the housing crisis: create affordable housing and homeownership programs</li>
+          <li>Eliminate food deserts: expand grocery stores and year-round farmers markets in underserved areas</li>
+          <li>Protect retirees, seniors on fixed incomes, and special needs residents</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS -->
+  <section class="section section-alt platform-section" id="business">
+    <div class="container platform-row">
+      <div class="platform-badge">
+        <span class="platform-number">04</span>
+      </div>
+      <div class="platform-content">
+        <h2>Business &amp; Economy</h2>
+        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
+        <p class="platform-lead">Small businesses are the backbone of Montgomery County. They deserve a partner on the Council who understands their challenges firsthand.</p>
+        <ul class="platform-list">
+          <li>Provide incentives for small businesses with up to 250 employees</li>
+          <li>Support local hiring initiatives</li>
+          <li>Increase access to small business loans</li>
+          <li>Promote minority business owner access to loans and county contracts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORTATION -->
+  <section class="section platform-section" id="transportation">
+    <div class="container platform-row">
+      <div class="platform-badge">
+        <span class="platform-number">05</span>
+      </div>
+      <div class="platform-content">
+        <h2>Transportation</h2>
+        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
+        <p class="platform-lead">Getting around Montgomery County shouldn't be a struggle. We need real investment in transit, safety, and connectivity.</p>
+        <ul class="platform-list">
+          <li>Improve WMATA access and affordability</li>
+          <li>Complete the Purple Line with a clear timeline and accountability</li>
+          <li>Expand bike lanes with safety protections</li>
+          <li>Extend RideOn services — more frequent, more coverage</li>
+          <li>Promote road safety for all users</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTH -->
+  <section class="section section-alt platform-section" id="health">
+    <div class="container platform-row">
+      <div class="platform-badge">
+        <span class="platform-number">06</span>
+      </div>
+      <div class="platform-content">
+        <h2>Health</h2>
+        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
+        <p class="platform-lead">Healthcare is a right. Montgomery County must lead in making care accessible, affordable, and culturally competent for every resident.</p>
+        <ul class="platform-list">
+          <li>Expand affordable healthcare clinic access</li>
+          <li>Address the youth mental health crisis</li>
+          <li>Improve maternal health outcomes — especially for Black women and women of color</li>
+          <li>Increase language access and culturally competent care</li>
+          <li>Support seniors and disabled residents with home-based care</li>
+          <li>Strengthen public health preparedness</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section platform-cta">
+    <div class="container text-center">
+      <h2>Ready to move forward?</h2>
+      <span class="ornament"></span>
+      <p style="color: var(--text-light); font-size: 1.1rem; margin: 1rem auto 2rem; max-width: 500px;">Support Fatmata's platform — donate, volunteer, or spread the word.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+        <a href="/volunteer" class="btn btn-primary">Volunteer</a>
+      </div>
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .platform-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .platform-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    background: var(--white);
+    margin-top: 0.25rem;
+  }
+
+  .platform-number {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  .platform-content h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: 0;
+  }
+
+  .platform-lead {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .platform-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .platform-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .platform-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .platform-cta {
+    border-top: 3px solid var(--gold);
+  }
+
+  @media (max-width: 768px) {
+    .platform-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .platform-badge {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>

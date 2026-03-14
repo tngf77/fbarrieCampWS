@@ -1,0 +1,215 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import { donateUrl } from '../data/navigation';
+---
+
+<PageLayout title="Donate | Fatmata Barrie for Montgomery County Council" description="Support Fatmata Barrie's people-powered campaign. Your donation is matched through Montgomery County's public financing program.">
+
+  <HeroSection title="Donate" subtitle="Your small-dollar donation makes a big impact." />
+
+  <!-- MATCH EXPLAINER -->
+  <section class="section">
+    <div class="container">
+      <div class="donate-top">
+        <div class="donate-info">
+          <p class="section-label">People-Powered Campaign</p>
+          <h2>Your donation is matched.</h2>
+          <span class="ornament" style="margin: 0.75rem 0 1.25rem;"></span>
+          <p>Fatmata is participating in Montgomery County's public financing program. That means no corporate money, no PACs — only small-dollar donations from real people like you.</p>
+          <p>Better yet, your contribution is matched by the county, multiplying its impact.</p>
+        </div>
+        <div class="donate-cta-card">
+          <h3>Ready to contribute?</h3>
+          <p>Every dollar you give is matched and goes directly to building a people-first campaign.</p>
+          <a href={donateUrl} class="btn btn-accent" style="width: 100%; margin-top: 1rem;">Donate via Donorbox</a>
+          <p class="donate-fine">Maximum: $500 per cycle. Montgomery County residents only for matching.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATCH CHART -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <p class="section-label">Matching Chart</p>
+      <h2>See how far your donation goes.</h2>
+      <span class="ornament"></span>
+      <div class="match-table-wrap">
+        <table class="match-table">
+          <thead>
+            <tr>
+              <th>You Give</th>
+              <th>County Match</th>
+              <th>Total Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$25</td>
+              <td>$125</td>
+              <td class="match-total">$150</td>
+            </tr>
+            <tr>
+              <td>$50</td>
+              <td>$250</td>
+              <td class="match-total">$300</td>
+            </tr>
+            <tr>
+              <td>$150</td>
+              <td>$500</td>
+              <td class="match-total">$650</td>
+            </tr>
+            <tr class="match-highlight">
+              <td>$250</td>
+              <td>$500</td>
+              <td class="match-total">$750</td>
+            </tr>
+            <tr>
+              <td>$500</td>
+              <td>$500</td>
+              <td class="match-total">$1,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a href={donateUrl} class="btn btn-accent" style="margin-top: 2rem;">Donate Now</a>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section class="section">
+    <div class="container">
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h3>Who can donate?</h3>
+          <ul>
+            <li>Any U.S. Permanent Resident or Citizen</li>
+            <li>Montgomery County residents qualify for matching</li>
+            <li>Individuals only — no PACs, corporations, or political parties</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <h3>Contribution limits</h3>
+          <ul>
+            <li>Maximum: $500 per person per four-year cycle (1/1/2023–12/31/2026)</li>
+            <li>Donations are not tax-deductible</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <h3>Why public financing?</h3>
+          <ul>
+            <li>Keeps the campaign accountable to voters, not special interests</li>
+            <li>Amplifies the voices of everyday Montgomery County residents</li>
+            <li>Ensures this campaign serves the people — not corporations or PACs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section donate-bottom-cta">
+    <div class="container text-center">
+      <h2 style="color: var(--white);">Every dollar counts.</h2>
+      <span class="ornament" style="background: var(--gold);"></span>
+      <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 1rem auto 2rem; font-size: 1.1rem;">Even a $25 donation becomes $150 through matching. That's the power of people-powered politics.</p>
+      <a href={donateUrl} class="btn btn-accent btn-lg">Donate via Donorbox</a>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .donate-top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .donate-info h2 { margin-bottom: 0; }
+  .donate-info p { color: var(--text-light); font-size: 1.05rem; line-height: 1.7; }
+
+  .donate-cta-card {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .donate-cta-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--primary); }
+  .donate-cta-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+  .donate-fine { font-size: 0.75rem !important; opacity: 0.6; margin-top: 0.75rem; }
+
+  /* TABLE */
+  .match-table-wrap {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    overflow-x: auto;
+  }
+
+  .match-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .match-table th {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    padding: 1rem;
+    border-bottom: 2px solid var(--teal);
+  }
+
+  .match-table td {
+    padding: 0.85rem 1rem;
+    font-size: 1.1rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .match-total {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--teal);
+    font-size: 1.25rem;
+  }
+
+  .match-highlight { background: rgba(9,113,109,0.08); }
+
+  /* RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .rule-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .rule-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--teal); }
+  .rule-card ul { list-style: disc; padding-left: 1.25rem; }
+  .rule-card li { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
+
+  .donate-bottom-cta {
+    background: var(--primary);
+  }
+
+  .btn-lg { padding: 1rem 3rem; font-size: 1.1rem; }
+
+  @media (max-width: 768px) {
+    .donate-top { grid-template-columns: 1fr; gap: 2rem; }
+    .rules-grid { grid-template-columns: 1fr; }
+  }
+</style>

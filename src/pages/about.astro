@@ -1,0 +1,167 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { donateUrl } from '../data/navigation';
+---
+
+<PageLayout title="About Fatmata | Fatmata Barrie for Montgomery County Council" description="Immigration attorney, small business owner, and community leader with 30+ years of service to Montgomery County.">
+
+  <HeroSection title="About Fatmata" subtitle="Immigration attorney. Small business owner. Community fighter." />
+
+  <!-- BIO -->
+  <section class="section">
+    <div class="container about-row">
+      <div class="about-portrait">
+        <img src="/images/fatmata-about.png" alt="Fatmata Barrie speaking" class="portrait-img" />
+      </div>
+      <div class="about-text prose">
+        <p class="section-label">Meet the Candidate</p>
+        <h2>An experienced fighter for Montgomery County.</h2>
+        <span class="ornament" style="margin: 0.75rem 0 1.25rem;"></span>
+        <p>Fatmata Barrie immigrated from Sierra Leone at age 11 and has called Montgomery County home for over 22 years. She earned a Bachelor of Science in Psychology from Florida A&M University and a Juris Doctor from the University of Florida Levin College of Law.</p>
+        <p>For more than two decades, Fatmata has worked as an immigration and special education attorney — fighting for the most vulnerable members of our community. She is also a small business owner who understands the challenges facing local entrepreneurs.</p>
+        <p>Fatmata has spent more than 30 years as a community activist, hosting free legal workshops and clinics, and building coalitions that bring people together across lines of difference.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <p class="section-label">Service & Leadership</p>
+        <h2>A lifetime of public service.</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="experience-grid">
+        <div class="exp-card">
+          <h3>Police Accountability</h3>
+          <p>Executive Director of the Montgomery County Police Accountability Board and Administrative Charging Committee.</p>
+        </div>
+        <div class="exp-card">
+          <h3>County Government</h3>
+          <p>Worked for Councilmember Will Jawando on policy and constituent services.</p>
+        </div>
+        <div class="exp-card">
+          <h3>African Affairs Advisory Group</h3>
+          <p>Member of the Montgomery County African Affairs Advisory Group and African Immigrant Caucus.</p>
+        </div>
+        <div class="exp-card">
+          <h3>Coalition Building</h3>
+          <p>Founded "Africans in the Diaspora for Harris" — a coalition of over 2,000 members mobilizing civic participation.</p>
+        </div>
+        <div class="exp-card">
+          <h3>Women's Democratic Club</h3>
+          <p>Board member of the Women's Democratic Club of Montgomery County.</p>
+        </div>
+        <div class="exp-card">
+          <h3>Community Legal Services</h3>
+          <p>Hosts free legal workshops and clinics for immigrant and underserved communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY I'M RUNNING -->
+  <section class="section why-running">
+    <div class="container">
+      <div class="why-inner">
+        <span class="ornament" style="background: var(--gold);"></span>
+        <blockquote class="why-quote">
+          "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney, small business owner and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
+        </blockquote>
+        <cite class="why-attribution">&mdash; Fatmata Barrie</cite>
+        <div class="why-ctas">
+          <a href="/platform" class="btn btn-outline-light">See the Platform</a>
+          <a href={donateUrl} class="btn btn-accent">Support the Campaign</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .about-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .portrait-img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: var(--border-radius);
+    border: 3px solid var(--teal);
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .about-text h2 { margin-bottom: 0; }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .exp-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .exp-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .exp-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--teal); }
+  .exp-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+  .why-running {
+    background: var(--primary);
+  }
+
+  .why-inner {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .why-quote {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: rgba(255,255,255,0.9);
+    line-height: 1.8;
+    font-style: italic;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .why-attribution {
+    display: block;
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .why-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 768px) {
+    .about-row { grid-template-columns: 1fr; gap: 2rem; }
+    .experience-grid { grid-template-columns: 1fr; }
+  }
+</style>

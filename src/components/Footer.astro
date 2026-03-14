@@ -1,0 +1,191 @@
+---
+import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
+---
+
+<footer class="footer-wrap">
+  <div class="container">
+    <div class="election-section text-center">
+      <p class="election-label">Primary Election Day</p>
+      <h2 class="election-date">Tuesday, June 23, 2026</h2>
+      <p class="election-time">7:00 AM &ndash; 8:00 PM</p>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Early Voting</h3>
+        <p>June 11 &ndash; June 18, 2026</p>
+        <p class="detail">7:00 AM &ndash; 8:00 PM daily</p>
+      </div>
+      <div class="footer-col">
+        <h3>Register to Vote</h3>
+        <p>Online/Mail: June 2, 2026</p>
+        <p class="detail">Same-day registration available during early voting &amp; Election Day</p>
+      </div>
+      <div class="footer-col">
+        <h3>Mail-in Ballots</h3>
+        <p>Request by mail: June 16</p>
+        <p class="detail">Request online: June 19 &middot; Postmarked by June 23</p>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top: 1.25rem; margin-bottom: 2.5rem;">
+      <a href="https://voterservices.elections.maryland.gov/VoterSearch" target="_blank" rel="noopener" class="vote-btn">Check Your Voter Status &rsaquo;</a>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/about">About Fatmata</a></li>
+          <li><a href="/platform">Platform</a></li>
+          <li><a href="/volunteer">Volunteer</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Support</h3>
+        <ul>
+          <li><a href={donateUrl}>Donate</a></li>
+          <li><a href="/volunteer">Volunteer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href={socialLinks.facebook} target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href={socialLinks.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href={socialLinks.twitter} target="_blank" rel="noopener" aria-label="Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+        {contactInfo.email && <p><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></p>}
+      </div>
+    </div>
+
+    <div class="authority">
+      <img src="/images/logo-fb.png" alt="Fatmata Barrie" class="footer-logo" />
+      <p>Authorized by: Fatmata Barrie for Montgomery County Treasurer: Maureen Wambui</p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .footer-wrap {
+    background: var(--primary);
+    color: var(--white);
+    padding: 3rem 0 1.5rem;
+  }
+
+  .footer-wrap .election-section { margin-bottom: 2rem; }
+
+  .footer-wrap .election-label {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-wrap .election-date {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-wrap .election-time { font-size: 1rem; opacity: 0.6; }
+
+  .footer-wrap .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-wrap .footer-col { text-align: center; }
+
+  .footer-wrap .footer-col h3 {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-wrap .footer-col p { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .footer-wrap .detail { font-size: 0.8rem !important; font-weight: 400 !important; opacity: 0.6; line-height: 1.4; }
+  .footer-wrap .footer-col ul { display: flex; flex-direction: column; gap: 0.4rem; }
+  .footer-wrap .footer-col a { color: var(--white); font-size: 0.9rem; transition: color var(--transition); }
+  .footer-wrap .footer-col a:hover { color: var(--teal); }
+
+  .footer-wrap .vote-btn {
+    display: inline-block;
+    padding: 0.75rem 2.5rem;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--teal);
+    border-radius: 4px;
+    transition: all var(--transition);
+  }
+
+  .footer-wrap .vote-btn:hover { background: #0a8884; color: var(--white); }
+
+  .footer-wrap .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 0 0 2rem; }
+
+  .footer-wrap .social-icons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-wrap .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all var(--transition);
+  }
+
+  .footer-wrap .social-icons a:hover { background: var(--teal); border-color: var(--teal); }
+
+  .footer-wrap .authority {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    opacity: 0.5;
+  }
+
+  .footer-wrap .footer-logo {
+    height: 36px;
+    width: auto;
+    margin: 0 auto 0.75rem;
+    display: block;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    .footer-wrap .footer-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+</style>

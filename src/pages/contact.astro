@@ -1,0 +1,199 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
+---
+
+<PageLayout title="Contact | Fatmata Barrie for Montgomery County Council" description="Get in touch with the Barrie for Montgomery County campaign. We'd love to hear from you.">
+
+  <HeroSection title="Contact Us" subtitle="Questions, ideas, or just want to say hello? We'd love to hear from you." />
+
+  <section class="section">
+    <div class="container contact-grid">
+
+      <!-- FORM -->
+      <div class="contact-form-card">
+        <p class="section-label">Send a Message</p>
+        <h2 style="margin-bottom: 0;">Get in touch.</h2>
+        <span class="ornament" style="margin: 0.75rem 0 1.5rem;"></span>
+        <form class="contact-form" method="POST" action="#contact">
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-fname">First Name</label>
+              <input type="text" id="cf-fname" name="first_name" required />
+            </div>
+            <div class="cf-field">
+              <label for="cf-lname">Last Name</label>
+              <input type="text" id="cf-lname" name="last_name" required />
+            </div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" name="email" required />
+            </div>
+            <div class="cf-field">
+              <label for="cf-phone">Phone (optional)</label>
+              <input type="tel" id="cf-phone" name="phone" />
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="cf-subject">Subject</label>
+            <select id="cf-subject" name="subject">
+              <option value="general">General Inquiry</option>
+              <option value="volunteer">Volunteering</option>
+              <option value="event">Event Request</option>
+              <option value="endorsement">Endorsement</option>
+              <option value="press">Press / Media</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar">
+        <div class="sidebar-card">
+          <h3>Email</h3>
+          <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Follow the Campaign</h3>
+          <div class="sidebar-social">
+            <a href={socialLinks.facebook} target="_blank" rel="noopener" class="sidebar-social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span>Facebook</span>
+            </a>
+            <a href={socialLinks.instagram} target="_blank" rel="noopener" class="sidebar-social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <span>Instagram</span>
+            </a>
+            <a href={socialLinks.twitter} target="_blank" rel="noopener" class="sidebar-social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <span>Twitter/X</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-card sidebar-donate">
+          <h3>Support the Campaign</h3>
+          <p>Your donation is matched through Montgomery County's public financing program.</p>
+          <a href={donateUrl} class="btn btn-accent" style="width: 100%; margin-top: 0.75rem;">Donate</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-form-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cf-row { display: flex; gap: 0.75rem; }
+  .cf-field { flex: 1; display: flex; flex-direction: column; margin-bottom: 0.75rem; }
+
+  .cf-field label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dark-gray);
+    margin-bottom: 0.3rem;
+  }
+
+  .cf-field input,
+  .cf-field select,
+  .cf-field textarea {
+    padding: 0.7rem 0.65rem;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    background: var(--cream);
+    border: 2px solid var(--light-gray);
+    border-radius: 4px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .cf-field input:focus,
+  .cf-field select:focus,
+  .cf-field textarea:focus { border-color: var(--primary); }
+
+  .cf-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6358' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.65rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+  }
+
+  .cf-field textarea { resize: vertical; min-height: 120px; }
+
+  /* SIDEBAR */
+  .contact-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card > a { font-size: 1rem; color: var(--primary); }
+
+  .sidebar-social { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: all var(--transition);
+  }
+
+  .sidebar-social-link:hover { background: rgba(27,94,75,0.06); color: var(--primary); }
+  .sidebar-social-link svg { flex-shrink: 0; }
+
+  .sidebar-donate p { color: var(--text-light); font-size: 0.9rem; line-height: 1.5; }
+  .sidebar-donate { border-color: var(--primary); }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .cf-row { flex-direction: column; gap: 0; }
+  }
+</style>
