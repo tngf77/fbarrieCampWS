@@ -1,0 +1,653 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { socialLinks } from '../data/navigation';
+
+const newsItems = [
+  {
+    id: 1,
+    date: "2026-03-03",
+    headline: "Barrie Testifies on Immigration Protection Legislation at County Council",
+    source: "WTOP News",
+    sourceUrl: "https://wtop.com/montgomery-county/2026/03/immigration-legislation-proposals-dominate-montgomery-county-council-meeting/",
+    summary: "Immigration attorney Fatmata Barrie testified before the Montgomery County Council in support of immigration protection legislation, speaking in favor of the ICE Out Act, the Unmask ICE Act, and the County Values Act. Barrie advocated for an amendment requiring law enforcement to show official ID when detaining or removing a person.",
+    category: "Community",
+    featured: true,
+  },
+  {
+    id: 2,
+    date: "2026-02-27",
+    headline: "Filing Deadline Passes: 17 Democrats Compete for Four At-Large Council Seats",
+    source: "The Baltimore Banner",
+    sourceUrl: "https://www.thebanner.com/politics-power/local-government/montgomery-county-final-candidates-2026-V2WGULT3HRFTTBGNLHKUVLS6CI/",
+    summary: "The Baltimore Banner reported on the final candidate field after Maryland's filing deadline. Seventeen Democrats are competing for four at-large Council seats, making it one of the most competitive races in Montgomery County history.",
+    category: "Press",
+    featured: false,
+  },
+  {
+    id: 3,
+    date: "2026-01-14",
+    headline: "Barrie Qualifies for Public Financing Match in Council At-Large Race",
+    source: "Fatmata Barrie Campaign",
+    sourceUrl: "https://fatmatabarrie.com/",
+    summary: "Fatmata Barrie qualified for matching funds through Montgomery County's public financing program, demonstrating broad grassroots support. Her campaign is entirely people-funded — no PACs, corporations, or political parties.",
+    category: "Campaign",
+    featured: false,
+  },
+  {
+    id: 4,
+    date: "2025-12-29",
+    headline: "CASA in Action Endorses Barrie for County Council At-Large",
+    source: "Bethesda Magazine",
+    sourceUrl: "https://bethesdamagazine.com/2025/12/29/holiday-political-cheer-immigrant-rights-group-two-unions-offer-candidate-endorsements/",
+    summary: "CASA in Action, the political arm of Maryland's largest Latino and immigrant advocacy organization, endorsed Fatmata Barrie for County Council At-Large. As an immigrant and immigration attorney herself, the endorsement from the state's leading immigrant rights organization is particularly significant.",
+    category: "Endorsement",
+    featured: false,
+  },
+  {
+    id: 5,
+    date: "2025-12-29",
+    headline: "SEIU Local 500 Backs Barrie for At-Large Seat",
+    source: "Bethesda Magazine",
+    sourceUrl: "https://bethesdamagazine.com/2025/12/29/holiday-political-cheer-immigrant-rights-group-two-unions-offer-candidate-endorsements/",
+    summary: "SEIU Local 500 endorsed Fatmata Barrie for a County Council At-Large seat in the June 2026 Democratic primary. The service workers union also endorsed incumbent Laurie-Anne Sayles and former County Executive Marc Elrich.",
+    category: "Endorsement",
+    featured: false,
+  },
+  {
+    id: 6,
+    date: "2025-12-05",
+    headline: "MCEA Apple Ballot: Barrie Endorsed for County Council At-Large",
+    source: "The MoCo Show",
+    sourceUrl: "https://mocoshow.com/2025/12/05/mcea-announces-initial-endorsements-for-2026-county-executive-county-council-and-board-of-education-races/",
+    summary: "The Montgomery County Education Association endorsed Fatmata Barrie as one of their four picks for County Council At-Large. The MCEA Apple Ballot is considered one of the most influential endorsements in Montgomery County politics.",
+    category: "Endorsement",
+    featured: false,
+  },
+  {
+    id: 7,
+    date: "2025-12-05",
+    headline: "Congressman Kweisi Mfume Endorses Barrie",
+    source: "Fatmata Barrie Campaign",
+    sourceUrl: "https://fatmatabarrie.com/",
+    summary: "U.S. Congressman Kweisi Mfume (MD-7), a civil rights legend and former President and CEO of the NAACP, endorsed Fatmata Barrie for Montgomery County Council At-Large.",
+    category: "Endorsement",
+    featured: false,
+  },
+  {
+    id: 8,
+    date: "2025-09-03",
+    headline: "Barrie's Response to Trump's 'Born to Be Criminals' Remarks Goes Viral",
+    source: "The Root",
+    sourceUrl: "https://www.theroot.com/professor-why-trumps-born-to-be-criminals-comment-shou-2000060818",
+    summary: "Fatmata Barrie's tweet responding to Trump's remarks was cited in The Root's national coverage. Barrie posted: \"Trump just said men arrested in DC are 'born to be criminals.' Most were Black. He just called Black men inherently criminal. That is racist. That is dangerous.\"",
+    category: "Press",
+    featured: false,
+  },
+  {
+    id: 9,
+    date: "2025-08-13",
+    headline: "Barrie Among Leading Candidates in Crowded At-Large Race",
+    source: "Montgomery Community Media",
+    sourceUrl: "https://www.mymcmedia.org/solomon-joins-a-crowded-race-for-at-large-council-seats/",
+    summary: "Montgomery Community Media profiled the growing field of candidates for Montgomery County Council At-Large seats. With Jawando and Glass leaving their seats, three of four at-large seats are guaranteed to change hands.",
+    category: "Press",
+    featured: false,
+  },
+  {
+    id: 10,
+    date: "2025-03-06",
+    headline: "Barrie Announces 2026 At-Large Council Campaign",
+    source: "Montgomery Perspective",
+    sourceUrl: "https://montgomeryperspective.com/2025/03/06/barrie-tries-again-for-county-council/",
+    summary: "Fatmata Barrie officially announced her candidacy for Montgomery County Council At-Large. After finishing second in the 2022 District 5 primary, Barrie brings experience as a practicing attorney, former aide to Councilmember Jawando, and former executive director of the Police Accountability Board.",
+    category: "Campaign",
+    featured: false,
+  },
+  {
+    id: 11,
+    date: "2024-10-31",
+    headline: "Barrie's African Diaspora Voter Mobilization Reaches 25,000+ Voters",
+    source: "WYPR (Baltimore NPR)",
+    sourceUrl: "https://www.wypr.org/wypr-news/2024-10-31/maryland-woman-mobilizes-emerging-african-voting-bloc-for-harris-walz",
+    summary: "WYPR profiled Fatmata Barrie as the co-founder of Africans in the Diaspora for Harris-Walz, which reached 25,000+ voters through weekly Zoom calls, fundraising over $25,000, and canvassing in battleground states.",
+    category: "Community",
+    featured: false,
+  },
+  {
+    id: 12,
+    date: "2024-10-31",
+    headline: "National Profile: Barrie and the African Immigrant Voter Coalition",
+    source: "NOTUS",
+    sourceUrl: "https://www.notus.org/2024-election/dems-falling-short-key-voting-bloc-african-immigrants",
+    summary: "National outlet NOTUS profiled Fatmata Barrie and Africans in the Diaspora for Harris-Walz. Barrie told NOTUS: \"People really wanted something like this... you're seen and you're heard.\"",
+    category: "Press",
+    featured: false,
+  },
+  {
+    id: 13,
+    date: "2023-12-19",
+    headline: "Governor Moore Appoints Barrie to Commission on African Affairs",
+    source: "Governor's Office",
+    sourceUrl: "https://governor.maryland.gov/news/press/pages/governor-moore-announces-appointments-to-the-maryland-commission-on-african-affairs.aspx",
+    summary: "Governor Wes Moore appointed Fatmata Barrie to the Governor's Commission on African Affairs, a 21-member advisory board guiding the governor on matters affecting Maryland's African diaspora communities.",
+    category: "Community",
+    featured: false,
+  },
+  {
+    id: 14,
+    date: "2023-02-13",
+    headline: "Barrie Named Executive Director of Police Accountability Board",
+    source: "Montgomery County Government",
+    sourceUrl: "https://www2.montgomerycountymd.gov/mcgportalapps/Press_Detail.aspx?Item_ID=42856",
+    summary: "Fatmata Barrie was unanimously selected as the first executive director of Montgomery County's Police Accountability Board and Administrative Charging Committee, strengthening transparency and accountability in local government.",
+    category: "Press",
+    featured: false,
+  },
+];
+
+const categories = ["All", "Campaign", "Endorsement", "Community", "Press"];
+
+const featuredItem = newsItems.find(item => item.featured);
+const regularItems = newsItems.filter(item => !item.featured);
+
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr + 'T00:00:00');
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<PageLayout title="News & Updates | Fatmata Barrie for Montgomery County Council" description="The latest news, press coverage, endorsements, and campaign updates from Fatmata Barrie's race for Montgomery County Council At-Large.">
+
+  <HeroSection title="News & Updates" subtitle="The latest from the Barrie for Montgomery County campaign." />
+
+  <!-- CATEGORY FILTERS -->
+  <section class="section filters-section">
+    <div class="container">
+      <div class="filters-bar">
+        <p class="section-label" style="margin-bottom: 0;">Filter by topic</p>
+        <div class="filter-buttons" id="filter-buttons">
+          {categories.map((cat) => (
+            <button
+              class={`filter-btn ${cat === 'All' ? 'active' : ''}`}
+              data-category={cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED ITEM -->
+  {featuredItem && (
+    <section class="section featured-section" style="padding-top: 0;">
+      <div class="container">
+        <div class="featured-card" data-category={featuredItem.category}>
+          <div class="featured-label">
+            <span class="ornament" style="margin: 0 0 0.75rem;"></span>
+            <span class="featured-tag">Featured</span>
+          </div>
+          <div class="featured-content">
+            <span class={`news-badge badge-${featuredItem.category.toLowerCase()}`}>{featuredItem.category}</span>
+            <h2 class="featured-headline">{featuredItem.headline}</h2>
+            <p class="featured-summary">{featuredItem.summary}</p>
+            <div class="featured-meta">
+              <span class="news-source">{featuredItem.source}</span>
+              <span class="news-date">{formatDate(featuredItem.date)}</span>
+            </div>
+            <a href={featuredItem.sourceUrl} target="_blank" rel="noopener" class="news-read-link">
+              Read Full Story
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- NEWS GRID -->
+  <section class="section news-grid-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="news-grid" id="news-grid">
+        {regularItems.map((item) => (
+          <article class="news-card" data-category={item.category}>
+            <div class="news-card-inner">
+              <span class={`news-badge badge-${item.category.toLowerCase()}`}>{item.category}</span>
+              <h3 class="news-headline">{item.headline}</h3>
+              <p class="news-summary">{item.summary}</p>
+              <div class="news-meta">
+                <span class="news-source">{item.source}</span>
+                <span class="news-date">{formatDate(item.date)}</span>
+              </div>
+              <a href={item.sourceUrl} target="_blank" rel="noopener" class="news-read-link">
+                Read
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="no-results" id="no-results" style="display: none;">No items found for this category.</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL CTA -->
+  <section class="section section-alt social-cta-section">
+    <div class="container text-center">
+      <p class="section-label">Stay Connected</p>
+      <h2>Follow the Campaign</h2>
+      <span class="ornament"></span>
+      <p style="color: var(--text-light); font-size: 1.1rem; margin: 1rem auto 2rem; max-width: 550px;">Get the latest updates, event announcements, and news from Fatmata's campaign by following us on social media.</p>
+      <div class="social-cta-links">
+        <a href={socialLinks.facebook} target="_blank" rel="noopener" class="social-cta-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href={socialLinks.instagram} target="_blank" rel="noopener" class="social-cta-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </a>
+        <a href={socialLinks.twitter} target="_blank" rel="noopener" class="social-cta-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X / Twitter
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  /* === Filter Bar === */
+  .filters-section {
+    padding-bottom: 2rem;
+  }
+
+  .filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.5rem 1.25rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .filter-btn.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+  }
+
+  /* === Featured Card === */
+  .featured-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  .featured-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .featured-label {
+    background: var(--cream-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--light-gray);
+  }
+
+  .featured-tag {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+  }
+
+  .featured-content {
+    padding: 2rem 2.5rem;
+  }
+
+  .featured-headline {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .featured-summary {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  /* === News Grid === */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .news-card {
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .news-card.hidden {
+    display: none;
+  }
+
+  .news-card-inner {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  .news-card-inner:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* === Badges === */
+  .news-badge {
+    display: inline-block;
+    font-family: var(--font-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    margin-bottom: 0.75rem;
+    width: fit-content;
+  }
+
+  .badge-campaign {
+    background: rgba(9,113,109,0.1);
+    color: var(--teal);
+  }
+
+  .badge-endorsement {
+    background: rgba(228,83,67,0.1);
+    color: var(--accent);
+  }
+
+  .badge-community {
+    background: rgba(25,34,106,0.1);
+    color: var(--primary);
+  }
+
+  .badge-press {
+    background: rgba(107,99,88,0.15);
+    color: var(--dark-gray);
+  }
+
+  /* === Card Content === */
+  .news-headline {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .news-summary {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .news-source {
+    font-family: var(--font-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .news-date {
+    font-size: 0.82rem;
+    color: var(--medium-gray);
+  }
+
+  .news-meta .news-source::after {
+    content: '';
+    display: none;
+  }
+
+  .news-read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    transition: color var(--transition);
+  }
+
+  .news-read-link:hover {
+    color: var(--teal);
+  }
+
+  /* === No Results === */
+  .no-results {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    padding: 3rem 0;
+    font-style: italic;
+    font-family: var(--font-heading);
+  }
+
+  /* === Social CTA === */
+  .social-cta-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--primary);
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 4px;
+    transition: all var(--transition);
+  }
+
+  .social-cta-btn:hover {
+    border-color: var(--primary);
+    color: var(--white);
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .social-cta-btn svg {
+    transition: fill var(--transition);
+  }
+
+  .social-cta-btn:hover svg {
+    fill: var(--white);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 960px) {
+    .news-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-label {
+      flex-direction: row;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      border-right: none;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .featured-label .ornament {
+      margin: 0;
+      width: 30px;
+    }
+
+    .featured-content {
+      padding: 1.5rem;
+    }
+
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filters-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .filter-btn {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .social-cta-links {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .social-cta-btn {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsCards = document.querySelectorAll('.news-card');
+    const featuredCard = document.querySelector('.featured-card');
+    const noResults = document.getElementById('no-results');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.getAttribute('data-category');
+        let visibleCount = 0;
+
+        // Filter regular cards
+        newsCards.forEach((card) => {
+          const cardCategory = card.getAttribute('data-category');
+          if (category === 'All' || cardCategory === category) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Filter featured card
+        if (featuredCard) {
+          const featuredCategory = featuredCard.getAttribute('data-category');
+          const featuredSection = featuredCard.closest('.featured-section') as HTMLElement;
+          if (category === 'All' || featuredCategory === category) {
+            if (featuredSection) featuredSection.style.display = '';
+            visibleCount++;
+          } else {
+            if (featuredSection) featuredSection.style.display = 'none';
+          }
+        }
+
+        // Show/hide no results message
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      });
+    });
+  });
+</script>
