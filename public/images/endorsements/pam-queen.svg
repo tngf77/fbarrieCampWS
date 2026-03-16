@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" fill="#DEE2EA"/>
+  <circle cx="100" cy="80" r="40" fill="#9CA3B2"/>
+  <ellipse cx="100" cy="180" rx="60" ry="50" fill="#9CA3B2"/>
+  <text x="100" y="88" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="32" font-weight="bold" fill="#ffffff">PQ</text>
+</svg>

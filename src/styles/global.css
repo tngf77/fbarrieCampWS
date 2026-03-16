@@ -1,25 +1,25 @@
-/* === CSS Custom Properties — Barrie Brand (Design B: Classic/Warm) === */
+/* === CSS Custom Properties — Barrie Brand (Design B: Blue/Red) === */
 :root {
-  --primary: #19226A;
-  --primary-light: #2A3580;
-  --primary-dark: #111850;
-  --accent: #E45343;
-  --accent-bright: #F06555;
-  --teal: #09716D;
-  --mint: #D6F4E8;
-  --gold: #D4A843;
-  --gold-dark: #B8912D;
+  --primary: #2244AA;
+  --primary-light: #3358BE;
+  --primary-dark: #1A3590;
+  --accent: #CC3333;
+  --accent-bright: #E04444;
+  --teal: #5588CC;
+  --mint: #DEEAF7;
+  --gold: #CC3333;
+  --gold-dark: #AA2828;
   --white: #ffffff;
-  --cream: #FEFCF9;
-  --cream-dark: #F5F0E8;
-  --light-gray: #E8E2D8;
-  --medium-gray: #B8AFA3;
-  --dark-gray: #6B6358;
-  --text: #3D352D;
-  --text-light: #5C534A;
-  --bg: #F8F6F2;
+  --cream: #FAFBFE;
+  --cream-dark: #EEF0F5;
+  --light-gray: #DEE2EA;
+  --medium-gray: #9CA3B2;
+  --dark-gray: #5C6272;
+  --text: #2D3245;
+  --text-light: #4E5570;
+  --bg: #F4F6FA;
   --bg-card: #ffffff;
-  --bg-elevated: #F5F0E8;
+  --bg-elevated: #EEF0F5;
 
   --font-primary: 'Inter', sans-serif;
   --font-heading: 'Syne', sans-serif;

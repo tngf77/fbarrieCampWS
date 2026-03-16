@@ -1,6 +1,7 @@
 export const mainNav = [
   { label: 'About', href: '/about' },
   { label: 'Platform', href: '/platform' },
+  { label: 'Endorsements', href: '/endorsements' },
   { label: 'Updates', href: '/updates' },
   { label: 'Get Involved', href: '/volunteer' },
   { label: 'Contact', href: '/contact' },

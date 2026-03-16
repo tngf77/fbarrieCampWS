@@ -1,0 +1,227 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { donateUrl } from '../data/navigation';
+
+const organizations = [
+  {
+    name: 'Montgomery County Education Association (MCEA)',
+    logo: '/images/endorsements/mcea.png',
+    description: 'The county\'s largest educators union, representing over 14,000 teachers and education professionals. The MCEA Apple Ballot is considered one of the most influential endorsements in Montgomery County politics.',
+  },
+  {
+    name: 'CASA in Action',
+    logo: '/images/endorsements/casa.png',
+    description: 'The political arm of Maryland\'s largest Latino and immigrant advocacy organization, fighting for immigrant rights and community empowerment across the state.',
+  },
+  {
+    name: 'SEIU Local 500',
+    logo: '/images/endorsements/seiu500.png',
+    description: 'Representing thousands of service workers across Maryland, fighting for fair wages, benefits, and working conditions.',
+  },
+  {
+    name: 'SEIU 32BJ',
+    logo: '/images/endorsements/seiu32bj.jpg',
+    description: 'The largest property service workers union in the country, representing building cleaners, security officers, and airport workers.',
+  },
+  {
+    name: 'Montgomery County Retired Education Association',
+    logo: '/images/endorsements/mcrea.svg',
+    description: 'Representing retired educators who dedicated their careers to Montgomery County students and schools.',
+  },
+];
+
+const electedOfficials = [
+  {
+    name: 'Delegate Pam Queen',
+    title: 'Maryland House of Delegates',
+    photo: '/images/endorsements/pam-queen.png',
+  },
+  {
+    name: 'Councilmember Kristin Mink',
+    title: 'Montgomery County Council',
+    photo: '/images/endorsements/kristin-mink.png',
+  },
+  {
+    name: 'Brenda Wolff',
+    title: 'Montgomery County Board of Education Member',
+    photo: '/images/endorsements/brenda-wolff.svg',
+  },
+  {
+    name: 'Maya Rockeymoore Cummings',
+    title: 'Former Chair, Maryland Democratic Party',
+    photo: '/images/endorsements/maya-cummings.svg',
+  },
+];
+---
+
+<PageLayout title="Endorsements | Fatmata Barrie for Montgomery County Council" description="See who's endorsing Fatmata Barrie for Montgomery County Council At-Large — unions, elected officials, and community leaders.">
+
+  <HeroSection title="Endorsements" subtitle="Leaders and organizations standing with Fatmata." />
+
+  <!-- ORGANIZATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <p class="section-label">Organizations</p>
+        <h2>Backed by the people who power our community.</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="org-grid">
+        {organizations.map((org) => (
+          <div class="endorsement-card">
+            <img src={org.logo} alt={org.name} class="org-logo" />
+            <h3>{org.name}</h3>
+            <p>{org.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ELECTED OFFICIALS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <p class="section-label">Elected Officials &amp; Leaders</p>
+        <h2>Trusted by those who serve.</h2>
+        <span class="ornament"></span>
+      </div>
+      <div class="officials-grid">
+        {electedOfficials.map((official) => (
+          <div class="official-card">
+            <div class="official-photo-wrap">
+              <img src={official.photo} alt={official.name} class="official-photo" />
+            </div>
+            <h3>{official.name}</h3>
+            <p>{official.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section endorse-cta">
+    <div class="container text-center">
+      <h2>Join the movement.</h2>
+      <span class="ornament" style="background: var(--gold);"></span>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin: 1rem auto 2rem; max-width: 550px;">Want to endorse Fatmata? Reach out to the campaign. Ready to support? Donate or volunteer today.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+        <a href="/volunteer" class="btn btn-outline-light">Get Involved</a>
+      </div>
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .org-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .endorsement-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .endorsement-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .org-logo {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .endorsement-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+
+  .endorsement-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .officials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .official-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.75rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .official-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .official-photo-wrap {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--light-gray);
+    background: var(--bg);
+  }
+
+  .official-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .official-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+    color: var(--primary);
+  }
+
+  .official-card p {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .endorse-cta {
+    background: var(--primary);
+  }
+
+  @media (max-width: 960px) {
+    .org-grid { grid-template-columns: repeat(2, 1fr); }
+    .officials-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .org-grid { grid-template-columns: 1fr; }
+    .officials-grid { grid-template-columns: 1fr; }
+  }
+</style>
