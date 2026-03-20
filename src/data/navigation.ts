@@ -1,5 +1,5 @@
 export const mainNav = [
-  { label: 'About', href: '/about' },
+  { label: 'Meet Fatmata', href: '/about' },
   { label: 'Platform', href: '/platform' },
   { label: 'Endorsements', href: '/endorsements' },
   { label: 'Updates', href: '/updates' },
