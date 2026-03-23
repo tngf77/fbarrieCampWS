@@ -39,14 +39,14 @@ const electedOfficials = [
     photo: '/images/endorsements/pam-queen.png',
   },
   {
-    name: 'Cherri Branson',
-    title: 'Former District 5 County Councilmember &amp; Director of Procurement',
-    photo: '/images/endorsements/cherri-branson.jpg',
-  },
-  {
     name: 'Brenda Wolff',
     title: 'Montgomery County Board of Education Member',
     photo: '/images/endorsements/brenda-wolff.jpg',
+  },
+  {
+    name: 'Cherri Branson',
+    title: 'Former District 5 County Councilmember &amp; Director of Procurement',
+    photo: '/images/endorsements/cherri-branson.jpg',
   },
 ];
 ---
@@ -157,10 +157,10 @@ const electedOfficials = [
   }
 
   .officials-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.25rem;
-    justify-items: center;
+    justify-content: center;
   }
 
   .official-card {
