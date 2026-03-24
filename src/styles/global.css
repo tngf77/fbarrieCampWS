@@ -1,25 +1,25 @@
-/* === CSS Custom Properties — Barrie Brand (Design B: Blue/Red) === */
+/* === CSS Custom Properties — Barrie Brand === */
 :root {
-  --primary: #2244AA;
-  --primary-light: #3358BE;
-  --primary-dark: #1A3590;
-  --accent: #CC3333;
-  --accent-bright: #E04444;
-  --teal: #5588CC;
-  --mint: #DEEAF7;
-  --gold: #CC3333;
-  --gold-dark: #AA2828;
+  --primary: #28398f;
+  --primary-light: #3a4eaf;
+  --primary-dark: #1e2d73;
+  --accent: #f05123;
+  --accent-bright: #ff6a3a;
+  --teal: #627af5;
+  --mint: #eaedff;
+  --gold: #f05123;
+  --gold-dark: #d03f10;
   --white: #ffffff;
-  --cream: #FAFBFE;
-  --cream-dark: #EEF0F5;
-  --light-gray: #DEE2EA;
+  --cream: #faf0ed;
+  --cream-dark: #f0e2dc;
+  --light-gray: #e4d8d2;
   --medium-gray: #9CA3B2;
   --dark-gray: #5C6272;
-  --text: #2D3245;
-  --text-light: #4E5570;
-  --bg: #F4F6FA;
+  --text: #111111;
+  --text-light: #444444;
+  --bg: #faf0ed;
   --bg-card: #ffffff;
-  --bg-elevated: #EEF0F5;
+  --bg-elevated: #f0e2dc;
 
   --font-primary: 'Inter', sans-serif;
   --font-heading: 'Syne', sans-serif;
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--text);
+  color: var(--primary);
 }
 
 h1 { font-size: clamp(2.25rem, 6vw, 4rem); }
