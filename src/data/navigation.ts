@@ -1,6 +1,6 @@
 export const mainNav = [
   { label: 'Meet Fatmata', href: '/about' },
-  { label: 'Platform', href: '/platform' },
+  { label: 'Priorities', href: '/priorities' },
   { label: 'Endorsements', href: '/endorsements' },
   { label: 'Updates', href: '/updates' },
   { label: 'Get Involved', href: '/volunteer' },
