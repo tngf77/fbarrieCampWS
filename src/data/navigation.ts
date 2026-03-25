@@ -13,6 +13,7 @@ export const socialLinks = {
   facebook: 'https://www.facebook.com/barrie4countycouncil',
   instagram: 'https://www.instagram.com/barrie4council/',
   twitter: 'https://twitter.com/barrie4council',
+  bluesky: 'https://bsky.app/profile/barrie4council.bsky.social',
 };
 
 export const contactInfo = {
