@@ -289,7 +289,7 @@ import { donateUrl, socialLinks } from '../data/navigation';
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 88vh;
+    height: calc(100vh - 107px);
     overflow: hidden;
   }
 
@@ -312,20 +312,21 @@ import { donateUrl, socialLinks } from '../data/navigation';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2.5rem;
-    gap: 1.5rem;
+    padding: 2rem 2rem;
+    gap: 1.25rem;
+    overflow: hidden;
   }
 
   .hero-logo {
     width: 100%;
-    max-width: 420px;
     height: auto;
     display: block;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .hero-quote {
     font-family: var(--font-heading);
-    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    font-size: clamp(0.85rem, 1.3vw, 1.05rem);
     font-weight: 500;
     font-style: italic;
     line-height: 1.75;
@@ -337,7 +338,7 @@ import { donateUrl, socialLinks } from '../data/navigation';
 
   .hero-signature {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
     color: var(--white);
     line-height: 1;
     align-self: flex-start;
@@ -346,10 +347,9 @@ import { donateUrl, socialLinks } from '../data/navigation';
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-self: flex-start; }
 
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { min-height: 55vw; }
+    .hero { grid-template-columns: 1fr; height: auto; }
+    .hero-left { height: 55vw; }
     .hero-right { padding: 2rem 1.5rem; }
-    .hero-logo { max-width: 280px; }
   }
 
   /* TAGLINE */
