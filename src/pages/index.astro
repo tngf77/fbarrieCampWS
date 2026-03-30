@@ -38,7 +38,6 @@ import { donateUrl, socialLinks } from '../data/navigation';
         <div class="hero-logo-wrap">
           <img src="/images/Logo - background removed.png" alt="Fatmata Barrie for Montgomery County Council" class="hero-logo" />
         </div>
-        <p class="hero-tagline">Let's Move Montgomery County Forward Together.</p>
         <div class="hero-text-top">
           <blockquote class="hero-quote">
             "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
@@ -325,27 +324,17 @@ import { donateUrl, socialLinks } from '../data/navigation';
 
   .hero-logo-wrap {
     display: flex;
-    justify-content: flex-start;
-    margin-left: -5%;
+    justify-content: center;
     flex-shrink: 0;
   }
 
   .hero-logo {
-    width: 110%;
-    max-height: 54vh;
+    width: 100%;
+    max-height: 48vh;
     height: auto;
     object-fit: contain;
     display: block;
     image-rendering: -webkit-optimize-contrast;
-  }
-
-  .hero-tagline {
-    font-family: var(--font-heading);
-    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
-    font-weight: 700;
-    color: var(--white);
-    margin: 0;
-    padding-left: 0.25rem;
   }
 
   .hero-text-top {
