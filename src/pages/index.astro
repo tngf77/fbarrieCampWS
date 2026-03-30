@@ -33,15 +33,19 @@ import { donateUrl, socialLinks } from '../data/navigation';
     <section class="hero">
       <img src="/images/Meet Fatmata 032926.png" alt="Fatmata Barrie" class="hero-bg-img" />
       <div class="hero-overlay">
-        <img src="/images/Logo - background removed.png" alt="Fatmata Barrie for Montgomery County Council" class="hero-logo" />
-        <div class="hero-content">
-          <blockquote class="hero-quote">
-            "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
-          </blockquote>
-          <p class="hero-signature">Fatmata</p>
-          <div class="hero-ctas">
-            <a href="/about" class="btn btn-outline-light">Learn More About Fatmata</a>
-            <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+        <div class="hero-top">
+          <img src="/images/Logo - background removed.png" alt="Fatmata Barrie for Montgomery County Council" class="hero-logo" />
+        </div>
+        <div class="hero-bottom">
+          <div class="hero-content">
+            <blockquote class="hero-quote">
+              "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
+            </blockquote>
+            <p class="hero-signature">Fatmata</p>
+            <div class="hero-ctas">
+              <a href="/about" class="btn btn-outline-light">Learn More About Fatmata</a>
+              <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+            </div>
           </div>
         </div>
       </div>
@@ -308,16 +312,28 @@ import { donateUrl, socialLinks } from '../data/navigation';
     flex-direction: column;
     justify-content: space-between;
     padding: 2.5rem 3rem 3.5rem;
-    background: linear-gradient(to right, rgba(0,0,20,0.7) 0%, rgba(0,0,20,0.4) 40%, rgba(0,0,0,0) 65%);
+    background: linear-gradient(to left, rgba(0,0,20,0.75) 0%, rgba(0,0,20,0.45) 45%, rgba(0,0,0,0) 70%);
   }
 
   .hero-logo {
     width: 260px;
     height: auto;
+    opacity: 0.6;
+  }
+
+  .hero-top {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .hero-content {
-    max-width: 580px;
+    max-width: 520px;
+    text-align: left;
   }
 
   .hero-quote {
