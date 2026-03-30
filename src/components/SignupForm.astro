@@ -5,6 +5,7 @@
   <div class="signup-inner">
     <h2 class="signup-headline">Join Team<br />Barrie<span class="accent-dot">.</span></h2>
     <div class="signup-form-card">
+
       <form class="signup-form" method="POST" action="#signup">
         <div class="sf-row">
           <div class="sf-field">
@@ -29,6 +30,9 @@
         <button type="submit" class="signup-submit">Get Updates</button>
       </form>
     </div>
+    <div class="signup-photo">
+      <img src="/images/Campaign Kickoff 033026.jpg" alt="Campaign Kickoff" class="signup-photo-img" />
+    </div>
   </div>
 </section>
 
@@ -47,9 +51,19 @@
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr 1fr;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
+  }
+
+  .signup-photo { align-self: start; }
+
+  .signup-photo-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    display: block;
   }
 
   .signup-headline {
@@ -114,7 +128,7 @@
 
   .signup-submit:hover { background: var(--primary-light); }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .signup-inner { grid-template-columns: 1fr; gap: 2rem; }
     .sf-row { flex-direction: column; gap: 0.5rem; }
   }
