@@ -56,11 +56,13 @@
     align-items: start;
   }
 
-  .signup-photo { align-self: start; }
+  .signup-photo { align-self: stretch; }
 
   .signup-photo-img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-md);
     display: block;
