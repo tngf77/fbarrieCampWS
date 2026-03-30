@@ -287,7 +287,7 @@ import { donateUrl, socialLinks } from '../data/navigation';
   /* HERO */
   .hero {
     position: relative;
-    min-height: 88vh;
+    background: var(--primary);
     overflow: hidden;
   }
 
@@ -296,25 +296,24 @@ import { donateUrl, socialLinks } from '../data/navigation';
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 20%;
+    object-fit: contain;
+    object-position: center top;
   }
 
   .hero-overlay {
     position: relative;
     z-index: 1;
-    min-height: 88vh;
+    min-height: min(90vh, 800px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 2.5rem 3rem 3.5rem;
-    background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.05) 100%);
+    background: linear-gradient(to right, rgba(0,0,20,0.7) 0%, rgba(0,0,20,0.4) 40%, rgba(0,0,0,0) 65%);
   }
 
   .hero-logo {
-    width: 200px;
+    width: 260px;
     height: auto;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
   }
 
   .hero-content {
