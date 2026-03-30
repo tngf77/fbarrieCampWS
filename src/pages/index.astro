@@ -31,18 +31,18 @@ import { donateUrl, socialLinks } from '../data/navigation';
 
     <!-- HERO -->
     <section class="hero">
-      <img src="/images/Meet Fatmata 032926.png" alt="Fatmata Barrie" class="hero-bg-img" />
-      <div class="hero-overlay">
+      <div class="hero-left">
+        <img src="/images/Meet Fatmata 032926.png" alt="Fatmata Barrie" class="hero-photo" />
+      </div>
+      <div class="hero-right">
         <img src="/images/Logo - background removed.png" alt="Fatmata Barrie for Montgomery County Council" class="hero-logo" />
-        <div class="hero-content">
-          <blockquote class="hero-quote">
-            "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
-          </blockquote>
-          <p class="hero-signature">Fatmata</p>
-          <div class="hero-ctas">
-            <a href="/about" class="btn btn-outline-light">Learn More About Fatmata</a>
-            <a href={donateUrl} class="btn btn-accent">Donate Now</a>
-          </div>
+        <blockquote class="hero-quote">
+          "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
+        </blockquote>
+        <p class="hero-signature">Fatmata</p>
+        <div class="hero-ctas">
+          <a href="/about" class="btn btn-outline-light">Learn More About Fatmata</a>
+          <a href={donateUrl} class="btn btn-accent">Donate Now</a>
         </div>
       </div>
     </section>
@@ -285,71 +285,71 @@ import { donateUrl, socialLinks } from '../data/navigation';
   }
 
   /* HERO */
+  /* HERO */
   .hero {
-    position: relative;
-    background: linear-gradient(to right, #b4b0ad, #a9a09b, #a28f88);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 88vh;
     overflow: hidden;
   }
 
-  .hero-bg-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center top;
-    z-index: 1;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  .hero-left {
+    position: relative;
+    overflow: hidden;
   }
 
-  .hero-overlay {
-    position: relative;
-    z-index: 2;
-    min-height: min(90vh, 800px);
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .hero-right {
+    background: var(--primary);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 2.5rem 3rem 3.5rem;
-    background: linear-gradient(to right, rgba(0,0,20,0.7) 0%, rgba(0,0,20,0.4) 40%, rgba(0,0,0,0) 65%);
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+    gap: 1.5rem;
   }
 
   .hero-logo {
-    width: 260px;
+    width: 100%;
+    max-width: 420px;
     height: auto;
-  }
-
-  .hero-content {
-    max-width: 580px;
+    display: block;
   }
 
   .hero-quote {
     font-family: var(--font-heading);
-    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
     font-weight: 500;
     font-style: italic;
     line-height: 1.75;
-    color: rgba(255,255,255,0.95);
-    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.92);
     border-left: 4px solid var(--accent);
     padding-left: 1.25rem;
+    margin: 0;
   }
 
   .hero-signature {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
     color: var(--white);
-    margin-bottom: 2rem;
     line-height: 1;
+    align-self: flex-start;
   }
 
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-self: flex-start; }
 
   @media (max-width: 900px) {
-    .hero-overlay { padding: 2rem 1.5rem 3rem; }
-    .hero-logo { width: 150px; }
-    .hero-content { max-width: 100%; }
-    .hero-quote { font-size: 1rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { min-height: 55vw; }
+    .hero-right { padding: 2rem 1.5rem; }
+    .hero-logo { max-width: 280px; }
   }
 
   /* TAGLINE */
