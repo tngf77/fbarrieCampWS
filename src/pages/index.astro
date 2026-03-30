@@ -287,19 +287,8 @@ import { donateUrl, socialLinks } from '../data/navigation';
   /* HERO */
   .hero {
     position: relative;
+    background: linear-gradient(to right, #b4b0ad, #a9a09b, #a28f88);
     overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: -40px;
-    background-image: url('/images/Meet Fatmata 032926.png');
-    background-size: cover;
-    background-position: center 20%;
-    filter: blur(24px);
-    transform: scale(1.12);
-    z-index: 0;
   }
 
   .hero-bg-img {
@@ -310,8 +299,8 @@ import { donateUrl, socialLinks } from '../data/navigation';
     object-fit: contain;
     object-position: center top;
     z-index: 1;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
   }
 
   .hero-overlay {
