@@ -289,34 +289,33 @@ import { donateUrl, socialLinks } from '../data/navigation';
   }
 
   /* HERO */
-  /* HERO */
   .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     height: calc(100vh - 107px);
     overflow: hidden;
   }
 
   .hero-left {
-    position: relative;
-    background: #b0aba8;
+    flex-shrink: 0;
+    aspect-ratio: 471 / 720;
     overflow: hidden;
   }
 
   .hero-photo {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: left center;
+    object-fit: cover;
+    object-position: center top;
     display: block;
   }
 
   .hero-right {
+    flex: 1;
     background: var(--primary);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 1.25rem 1.75rem 1.25rem;
+    justify-content: flex-start;
+    padding: 1.25rem 1.75rem;
     overflow: hidden;
     gap: 0.75rem;
   }
@@ -329,7 +328,9 @@ import { donateUrl, socialLinks } from '../data/navigation';
 
   .hero-logo {
     width: 100%;
+    max-height: 38vh;
     height: auto;
+    object-fit: contain;
     display: block;
     image-rendering: -webkit-optimize-contrast;
   }
@@ -338,8 +339,7 @@ import { donateUrl, socialLinks } from '../data/navigation';
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    flex-shrink: 1;
-    min-height: 0;
+    flex-shrink: 0;
   }
 
   .hero-quote {
