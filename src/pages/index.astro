@@ -72,6 +72,14 @@ import { donateUrl, socialLinks } from '../data/navigation';
       </div>
     </section>
 
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+      <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">&#8249;</button>
+      <img id="lightbox-img" src="" alt="" class="lightbox-img" />
+      <button class="lightbox-next" id="lightbox-next" aria-label="Next">&#8250;</button>
+    </div>
+
     <!-- CAMPAIGN PHOTOS -->
     <section class="section section-alt photos-section">
       <div class="container">
@@ -80,42 +88,54 @@ import { donateUrl, socialLinks } from '../data/navigation';
           <h2 class="photos-heading">Fatmata Around MoCo</h2>
           <span class="ornament"></span>
         </div>
-        <div class="photos-grid">
-          <div class="photo-slot">
+        <div class="photos-grid" id="photos-grid">
+          <div class="photo-slot" data-index="0">
             <img src="/images/Anwar Fundraiser 033026.jpg" alt="Anwar Fundraiser" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="1">
             <img src="/images/Fata Meet and Greet 033026.jpg" alt="Meet and Greet" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="2">
             <img src="/images/Fatmata Soccer Field 033026.jpg" alt="Fatmata at Soccer Field" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="3">
             <img src="/images/Fatmata Swearing to Uphold Constituion 033026.jpg" alt="Fatmata Swearing to Uphold the Constitution" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="4">
             <img src="/images/Fatmata and CASA Annapolis 033026.jpg" alt="Fatmata and CASA in Annapolis" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="5">
             <img src="/images/Fatmata and Frank 033026.jpg" alt="Fatmata and Frank" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="6">
             <img src="/images/Fatmata and Group Farm 033026.jpg" alt="Fatmata and Group at Farm" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="7">
             <img src="/images/Fatmata and JoAnne 033026.jpg" alt="Fatmata and JoAnne" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="8">
             <img src="/images/Fatmata on Tractor Farm 033026.jpg" alt="Fatmata on Tractor at Farm" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="9">
             <img src="/images/Fatmata with Kids and Moms 033026.jpg" alt="Fatmata with Kids and Moms" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="10">
             <img src="/images/Parade with Senior 033036.jpg" alt="Parade with Senior" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
-          <div class="photo-slot">
+          <div class="photo-slot" data-index="11">
             <img src="/images/Teresa and Arthur 033026.jpg" alt="Teresa and Arthur" loading="lazy" />
+            <div class="photo-expand-hint">Click to expand</div>
           </div>
         </div>
       </div>
@@ -362,34 +382,112 @@ import { donateUrl, socialLinks } from '../data/navigation';
     overflow: hidden;
     border-radius: var(--border-radius);
     background: var(--cream-dark);
+    position: relative;
+    cursor: pointer;
   }
 
   .photo-slot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     transition: transform 0.4s ease;
+    display: block;
   }
 
   .photo-slot:hover img { transform: scale(1.04); }
 
-  .photo-placeholder {
-    background: var(--mint);
+  .photo-expand-hint {
+    position: absolute;
+    inset: 0;
+    background: rgba(40, 57, 143, 0);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--teal);
-  }
-
-  .photo-placeholder span {
+    color: transparent;
     font-family: var(--font-primary);
     font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--teal);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    transition: background 0.3s, color 0.3s;
   }
+
+  .photo-slot:hover .photo-expand-hint {
+    background: rgba(40, 57, 143, 0.45);
+    color: var(--white);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    color: var(--white);
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity var(--transition);
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  .lightbox-prev, .lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    font-size: 2.5rem;
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity var(--transition), background var(--transition);
+  }
+
+  .lightbox-prev { left: 1.25rem; }
+  .lightbox-next { right: 1.25rem; }
+  .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; background: rgba(255,255,255,0.2); }
 
   @media (max-width: 640px) {
     .photos-grid { grid-template-columns: 1fr 1fr; }
@@ -470,6 +568,43 @@ import { donateUrl, socialLinks } from '../data/navigation';
 </style>
 
 <script>
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const slots = Array.from(document.querySelectorAll('#photos-grid .photo-slot'));
+  let currentIndex = 0;
+
+  function openLightbox(index: number) {
+    currentIndex = index;
+    const img = slots[index].querySelector('img') as HTMLImageElement;
+    lightboxImg!.src = img.src;
+    lightboxImg!.alt = img.alt;
+    lightbox!.classList.add('active');
+    lightbox!.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox!.classList.remove('active');
+    lightbox!.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function showPrev() { openLightbox((currentIndex - 1 + slots.length) % slots.length); }
+  function showNext() { openLightbox((currentIndex + 1) % slots.length); }
+
+  slots.forEach((slot, i) => slot.addEventListener('click', () => openLightbox(i)));
+  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev')?.addEventListener('click', showPrev);
+  document.getElementById('lightbox-next')?.addEventListener('click', showNext);
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox?.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+
   // Popup: show after 2s, once per session
   const popup = document.getElementById('donation-popup');
   const closeBtn = document.getElementById('popup-close-btn');
