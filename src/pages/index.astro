@@ -415,15 +415,19 @@ import { donateUrl, socialLinks } from '../data/navigation';
     align-items: center;
   }
 
+  .meet-portrait {
+    align-self: stretch;
+  }
+
   .meet-portrait-img {
     width: 100%;
-    max-width: 340px;
-    height: auto;
+    height: 100%;
+    min-height: 480px;
     border-radius: 8px;
     border: 3px solid var(--teal);
     box-shadow: var(--shadow-md);
     object-fit: cover;
-    margin: 0 auto;
+    object-position: center top;
     display: block;
   }
 
