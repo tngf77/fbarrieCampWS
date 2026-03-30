@@ -31,11 +31,10 @@ import { donateUrl, socialLinks } from '../data/navigation';
 
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-portrait">
-          <img src="/images/Meet Fatmata 032926.png" alt="Fatmata Barrie" class="hero-portrait-img" />
-        </div>
-        <div class="hero-text">
+      <img src="/images/Meet Fatmata 032926.png" alt="Fatmata Barrie" class="hero-bg-img" />
+      <div class="hero-overlay">
+        <img src="/images/Logo - background removed.png" alt="Fatmata Barrie for Montgomery County Council" class="hero-logo" />
+        <div class="hero-content">
           <blockquote class="hero-quote">
             "I'm running for Council to deliver for the people of Montgomery County. As an immigration and special education attorney and community activist for more than 30 years, I know what it means to face uncertainty and still show up for everyone everyday. We need an experienced fighter who will push forward an agenda for a more inclusive community for all and protect the future of Montgomery County."
           </blockquote>
@@ -288,35 +287,38 @@ import { donateUrl, socialLinks } from '../data/navigation';
   /* HERO */
   .hero {
     position: relative;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    background: var(--primary);
+    min-height: 88vh;
     overflow: hidden;
   }
 
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 3rem;
-    align-items: center;
-    padding: 4rem 1.5rem;
-  }
-
-  .hero-portrait {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-
-  .hero-portrait-img {
-    max-width: 100%;
-    width: 420px;
-    height: 520px;
-    border-radius: 8px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: top center;
+  }
+
+  .hero-overlay {
+    position: relative;
+    z-index: 1;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 3rem 3.5rem;
+    background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.05) 100%);
+  }
+
+  .hero-logo {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  }
+
+  .hero-content {
+    max-width: 580px;
   }
 
   .hero-quote {
@@ -325,7 +327,7 @@ import { donateUrl, socialLinks } from '../data/navigation';
     font-weight: 500;
     font-style: italic;
     line-height: 1.75;
-    color: rgba(255,255,255,0.92);
+    color: rgba(255,255,255,0.95);
     margin-bottom: 1.5rem;
     border-left: 4px solid var(--accent);
     padding-left: 1.25rem;
@@ -342,12 +344,10 @@ import { donateUrl, socialLinks } from '../data/navigation';
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
   @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
-    .hero-portrait { order: -1; }
-    .hero-portrait-img { width: 260px; height: 320px; }
-    .hero-quote { border-left: none; padding-left: 0; text-align: left; }
-    .hero-ctas { justify-content: center; }
-    .hero-signature { text-align: center; }
+    .hero-overlay { padding: 2rem 1.5rem 3rem; }
+    .hero-logo { width: 150px; }
+    .hero-content { max-width: 100%; }
+    .hero-quote { font-size: 1rem; }
   }
 
   /* TAGLINE */
