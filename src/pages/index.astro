@@ -287,8 +287,19 @@ import { donateUrl, socialLinks } from '../data/navigation';
   /* HERO */
   .hero {
     position: relative;
-    background: linear-gradient(to right, #80777a, #7a7e99);
     overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    background-image: url('/images/Meet Fatmata 032926.png');
+    background-size: cover;
+    background-position: center 20%;
+    filter: blur(18px);
+    transform: scale(1.08);
+    z-index: 0;
   }
 
   .hero-bg-img {
@@ -298,11 +309,12 @@ import { donateUrl, socialLinks } from '../data/navigation';
     height: 100%;
     object-fit: contain;
     object-position: center top;
+    z-index: 1;
   }
 
   .hero-overlay {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     min-height: min(90vh, 800px);
     display: flex;
     flex-direction: column;
