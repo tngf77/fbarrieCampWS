@@ -45,6 +45,23 @@ import { donateUrl, socialLinks } from '../data/navigation';
     </div>
   </section>
 
+  <!-- VOTER REGISTRATION -->
+  <section class="section">
+    <div class="container">
+      <div class="voter-reg-box">
+        <div class="voter-reg-text">
+          <p class="section-label">Make Your Voice Heard in the Primary</p>
+          <h2>Is your voter registration up to date?</h2>
+          <span class="ornament" style="margin: 0.75rem 0 1.25rem;"></span>
+          <p>Maryland has closed primary elections, meaning you must be registered with a political party to vote in that party's primary.</p>
+          <p>In Montgomery County, many local races are decided in the Democratic primary. To vote for County Council At-Large, you must be registered as a Democrat by the registration deadline.</p>
+          <p>Be sure to check your voter registration status and make any updates in time to participate.</p>
+          <a href="https://voterservices.elections.maryland.gov/VoterSearch" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1rem;">Check Your Voter Registration</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- VOLUNTEER FORM -->
   <section class="section section-alt" id="form">
     <div class="container">
@@ -162,6 +179,26 @@ import { donateUrl, socialLinks } from '../data/navigation';
     transition: all var(--transition);
   }
   .way-social a:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+  /* VOTER REGISTRATION */
+  .voter-reg-box {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 3rem;
+    box-shadow: var(--shadow-sm);
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .voter-reg-text h2 { margin-bottom: 0; }
+
+  .voter-reg-text p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
 
   /* FORM */
   .vol-form-wrap {
