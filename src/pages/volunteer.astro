@@ -47,59 +47,61 @@ import { donateUrl, socialLinks } from '../data/navigation';
   <section class="section section-alt" id="form">
     <div class="container">
       <div class="vol-form-wrap">
-        <div class="vol-form-info">
-          <p class="section-label">Volunteer Sign-Up</p>
-          <h2>Join Team Barrie.</h2>
-          <span class="ornament" style="margin: 0.75rem 0 1.25rem;"></span>
-          <p>Fill out the form and we'll reach out with volunteer opportunities that match your availability and interests.</p>
-          <div class="vol-checks">
-            <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Canvassing & door knocking</span></div>
-            <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Phone banking</span></div>
-            <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Event support</span></div>
-            <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Social media outreach</span></div>
-            <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Yard sign placement</span></div>
+        <div class="vol-left">
+          <div class="vol-form-info">
+            <p class="section-label">Volunteer Sign-Up</p>
+            <h2>Join Team Barrie.</h2>
+            <span class="ornament" style="margin: 0.75rem 0 1.25rem;"></span>
+            <p>Fill out the form and we'll reach out with volunteer opportunities that match your availability and interests.</p>
+            <div class="vol-checks">
+              <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Canvassing & door knocking</span></div>
+              <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Phone banking</span></div>
+              <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Event support</span></div>
+              <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Social media outreach</span></div>
+              <div class="vol-check"><span class="check-mark">&#x2713;</span><span>Yard sign placement</span></div>
+            </div>
           </div>
-        </div>
-        <div class="vol-form-card">
-          <form class="vol-form" method="POST" action="#form">
-            <div class="vf-row">
-              <div class="vf-field">
-                <label for="vf-fname">First Name</label>
-                <input type="text" id="vf-fname" name="first_name" required />
+          <div class="vol-form-card">
+            <form class="vol-form" method="POST" action="#form">
+              <div class="vf-row">
+                <div class="vf-field">
+                  <label for="vf-fname">First Name</label>
+                  <input type="text" id="vf-fname" name="first_name" required />
+                </div>
+                <div class="vf-field">
+                  <label for="vf-lname">Last Name</label>
+                  <input type="text" id="vf-lname" name="last_name" required />
+                </div>
               </div>
               <div class="vf-field">
-                <label for="vf-lname">Last Name</label>
-                <input type="text" id="vf-lname" name="last_name" required />
+                <label for="vf-email">Email Address</label>
+                <input type="email" id="vf-email" name="email" required />
               </div>
-            </div>
-            <div class="vf-field">
-              <label for="vf-email">Email Address</label>
-              <input type="email" id="vf-email" name="email" required />
-            </div>
-            <div class="vf-row">
+              <div class="vf-row">
+                <div class="vf-field">
+                  <label for="vf-phone">Phone</label>
+                  <input type="tel" id="vf-phone" name="phone" />
+                </div>
+                <div class="vf-field">
+                  <label for="vf-zip">Zip Code</label>
+                  <input type="text" id="vf-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required />
+                </div>
+              </div>
               <div class="vf-field">
-                <label for="vf-phone">Phone</label>
-                <input type="tel" id="vf-phone" name="phone" />
+                <label for="vf-interest">How would you like to help?</label>
+                <select id="vf-interest" name="interest">
+                  <option value="">Select an option</option>
+                  <option value="canvass">Canvassing & Door Knocking</option>
+                  <option value="phone">Phone Banking</option>
+                  <option value="events">Event Support</option>
+                  <option value="social">Social Media</option>
+                  <option value="signs">Yard Signs</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
-              <div class="vf-field">
-                <label for="vf-zip">Zip Code</label>
-                <input type="text" id="vf-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required />
-              </div>
-            </div>
-            <div class="vf-field">
-              <label for="vf-interest">How would you like to help?</label>
-              <select id="vf-interest" name="interest">
-                <option value="">Select an option</option>
-                <option value="canvass">Canvassing & Door Knocking</option>
-                <option value="phone">Phone Banking</option>
-                <option value="events">Event Support</option>
-                <option value="social">Social Media</option>
-                <option value="signs">Yard Signs</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up to Volunteer</button>
-          </form>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up to Volunteer</button>
+            </form>
+          </div>
         </div>
         <div class="vol-kickoff-img">
           <img src="/images/Campaign Kickoff 033026.jpg" alt="Campaign Kickoff" class="kickoff-img" />
@@ -162,18 +164,22 @@ import { donateUrl, socialLinks } from '../data/navigation';
   /* FORM */
   .vol-form-wrap {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
     align-items: start;
   }
 
-  .vol-kickoff-img { align-self: stretch; }
+  .vol-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .vol-kickoff-img { align-self: start; }
 
   .kickoff-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-md);
     display: block;
@@ -233,7 +239,6 @@ import { donateUrl, socialLinks } from '../data/navigation';
 
   @media (max-width: 900px) {
     .vol-form-wrap { grid-template-columns: 1fr; gap: 2rem; }
-    .kickoff-img { min-height: 260px; }
   }
 
   @media (max-width: 768px) {
