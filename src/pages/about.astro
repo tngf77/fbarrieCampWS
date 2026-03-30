@@ -38,7 +38,7 @@ import { donateUrl } from '../data/navigation';
     <div class="container">
       <div class="text-center" style="margin-bottom: 2rem;">
         <p class="section-label">In the Community</p>
-        <h2>With Friends &amp; Neighbors</h2>
+        <h2>Out in the Community</h2>
         <span class="ornament"></span>
       </div>
       <div class="gallery-grid">
@@ -56,6 +56,12 @@ import { donateUrl } from '../data/navigation';
         </div>
         <div class="gallery-slot">
           <img src="/images/JUFJ Seder 033026.jpg" alt="JUFJ Seder" loading="lazy" />
+        </div>
+        <div class="gallery-slot">
+          <img src="/images/Tsega Fundraiser Group 033026.jpg" alt="Tsega Fundraiser Group" loading="lazy" />
+        </div>
+        <div class="gallery-slot gallery-slot-wide">
+          <img src="/images/Women Empowerment Event 033026.jpg" alt="Women Empowerment Event" loading="lazy" />
         </div>
       </div>
     </div>
@@ -165,6 +171,20 @@ import { donateUrl } from '../data/navigation';
   }
 
   .gallery-slot:hover img { transform: scale(1.04); }
+
+  .gallery-slot-wide {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-slot-wide {
+    aspect-ratio: 16/7;
+  }
+
+  .gallery-slot-wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .gallery-placeholder {
     background: var(--mint);
