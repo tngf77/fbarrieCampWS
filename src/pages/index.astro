@@ -34,6 +34,7 @@ import { donateUrl, socialLinks } from '../data/navigation';
       <div class="container hero-inner">
         <div class="hero-portrait">
           <img src="/images/Meet Fatmata 032926.png" alt="Fatmata Barrie" class="hero-portrait-img" />
+          <img src="/images/Logo - background removed.png" alt="Fatmata Barrie for Montgomery County Council" class="hero-campaign-logo" />
         </div>
         <div class="hero-text">
           <blockquote class="hero-quote">
@@ -307,6 +308,16 @@ import { donateUrl, socialLinks } from '../data/navigation';
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    position: relative;
+  }
+
+  .hero-campaign-logo {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 0;
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
   }
 
   .hero-portrait-img {
