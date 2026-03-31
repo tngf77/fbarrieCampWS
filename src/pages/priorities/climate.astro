@@ -1,0 +1,198 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Climate Justice | Fatmata Barrie" description="Fatmata Barrie's platform on climate justice and environmental equity for Montgomery County.">
+
+  <HeroSection title="Climate Justice" subtitle="Climate change is here — and every community deserves protection from its effects." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Climate change is not a distant threat. It is already reshaping life in Montgomery County — through more intense heat waves, flooding, poor air quality days, and extreme weather. But the burden isn't shared equally. Low-income communities and communities of color face the worst impacts, from living near polluting facilities to lacking green space that cools neighborhoods. Fatmata will lead with solutions that protect the environment and ensure every community benefits from a just transition to a cleaner future.
+        </p>
+
+        <div class="priority-section">
+          <h2>Climate Justice Means Environmental Equity</h2>
+          <p>You cannot address climate change without addressing who bears the burden. In Montgomery County, predominantly Black and brown communities are more likely to live near highways, industrial facilities, and waste treatment plants — exposing them to higher rates of asthma, cardiovascular disease, and other health problems.</p>
+          <p>Fatmata will champion environmental justice policies that ensure no community is treated as a sacrifice zone — and that the benefits of clean energy and green infrastructure reach everyone, not just wealthy neighborhoods.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Invest in Clean Energy and Sustainable Infrastructure</h2>
+          <p>Montgomery County has set ambitious climate goals. Fatmata will push to ensure those goals are backed by real investment — in solar energy on public buildings, electrification of the county vehicle fleet, energy efficiency upgrades for low-income households, and incentives for residents and small businesses to make the switch to clean energy.</p>
+          <p>These investments don't just cut emissions — they create jobs, lower utility bills, and make communities more resilient.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Protect Green Space and Expand Tree Canopy</h2>
+          <p>Trees are one of our most powerful climate tools — cooling neighborhoods, filtering air and water, and providing habitat. Yet tree canopy coverage is dramatically unequal across the county, with lower-income communities having significantly less shade and green space.</p>
+          <p>Fatmata will fight to expand tree planting programs in underserved communities, protect existing parkland and forested areas from development, and ensure that every neighborhood has access to green space within walking distance.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Ensure Healthier Communities Through Environmental Protection</h2>
+          <p>Air quality, water quality, and access to nature are public health issues. Fatmata will push the county to strengthen environmental monitoring in communities that face the greatest pollution burden, hold polluters accountable, and ensure that environmental permitting decisions account for cumulative impacts on vulnerable communities.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>A county that leads on climate is a county that leads on public health, economic resilience, and quality of life. The clean energy economy is a job-creation engine. Green infrastructure protects property values. And environmental justice is a prerequisite for the equitable, thriving community we all want Montgomery County to be.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Fatmata believes climate justice and community justice go hand in hand. With your support, she will fight to ensure that Montgomery County's future is green, healthy, and fair — for everyone.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Advance climate justice and equitable environmental policies</li>
+            <li>Invest in clean energy and sustainable infrastructure</li>
+            <li>Protect green space and expand tree canopy</li>
+            <li>Ensure healthier communities through environmental protection</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .priority-section p { color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.5rem; }
+
+  .priority-cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>

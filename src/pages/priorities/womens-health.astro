@@ -1,0 +1,200 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Women's Health & Reproductive Freedom | Fatmata Barrie" description="Fatmata Barrie's platform on women's health, reproductive freedom, and health equity for women in Montgomery County.">
+
+  <HeroSection title="Women's Health & Reproductive Freedom" subtitle="Every woman deserves to be heard, believed, and cared for." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Women's health is not a niche issue — it is central to the health and strength of our families, our communities, and our county. Yet too many women face barriers to care, dismissal of their symptoms, and a health system that was not designed with them in mind. As a woman who has personally navigated the health care system — including her own experience with fibroids — Fatmata understands these challenges firsthand, and she will fight every day to ensure every woman in Montgomery County gets the care and respect she deserves.
+        </p>
+
+        <div class="priority-section">
+          <h2>Expand Access to Comprehensive Women's Healthcare</h2>
+          <p>From routine preventive care to reproductive health services to treatment for chronic conditions, women need and deserve access to comprehensive, high-quality care. But too many women — especially those who are uninsured, underinsured, or in underserved communities — face gaps in access.</p>
+          <p>Fatmata will push to expand county-funded women's health services, support community health clinics that provide full-spectrum women's care, and ensure that cost and coverage are never a barrier to a woman getting the care she needs.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Address Maternal Health Disparities for Black Women</h2>
+          <p>Black women in the United States die in childbirth at three to four times the rate of white women. This is a crisis — not a statistic. Behind every number is a family that has lost a mother, a partner, a sister, a daughter.</p>
+          <p>Fatmata will fight to expand access to midwifery, doula support, and comprehensive prenatal and postpartum care for Black women in Montgomery County. She will push for accountability and data transparency from our health care systems, and advocate for the research and training needed to eliminate these deadly disparities.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Support Reproductive Freedom and Healthcare Access</h2>
+          <p>Reproductive freedom — the ability to make decisions about one's own body, family, and future — is fundamental. As reproductive rights come under attack across the country, Fatmata will ensure that Montgomery County remains a place where women's reproductive healthcare is protected, accessible, and free from political interference.</p>
+          <p>She will work to ensure county programs and facilities provide or connect women to the full range of reproductive health services, and that residents have access to accurate information about their rights and options.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Fibroids, Chronic Conditions, and Being Taken Seriously</h2>
+          <p>Fatmata has experienced fibroids firsthand — a condition that affects an estimated 70-80% of women by age 50, with Black women disproportionately affected and more likely to experience severe symptoms. Fibroids are just one example of a women's health condition that is chronically underfunded, under-researched, and dismissed by providers.</p>
+          <p>She will advocate for greater awareness, research funding, and care quality for conditions that disproportionately affect women — ensuring that women are believed, taken seriously, and given the information and treatment options they deserve.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Strengthen Culturally Competent Care for All Women</h2>
+          <p>Montgomery County is home to women of dozens of nationalities, cultures, and linguistic backgrounds. Care that doesn't account for cultural context, language, and lived experience is care that falls short. Fatmata will push for expanded language access services, culturally competent provider training, and outreach to communities that are too often left out of the health care system.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>When women are healthy, families are healthier. When mothers thrive, children thrive. When women have access to the full range of health services they need, communities are stronger. Women's health is not a women's issue — it is a community issue. Fatmata will fight for it accordingly.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Every woman in Montgomery County deserves a champion who understands what she faces — not just as a policy matter, but as a lived reality. Fatmata will be that champion. Join her.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Expand access to comprehensive women's healthcare</li>
+            <li>Address maternal health disparities for Black women</li>
+            <li>Support reproductive freedom and healthcare access</li>
+            <li>Strengthen culturally competent care for all women</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: var(--primary); margin-bottom: 0.75rem; }
+
+  .priority-section p { color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.5rem; }
+
+  .priority-cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>

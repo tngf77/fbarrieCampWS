@@ -1,0 +1,225 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Business & Economy | Fatmata Barrie" description="Fatmata Barrie's platform on supporting small businesses and growing Montgomery County's economy.">
+
+  <HeroSection title="Business & Economy" subtitle="Small businesses are the backbone of our communities — and Fatmata will fight to help them thrive." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Montgomery County's economic strength depends on the vitality of its small businesses — the restaurants, shops, contractors, childcare providers, and family-owned enterprises that create jobs, build wealth, and give our communities character. But rising costs, excessive red tape, and lack of access to capital are pushing businesses out and blocking new ones from ever opening. Fatmata will fight to change that.
+        </p>
+
+        <div class="priority-section">
+          <h2>The Challenge Facing Small Businesses</h2>
+          <p>Over the past several years, Montgomery County has seen businesses close not because demand has dried up, but because operating costs have become unsustainable. Commercial rents are rising. Permitting processes are slow. Taxes and fees pile up. And for entrepreneurs from lower-income backgrounds — especially women, minorities, and immigrants — accessing startup capital is often nearly impossible.</p>
+          <p>Meanwhile, the county's largest contracts continue to flow overwhelmingly to large, out-of-county firms, while local small businesses are left on the sidelines.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Incentives to Hire Locally</h2>
+          <p>Fatmata will work to establish and strengthen incentive programs that reward businesses for hiring Montgomery County residents — especially those from underserved communities. Local hiring keeps money circulating in our economy, reduces unemployment, and builds the connection between businesses and the neighborhoods they serve.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Expand Small Business Loan Access</h2>
+          <p>Access to affordable capital is the single biggest barrier for aspiring entrepreneurs and small business owners. Fatmata will champion the expansion of the county's small business loan and grant programs, partner with Community Development Financial Institutions (CDFIs), and push to cut through the bureaucratic barriers that make it hard for everyday residents to start or grow a business.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Ensure Minority, Veteran, and Women-Owned Businesses Can Thrive</h2>
+          <p>Historically underrepresented entrepreneurs face compounding disadvantages: less access to networks, capital, and county contracts. Fatmata will push to reform county procurement to set meaningful, enforceable goals for contracting with minority-owned, veteran-owned, and women-owned businesses — and ensure those goals are actually met.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Support Project Labor Agreements for Fair Work</h2>
+          <p>When the county invests in major construction or infrastructure projects, those investments should create good jobs with fair wages and safe conditions. Fatmata supports Project Labor Agreements (PLAs) on county-funded projects to ensure workers are protected and that taxpayer dollars lift up the community — not just corporate bottom lines.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>A thriving small business ecosystem means more jobs, more tax revenue for public services, more vibrant commercial corridors, and more economic mobility for working families. When we invest in small businesses — especially those owned by residents who have historically been locked out — we invest in the long-term prosperity of the entire county.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Fatmata knows that economic opportunity must be built from the ground up — not trickled down. With your support, she will fight to make Montgomery County a place where every entrepreneur has a real shot at success.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Provide incentives to local businesses that hire locally</li>
+            <li>Expand small business loan access for residents</li>
+            <li>Ensure minority, veteran, and women-owned businesses can thrive</li>
+            <li>Support PLAs on county projects for fair wages and conditions</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .priority-section p {
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .priority-cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>

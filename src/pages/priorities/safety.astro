@@ -1,0 +1,194 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Safer Communities | Fatmata Barrie" description="Fatmata Barrie's platform on public safety, youth investment, and community trust in Montgomery County.">
+
+  <HeroSection title="Safer Communities" subtitle="Real safety comes from investing in people — not just enforcement." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Every Montgomery County resident deserves to feel safe — in their home, on their street, and in their community. But safety isn't just about policing. It comes from economic opportunity, mental health support, strong youth programs, and the kind of deep community trust that only grows when government is accountable and responsive. Fatmata will pursue a balanced, evidence-based approach to public safety that addresses root causes and builds lasting security.
+        </p>
+
+        <div class="priority-section">
+          <h2>Invest in Prevention, Youth Programs, and Mentorship</h2>
+          <p>The most effective crime prevention strategy is creating opportunity before problems start. When young people have access to after-school programs, mentorship, summer jobs, and safe spaces, they are less likely to end up in the criminal justice system — and more likely to become the next generation of community leaders.</p>
+          <p>Fatmata will push for robust investment in youth programming, especially in communities that have been historically underserved. She will fight to protect these programs from budget cuts and expand them where the need is greatest.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Expand Mental Health and Crisis Response Services</h2>
+          <p>Too often, people in mental health crisis encounter police officers who lack the training or resources to help them. This can lead to tragic outcomes for people who needed medical intervention, not law enforcement.</p>
+          <p>Fatmata will work to expand co-responder programs and mobile crisis teams that pair mental health professionals with law enforcement, and to invest in community-based crisis stabilization centers where people can get help without going through the criminal justice system.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Promote Transparency and Accountability in Public Safety</h2>
+          <p>Trust between communities and law enforcement has to be earned — and it can only be earned through transparency, accountability, and meaningful community engagement. Fatmata will push for strong oversight mechanisms for the county's public safety agencies, clear data on use of force and other critical metrics, and genuine community input in public safety policy decisions.</p>
+          <p>She will ensure that every resident — regardless of race, income, or immigration status — is treated with dignity by the people whose job is to protect them.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Improve Traffic and Pedestrian Safety</h2>
+          <p>Safety on our roads is a public safety issue. Montgomery County has seen too many preventable traffic fatalities — especially involving pedestrians and cyclists. Fatmata will advocate for evidence-based traffic calming measures, safer crosswalks and intersections, enforcement of traffic laws, and a Vision Zero approach that treats every traffic death as preventable.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>Safe communities don't happen by accident. They are built through sustained investment — in people, in programs, in relationships, and in accountability. When we invest in prevention and mental health and community trust alongside law enforcement, we create communities where everyone can live without fear.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Fatmata believes every resident of Montgomery County deserves the safety and security to build a good life. She will fight for both the resources and the accountability that make real safety possible.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Invest in prevention, youth programs, and mentorship</li>
+            <li>Expand mental health and crisis response services</li>
+            <li>Promote transparency and accountability in public safety</li>
+            <li>Improve traffic and pedestrian safety across the county</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: var(--primary); margin-bottom: 0.75rem; }
+
+  .priority-section p { color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.5rem; }
+
+  .priority-cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>

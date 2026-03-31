@@ -1,0 +1,194 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Transportation | Fatmata Barrie" description="Fatmata Barrie's platform on transit, commuting, bike infrastructure, and transportation equity in Montgomery County.">
+
+  <HeroSection title="Transportation" subtitle="Montgomery County residents deserve better options — to commute, get around, and get on with their lives." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Montgomery County residents face some of the worst commutes in the nation. Traffic is a daily source of stress, lost time, and economic cost. And for residents who can't drive — because of age, disability, income, or choice — the lack of reliable public transit is a barrier to work, healthcare, education, and opportunity. Fatmata will fight for a transportation system that works for everyone.
+        </p>
+
+        <div class="priority-section">
+          <h2>Improve WMATA Access and Push for Purple Line Completion</h2>
+          <p>Metro is a lifeline for many Montgomery County residents and workers — but service cuts, reliability problems, and gaps in coverage have eroded public trust and ridership. Fatmata will be a strong advocate for robust county investment in WMATA, and will push for accountability from the transit authority to deliver the reliable, safe service residents depend on.</p>
+          <p>The Purple Line light rail project has been years in the making. Fatmata will push to ensure it stays on track, is completed as promised, and is supported by last-mile connections that make it truly accessible for communities along the corridor.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Expand Bike Lanes and Protect Cyclists</h2>
+          <p>Cycling is not just a recreational activity — it is a real transportation option for many residents, and the county's bike infrastructure has not kept pace with that reality. Fatmata will push for a connected, safe network of protected bike lanes that allows residents to travel by bicycle without fearing for their safety.</p>
+          <p>She will prioritize protected lanes and crossings in areas with high pedestrian and cyclist activity, and work to connect bike infrastructure to transit hubs so residents can seamlessly combine cycling with bus or rail.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Expand RideOn Services to More Areas with More Frequency</h2>
+          <p>Montgomery County's RideOn bus system is a critical resource for residents without cars — but coverage gaps and infrequent service leave many communities isolated. A bus that comes once an hour is not a viable alternative to driving for a parent trying to get to work on time.</p>
+          <p>Fatmata will fight to expand RideOn service to underserved communities, increase frequency on high-demand corridors, and ensure late-night and weekend service for workers who don't keep traditional hours.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Promote Road Safety Across the County</h2>
+          <p>Traffic deaths are preventable tragedies. Montgomery County has seen too many fatal crashes — and pedestrians, cyclists, and motorcyclists bear a disproportionate share of the risk. Fatmata will champion a Vision Zero approach to road safety, supporting data-driven investments in safer infrastructure, improved signage, better lighting, and traffic calming in high-risk corridors.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>Transportation is about more than getting from Point A to Point B. It is about access to opportunity. When residents can get to work reliably, when seniors can get to their doctors, when students can get to school safely, the whole county is stronger. Transportation equity is economic equity — and Fatmata will treat it that way.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Whether you drive, take the bus, ride a bike, or walk — your commute matters. Fatmata will fight to build a transportation system that treats every resident's time and safety as the priority they deserve to be.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Improve WMATA access and push for Purple Line completion</li>
+            <li>Increase bike lanes and protections for cyclists</li>
+            <li>Expand RideOn services to more areas and with more frequency</li>
+            <li>Promote road safety across the county</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: var(--primary); margin-bottom: 0.75rem; }
+
+  .priority-section p { color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.5rem; }
+
+  .priority-cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>

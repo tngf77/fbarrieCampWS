@@ -1,0 +1,193 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Defending Democracy | Fatmata Barrie" description="Fatmata Barrie's platform on defending civil liberties, protecting immigrants, and standing up against federal overreach in Montgomery County.">
+
+  <HeroSection title="Defending Democracy" subtitle="Rights are being rolled back — Montgomery County must be a place where everyone is protected." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Across the country, civil liberties are under attack. Federal policies are targeting immigrants, rolling back rights, and cutting the programs millions of families depend on. As a Councilmember, Fatmata will ensure that Montgomery County stands firm as a place where the rule of law, human dignity, and civil liberties are protected — regardless of what happens in Washington.
+        </p>
+
+        <div class="priority-section">
+          <h2>Protecting Our Immigrant Communities</h2>
+          <p>Montgomery County is home to one of the most diverse immigrant communities in the nation. These are our neighbors, coworkers, students, and small business owners — people who contribute enormously to our economy and our culture. They deserve to feel safe.</p>
+          <p>Fatmata will ensure that local law enforcement does not participate in ICE raids or act as immigration enforcement agents. Montgomery County should not use public resources to enforce federal immigration policy that tears apart families and terrorizes communities.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Fighting Federal Overreach: DOGE and Government Shutdowns</h2>
+          <p>The so-called Department of Government Efficiency (DOGE) and federal budget standoffs are not abstract political fights — they have real consequences for Montgomery County residents. Federal workers live here in large numbers. Federal programs fund schools, healthcare, housing assistance, and more.</p>
+          <p>Fatmata will fight for residents affected by federal job cuts, government shutdowns, and the dismantling of safety net programs. She will work to expand county support systems that can provide a bridge when federal programs fail, and push back loudly against Washington policies that harm Montgomery County families.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Keeping Montgomery County Free from Hate and Discrimination</h2>
+          <p>Every person in Montgomery County — regardless of race, religion, national origin, gender identity, sexual orientation, or disability — deserves to be treated with dignity and respect. Fatmata will oppose any attempt to use county government as a tool of discrimination, and will support robust enforcement of our civil rights protections.</p>
+          <p>She will work with community organizations to combat hate crimes, support victims of discrimination, and build a county government that reflects and serves all of its residents.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Transparency and Accountability in Government</h2>
+          <p>Democracy doesn't stop at the federal level. Fatmata believes that county government must also be held to the highest standards of transparency, accountability, and community participation. She will champion open government practices, meaningful community engagement in county decisions, and accountability for elected and appointed officials who abuse the public trust.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>When democracy erodes — at any level — it is the most vulnerable who suffer first. Immigrants live in fear. Federal workers lose jobs. Services disappear. Discrimination goes unchecked. Montgomery County can and must do better. Local government is often the last line of defense, and Fatmata will treat it that way.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Democracy is not a spectator sport — it requires leaders willing to stand up, speak out, and take action. Fatmata will be that leader for Montgomery County. Join her.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Ensure local law enforcement does not participate in ICE raids</li>
+            <li>Fight for residents affected by DOGE and government shutdowns</li>
+            <li>Keep Montgomery County free from racism, hate, and discrimination</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: var(--primary); margin-bottom: 0.75rem; }
+
+  .priority-section p { color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.5rem; }
+
+  .priority-cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>
