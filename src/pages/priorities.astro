@@ -3,203 +3,150 @@ import PageLayout from '../layouts/PageLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import SignupForm from '../components/SignupForm.astro';
 import { donateUrl } from '../data/navigation';
+
+const priorities = [
+  {
+    number: '01',
+    id: 'affordability',
+    title: 'Affordability & Housing Stability',
+    summary: 'Montgomery County families are being squeezed — median home prices near $620,000 and rents over $1,800 a month. Fatmata will take bold steps to expand truly affordable housing and ensure residents can afford to live, work, and build futures here.',
+    bullets: [
+      'Expand truly affordable housing, not just housing supply',
+      'Partner with nonprofit and mission-driven developers',
+      'Address food deserts and the cost of everyday essentials',
+      'Support seniors and residents on fixed incomes',
+    ],
+    slug: '/priorities/affordability',
+  },
+  {
+    number: '02',
+    id: 'business',
+    title: 'Business & Economy',
+    summary: 'Small businesses are the backbone of our communities and a major engine of local jobs and economic growth. Rising costs and taxes are driving businesses out — Fatmata will fight to bring them back and help new ones thrive.',
+    bullets: [
+      'Provide incentives to local businesses that hire locally',
+      'Expand small business loan access for residents',
+      'Ensure minority, veteran, and women-owned businesses can thrive',
+      'Support PLAs on county projects for fair wages and conditions',
+    ],
+    slug: '/priorities/business',
+  },
+  {
+    number: '03',
+    id: 'climate',
+    title: 'Climate Justice',
+    summary: 'Climate change is already here — from extreme heat to flooding and poor air quality. Low-income communities and communities of color bear the greatest burden. Fatmata will lead with solutions that protect the environment and ensure every community benefits.',
+    bullets: [
+      'Advance climate justice and equitable environmental policies',
+      'Invest in clean energy and sustainable infrastructure',
+      'Protect green space and expand tree canopy',
+      'Ensure healthier communities through environmental protection',
+    ],
+    slug: '/priorities/climate',
+  },
+  {
+    number: '04',
+    id: 'democracy',
+    title: 'Defending Democracy',
+    summary: 'Rights are being rolled back across the country. As a Councilmember, Fatmata will ensure Montgomery County remains a place where civil liberties are protected, immigrants are safe, and every resident is treated with dignity.',
+    bullets: [
+      'Ensure local law enforcement does not participate in ICE raids',
+      'Fight for residents affected by DOGE and government shutdowns',
+      'Keep Montgomery County free from racism, hate, and discrimination',
+    ],
+    slug: '/priorities/democracy',
+  },
+  {
+    number: '05',
+    id: 'education',
+    title: 'Education & Special Education',
+    summary: 'Every child deserves a quality education, and every family deserves a fierce advocate. As a Special Education Attorney, Fatmata has spent her career fighting for students — and she will bring that commitment to the County Council.',
+    bullets: [
+      'Protect communities from federal cuts to education funding',
+      'Champion community schools and under-resourced communities',
+      'Stand up for educators and fight to address the teacher shortage',
+      'Improve school capacity planning across the county',
+    ],
+    slug: '/priorities/education',
+  },
+  {
+    number: '06',
+    id: 'health',
+    title: 'Health',
+    summary: 'Too many Montgomery County residents face rising costs, provider shortages, and language barriers when seeking care. Fatmata will invest in community health clinics, mental health services, and culturally competent care for all.',
+    bullets: [
+      'Expand access to affordable healthcare services',
+      'Address the youth mental health crisis',
+      'Improve maternal health outcomes',
+      'Strengthen language access and culturally competent care',
+    ],
+    slug: '/priorities/health',
+  },
+  {
+    number: '07',
+    id: 'safety',
+    title: 'Safer Communities',
+    summary: 'Real safety comes from investment in people, not just enforcement. Fatmata will pursue a balanced approach that strengthens neighborhoods, expands youth opportunities, and builds lasting trust between communities and local government.',
+    bullets: [
+      'Invest in prevention, youth programs, and mentorship',
+      'Expand mental health and crisis response services',
+      'Promote transparency and accountability in public safety',
+      'Improve traffic and pedestrian safety across the county',
+    ],
+    slug: '/priorities/safety',
+  },
+  {
+    number: '09',
+    id: 'transportation',
+    title: 'Transportation',
+    summary: 'Montgomery County residents face some of the worst commutes in the country — and too many lack reliable public transit. Fatmata will work to expand transit options, improve roads, and give residents real alternatives to sitting in traffic.',
+    bullets: [
+      'Improve WMATA access and push for Purple Line completion',
+      'Increase bike lanes and protections for cyclists',
+      'Expand RideOn services to more areas and with more frequency',
+      'Promote road safety across the county',
+    ],
+    slug: '/priorities/transportation',
+  },
+  {
+    number: '10',
+    id: 'womens-health',
+    title: "Women's Health & Reproductive Freedom",
+    summary: "Women's health is essential to strong families and communities — yet too many women face barriers to care and dismissal of their concerns. As a woman who has experienced fibroids firsthand, Fatmata will fight to ensure every woman gets the care she deserves.",
+    bullets: [
+      'Expand access to comprehensive women\'s healthcare',
+      'Address maternal health disparities for Black women',
+      'Support reproductive freedom and healthcare access',
+      'Strengthen culturally competent care for all women',
+    ],
+    slug: '/priorities/womens-health',
+  },
+];
 ---
 
-<PageLayout title="Priorities | Fatmata Barrie for Montgomery County Council" description="Nine priorities for Montgomery County — Fatmata Barrie's priorities on affordability, business, climate, democracy, education, health, safety, transportation, and women's health.">
+<PageLayout title="Priorities | Fatmata Barrie for Montgomery County Council" description="Nine priorities for Montgomery County — Fatmata Barrie's platform on affordability, business, climate, democracy, education, health, safety, transportation, and women's health.">
 
   <HeroSection title="The Priorities" subtitle="Nine priorities for Montgomery County." />
 
-  <!-- AFFORDABILITY -->
-  <section class="section platform-section" id="affordability">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">01</span>
-      </div>
-      <div class="platform-content">
-        <h2>Affordability &amp; Housing Stability</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Our nation is facing an affordability crisis, and Montgomery County is feeling it deeply. For a family of four, the estimated annual income needed to cover basic needs is around $122,943. Median home prices are around $620,000, and one-bedroom apartments rent for roughly $1,800 to $2,200 per month. With an average household income of $125,371, too many families are living paycheck to paycheck. As economic uncertainty continues, residents are facing rising costs without corresponding increases in wages.</p>
-        <p class="platform-lead">Fatmata believes Montgomery County must take bold, practical steps to ensure residents can afford to live, work, and build their futures here.</p>
-        <p class="platform-lead">As a Councilmember, Fatmata will:</p>
-        <ul class="platform-list">
-          <li><strong>Expand affordable housing — not just housing supply.</strong> Fatmata believes that building more housing alone is not enough if it is not affordable to the residents who need it most. She will work to increase the development of truly affordable housing and expand programs that put residents on a path toward homeownership.</li>
-          <li><strong>Partner with nonprofit and mission-driven developers.</strong> Fatmata will support expanding partnerships with nonprofit housing developers, as well as collaborations between nonprofit and for-profit builders, to ensure more housing is built with affordability as a priority — not an afterthought.</li>
-          <li><strong>Address food deserts and the cost of everyday essentials.</strong> Too many residents live in areas with limited grocery options, driving up prices and reducing access to fresh, affordable food. Fatmata will work to bring more grocery stores to underserved communities and expand year-round farmers' markets across the county.</li>
-          <li><strong>Support seniors and residents on fixed incomes.</strong> Fatmata will fight to ensure retirees, seniors, and residents with disabilities can remain in their homes by supporting affordability programs, property tax relief, and access to essential services.</li>
-        </ul>
-        <p class="platform-lead" style="margin-top: 1.5rem;">Fatmata believes a strong Montgomery County is one where families are not pushed out by rising costs, but instead have the opportunity to build stable and secure lives in the communities they call home.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- BUSINESS -->
-  <section class="section section-alt platform-section" id="business">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">02</span>
-      </div>
-      <div class="platform-content">
-        <h2>Business &amp; Economy</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Fatmata understands, our county must be open for business. Our small businesses are instrumental creators of economic activity and new jobs and are major contributors to our county and state. By generating revenue and taxes, fostering innovation, and creating a more vibrant and competitive market, they must be the fuel for our local economy. Furthermore, their impact on our communities by providing jobs and sponsoring local events contributes to the unique character of our neighborhoods. Increasing prices and local taxes are driving businesses out of our community to neighboring counties &mdash; Fatmata will fight to get them back by:</p>
-        <ul class="platform-list">
-          <li>Providing incentives to local businesses, especially those employing up to 250 workers, and to businesses that hire locally, driving more economic growth in the county.</li>
-          <li>Supporting PLA's on all county projects ensuring county funds are going to fair wages and working conditions.</li>
-          <li>Working with county officials to increase small business loans to residents so more businesses can get off the ground and become profitable. Too many businesses are lost before they start because of a lack of capital.</li>
-          <li>Promoting the allocation of small business loans and contracts to minority business owners by ensuring they're fully informed on the process. Veterans, women, the LGBTQIA+ community and Black, indigenous and people of color are less likely to receive conventional business loans. Fatmata understands that the county must play a role in ensuring these business owners are able to thrive in Montgomery County.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIMATE JUSTICE -->
-  <section class="section platform-section" id="climate">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">03</span>
-      </div>
-      <div class="platform-content">
-        <h2>Climate Justice</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Climate change is not a distant threat—it is already impacting our communities. From extreme heat to flooding and poor air quality, the effects of climate change are felt most by those who have the fewest resources to adapt. Too often, low-income communities and communities of color bear the greatest environmental burdens.</p>
-        <p class="platform-lead">Fatmata believes Montgomery County must lead with solutions that not only address climate change, but also ensure that every community benefits from a cleaner, healthier environment.</p>
-        <ul class="platform-list">
-          <li><strong>Advance climate justice and equitable environmental policies.</strong> Fatmata will support policies that prioritize communities most impacted by environmental hazards, ensuring that investments in clean energy, infrastructure, and environmental protection reach the neighborhoods that need them most.</li>
-          <li><strong>Invest in clean energy and sustainable infrastructure.</strong> Reducing emissions and energy costs must go hand in hand. Fatmata will support clean energy initiatives and energy-efficient infrastructure that lower costs for residents while building a more sustainable county.</li>
-          <li><strong>Protect green space and expand tree canopy.</strong> Green spaces are essential for public health and quality of life. Fatmata will work to protect parks, expand tree canopy, and reduce heat in communities that are most vulnerable to rising temperatures.</li>
-          <li><strong>Support environmentally responsible growth.</strong> As Montgomery County continues to grow, development must be balanced with environmental protection. Fatmata will support smart growth strategies that promote sustainability while preserving our natural resources.</li>
-          <li><strong>Ensure healthier communities through environmental protection.</strong> Clean air, safe water, and healthy neighborhoods should not depend on zip code. Fatmata will work to ensure environmental policies protect all residents and improve public health outcomes across the county.</li>
-        </ul>
-        <p class="platform-lead" style="margin-top: 1.5rem;">Fatmata believes climate justice is about more than the environment—it is about fairness, health, and ensuring that every family in Montgomery County can live in a safe and sustainable community.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEMOCRACY -->
-  <section class="section section-alt platform-section" id="democracy">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">04</span>
-      </div>
-      <div class="platform-content">
-        <h2>Defending Democracy</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Our nation is at a crisis point &mdash; across the country, we are seeing rights roll back and an effort from Republicans to take us back to 1900. As a Councilmember, Fatmata will fight to ensure Montgomery County residents feel protected by their local government:</p>
-        <ul class="platform-list">
-          <li>Ensuring all county and local law enforcement do not work with federal law enforcement to violate civil liberties. This includes not participating in ICE raids, policing protestors or investigating residents for their political views.</li>
-          <li>Fighting for residents affected by DOGE and government shutdowns. Fatmata will work with community leaders to make sure residents are aware of county resources and don't lose their homes or struggle to make ends meet due to undemocratic measures from the Trump Administration.</li>
-          <li>Hate has no place in our county. Fatmata wants Montgomery County to remain a diverse and inclusive community free from all forms of racism, hate, discrimination and bigotry. She believes that together, we can build a brighter future for Montgomery County &mdash; one where everyone has a fair shot at success, security, and a place to call home.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section platform-section" id="education">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">05</span>
-      </div>
-      <div class="platform-content">
-        <h2>Education &amp; Special Ed</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">As a Special Education Attorney, Fatmata has spent her career fighting for students and families to make sure they have access to a quality education. She understands the needs of parents, students and educators as well as what's needed to ensure all students are able to thrive. As a Councilmember Fatmata will:</p>
-        <ul class="platform-list">
-          <li>Work with county leaders to ensure the cuts from the Department of Education are not felt by the community. Whether to special education or to community school funding, Fatmata will work to ensure there is a budget reallocation process, so students and families don't feel the impact.</li>
-          <li>Increase funding and resources for ASL and BASL and other language access services to increase accessibility standards.</li>
-          <li>Champion community schools and fight for resources and community outreach. Fatmata believes all students regardless of family circumstance deserve a quality education. Community schools serve some of our county's most under-resourced communities and need special attention to ensure children aren't left behind.</li>
-          <li>Stand up for educators across the county. Our educators are on the front lines in our communities, many times doing much more than teaching in our school walls. Fatmata will fight to make sure they have access to the resources and support they need as well as work with state legislators to find solutions for the teacher shortage across the state.</li>
-          <li>Advocate for revisions to our school planning. So many of our recently rebuilt schools are already approaching capacity again. Fatmata believes we need a better way to predict growth in the county, so we have more kids in classrooms and less kids in trailers.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- HEALTH -->
-  <section class="section section-alt platform-section" id="health">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">06</span>
-      </div>
-      <div class="platform-content">
-        <h2>Health</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Access to quality healthcare is essential for strong families and thriving communities. Yet too many Montgomery County residents face rising healthcare costs, limited access to providers, mental health challenges, and barriers to care caused by language, transportation, or insurance gaps. Fatmata believes protecting the health of our residents must be a core priority for local government.</p>
-        <ul class="platform-list">
-          <li><strong>Expanding access to affordable healthcare services.</strong> Fatmata will support investments in community health clinics and partnerships with nonprofit providers to ensure residents &mdash; especially working families, seniors, and immigrant communities &mdash; can access primary care, preventive care, and essential health services regardless of income or insurance status.</li>
-          <li><strong>Addressing the youth mental health crisis.</strong> Students and families across Montgomery County are facing growing mental health challenges. Fatmata will advocate for increased investment in school-based mental health professionals, community-based counseling services, and crisis intervention programs so young people receive support before challenges escalate.</li>
-          <li><strong>Improving maternal health outcomes.</strong> The United States continues to face serious disparities in maternal health, particularly impacting Black women and women of color. Fatmata will support county partnerships with healthcare providers and community organizations to expand maternal health resources, prenatal care access, and postpartum support for families.</li>
-          <li><strong>Improving language access and culturally competent care.</strong> Montgomery County's diversity is one of its greatest strengths, but language barriers often prevent residents from accessing healthcare. Fatmata will work to expand interpretation services and culturally responsive care so all residents can receive the support they need.</li>
-          <li><strong>Supporting seniors and residents with disabilities.</strong> Fatmata believes seniors and residents with disabilities deserve the ability to age with dignity in their communities. She will support programs that expand home-based care, caregiver support, and access to healthcare services that allow residents to remain safely in their homes.</li>
-          <li><strong>Strengthening public health preparedness.</strong> The COVID-19 pandemic showed the importance of strong local public health systems. Fatmata will support continued investment in Montgomery County's public health infrastructure so the county is prepared for future health emergencies while protecting vulnerable residents.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAFER COMMUNITIES -->
-  <section class="section platform-section" id="safety">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">07</span>
-      </div>
-      <div class="platform-content">
-        <h2>Safer Communities</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Too often, conversations about safety focus only on enforcement, while overlooking the root causes of crime and the importance of trust between communities and government. Fatmata believes Montgomery County must take a balanced approach that keeps residents safe while investing in the long-term strength and stability of our communities.</p>
-        <ul class="platform-list">
-          <li><strong>Invest in prevention and youth opportunities.</strong> Safe communities begin with opportunity. Fatmata will support expanded youth programs, mentorship initiatives, and community-based organizations that provide young people with positive pathways and reduce the risk of involvement in crime.</li>
-          <li><strong>Strengthen community-based safety strategies.</strong> Fatmata believes safety is strongest when communities and local government work together. She will support partnerships with community leaders and organizations that help prevent violence, build trust, and strengthen neighborhood stability.</li>
-          <li><strong>Expand mental health and crisis response services.</strong> Not every emergency requires a law enforcement response. Fatmata will advocate for expanded mental health crisis response teams and community-based services that connect residents to care while reducing unnecessary interactions with law enforcement.</li>
-          <li><strong>Strengthen community connection in public safety.</strong> Fatmata believes communities are safer when those serving them understand and are connected to the neighborhoods they protect. However, the high cost of living in Montgomery County makes it difficult for many public safety professionals—including first responders—to live in the communities they serve. She will explore housing and affordability solutions that help strengthen community ties, improve responsiveness, and build trust between residents and those responsible for public safety.</li>
-          <li><strong>Promote transparency and accountability.</strong> Public trust is essential for effective safety systems. Fatmata will support policies that ensure transparency, oversight, and accountability so residents feel confident that public safety systems are fair, equitable, and responsive.</li>
-          <li><strong>Improve traffic and pedestrian safety.</strong> Many residents face daily safety risks on our roads. Fatmata will work to strengthen road safety measures, improve pedestrian protections, and reduce traffic-related injuries and fatalities across the county.</li>
-        </ul>
-        <p class="platform-lead" style="margin-top: 1.5rem;">Fatmata believes that safe communities are built not just through enforcement, but through investment, partnership, and trust—ensuring every resident feels secure and supported in the place they call home.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRANSPORTATION -->
-  <section class="section platform-section" id="transportation">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">09</span>
-      </div>
-      <div class="platform-content">
-        <h2>Transportation</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">The Washington DC Metro area has some of the worst traffic in the country &mdash; taking the average resident over an hour to commute every day. Fatmata understands that too many residents are spending too much time in traffic. Furthermore, our public transportation does not meet the needs of all county residents by providing reliable transportation throughout the county. As a Councilmember, Fatmata will:</p>
-        <ul class="platform-list">
-          <li>Work with regional leaders to improve WMATA access and affordability as well as get a real timeline on the completion of the Purple Line, providing more consistency in car alternatives.</li>
-          <li>Increase bike lanes across the county so more people can bike to and from work as well as for leisure. Fatmata will also fight to create more protections for bikers to decrease the danger on major roads.</li>
-          <li>Expand RideOn services to more areas of the county and with more frequency. More consistency to public transportation grows ridership, reduces traffic and makes for safer roads.</li>
-          <li>Fatmata is aware that many members of the community still drive more often than not. She will work with the state and responsible agencies to promote road safety.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- WOMEN'S HEALTH -->
-  <section class="section section-alt platform-section" id="womens-health">
-    <div class="container platform-row">
-      <div class="platform-badge">
-        <span class="platform-number">10</span>
-      </div>
-      <div class="platform-content">
-        <h2>Women's Health &amp; Reproductive Freedom</h2>
-        <span class="ornament" style="margin: 0.5rem 0 1rem;"></span>
-        <p class="platform-lead">Women's health is essential to the strength of our families and communities. Yet too many women — especially Black women and women of color — continue to face barriers to care, delays in treatment, and disparities in health outcomes.</p>
-        <p class="platform-lead">As a woman who has experienced fibroids firsthand, Fatmata understands how often women's health concerns are overlooked, dismissed, or not taken seriously. Conditions like fibroids and endometriosis, which impact millions of women — particularly Black women — are too often undiagnosed or untreated for years. She believes Montgomery County must do more to ensure women have access to the care, support, and resources they need at every stage of life.</p>
-        <p class="platform-lead">As a Councilmember, Fatmata will:</p>
-        <ul class="platform-list">
-          <li><strong>Expand access to comprehensive women's healthcare.</strong> Fatmata will support increased investment in community health centers and partnerships that ensure women have access to preventive care, reproductive health services, and ongoing treatment without unnecessary barriers.</li>
-          <li><strong>Address maternal health disparities.</strong> Black women and women of color continue to face disproportionately high rates of maternal mortality and complications. Fatmata will work with healthcare providers and community organizations to expand prenatal and postpartum care, improve outcomes, and ensure every mother receives the care she deserves.</li>
-          <li><strong>Support reproductive freedom and healthcare access.</strong> Fatmata believes women should have the ability to make their own healthcare decisions. She will support policies that ensure access to reproductive healthcare services and protect patients' ability to receive care in Montgomery County.</li>
-          <li><strong>Improve awareness and early intervention for women's health conditions.</strong> Fatmata will support community education, early screening, and improved access to treatment so women can receive care before conditions worsen.</li>
-          <li><strong>Strengthen culturally competent care.</strong> Women deserve to be heard and respected when seeking care. Fatmata will advocate for healthcare systems that are responsive, culturally competent, and focused on improving outcomes for all women.</li>
-        </ul>
-        <p class="platform-lead" style="margin-top: 1.5rem;">Fatmata believes that when women are healthy, families are stronger and communities thrive. Montgomery County must lead in ensuring that every woman has access to the care, respect, and support she deserves.</p>
+  <section class="section">
+    <div class="container">
+      <div class="accordion-list">
+        {priorities.map((p, i) => (
+          <div class="accordion-item" id={p.id}>
+            <button class="accordion-header" aria-expanded="false" aria-controls={`panel-${p.id}`}>
+              <span class="acc-number">{p.number}</span>
+              <span class="acc-title">{p.title}</span>
+              <span class="acc-chevron" aria-hidden="true">&#8964;</span>
+            </button>
+            <div class="accordion-panel" id={`panel-${p.id}`} role="region" hidden>
+              <p class="acc-summary">{p.summary}</p>
+              <ul class="acc-bullets">
+                {p.bullets.map(b => <li>{b}</li>)}
+              </ul>
+              <a href={p.slug} class="btn btn-primary acc-readmore">Read Full Platform &rarr;</a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -222,82 +169,162 @@ import { donateUrl } from '../data/navigation';
 </PageLayout>
 
 <style>
-  .platform-row {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 2.5rem;
-    align-items: start;
-  }
-
-  .platform-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 2px solid var(--teal);
-    background: var(--white);
-    margin-top: 0.25rem;
-  }
-
-  .platform-number {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--teal);
-  }
-
-  .platform-content h2 {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    margin-bottom: 0;
-  }
-
-  .platform-lead {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .platform-list {
-    list-style: none;
+  .accordion-list {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    max-width: 860px;
+    margin: 0 auto;
   }
 
-  .platform-list li {
-    position: relative;
-    padding-left: 1.5rem;
-    color: var(--text);
+  .accordion-item {
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+
+  .accordion-item:has(.accordion-header[aria-expanded="true"]) {
+    box-shadow: var(--shadow-md);
+    border-color: var(--teal);
+  }
+
+  .accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .accordion-header:hover { background: var(--cream); }
+
+  .acc-number {
+    font-family: var(--font-heading);
     font-size: 1rem;
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--cream-dark);
+    border: 2px solid var(--teal);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .acc-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    color: var(--primary);
+    flex: 1;
+  }
+
+  .acc-chevron {
+    font-size: 1.5rem;
+    color: var(--teal);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .accordion-header[aria-expanded="true"] .acc-chevron {
+    transform: rotate(180deg);
+  }
+
+  .accordion-panel {
+    padding: 0 1.5rem 1.5rem 4.5rem;
+    border-top: 1px solid var(--light-gray);
+  }
+
+  .acc-summary {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 1.25rem 0 1rem;
+  }
+
+  .acc-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .acc-bullets li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text);
+    font-size: 0.95rem;
     line-height: 1.6;
   }
 
-  .platform-list li::before {
+  .acc-bullets li::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0.55rem;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: var(--teal);
+    background: var(--accent);
+  }
+
+  .acc-readmore {
+    font-size: 0.875rem;
+    padding: 0.55rem 1.25rem;
   }
 
   .platform-cta {
     border-top: 3px solid var(--gold);
   }
 
-  @media (max-width: 768px) {
-    .platform-row {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    .platform-badge {
-      width: 48px;
-      height: 48px;
-    }
+  @media (max-width: 640px) {
+    .accordion-panel { padding-left: 1.5rem; }
+    .acc-number { width: 36px; height: 36px; font-size: 0.85rem; }
   }
 </style>
+
+<script>
+  document.querySelectorAll('.accordion-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+
+      // Close all others
+      document.querySelectorAll('.accordion-header').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const p = document.getElementById(b.getAttribute('aria-controls'));
+        if (p) p.hidden = true;
+      });
+
+      // Toggle clicked
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      }
+    });
+  });
+
+  // Open from URL hash
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const btn = document.querySelector(`#${hash} .accordion-header`);
+    if (btn) {
+      btn.setAttribute('aria-expanded', 'true');
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (panel) panel.hidden = false;
+    }
+  }
+</script>
