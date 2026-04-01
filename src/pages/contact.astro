@@ -16,7 +16,9 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
         <p class="section-label">Send a Message</p>
         <h2 style="margin-bottom: 0;">Join Our Campaign &amp; Transform Your Political Impact</h2>
         <span class="ornament" style="margin: 0.75rem 0 1.5rem;"></span>
-        <form class="contact-form" method="POST" action="#contact">
+        <form class="contact-form" id="contact-form" name="contact" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
           <div class="cf-row">
             <div class="cf-field">
               <label for="cf-fname">First Name</label>
@@ -52,8 +54,18 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
             <label for="cf-message">Message</label>
             <textarea id="cf-message" name="message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          <div class="cf-message cf-message--error" id="cf-error" hidden>
+            Something went wrong. Please try again or email us at <a href="mailto:info@fatmatabarrie.com">info@fatmatabarrie.com</a>.
+          </div>
+          <button type="submit" class="btn btn-primary" id="cf-btn" style="width: 100%;">Send Message</button>
         </form>
+        <div class="cf-success" id="cf-success" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Message sent!</strong>
+            <p>Thank you for reaching out. We'll get back to you soon.</p>
+          </div>
+        </div>
       </div>
 
       <!-- SIDEBAR -->
@@ -192,8 +204,81 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
   .sidebar-donate p { color: var(--text-light); font-size: 0.9rem; line-height: 1.5; }
   .sidebar-donate { border-color: var(--primary); }
 
+  .cf-message {
+    font-size: 0.85rem;
+    border-radius: 4px;
+    padding: 0.65rem 0.75rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .cf-message--error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+  }
+
+  .cf-message--error a { color: #b91c1c; font-weight: 700; }
+
+  .cf-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    color: #166534;
+    margin-top: 1rem;
+  }
+
+  .cf-success svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; color: #16a34a; }
+  .cf-success strong { display: block; margin-bottom: 0.2rem; font-size: 1rem; }
+  .cf-success p { margin: 0; font-size: 0.88rem; opacity: 0.85; }
+
   @media (max-width: 768px) {
     .contact-grid { grid-template-columns: 1fr; }
     .cf-row { flex-direction: column; gap: 0; }
   }
 </style>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('cf-btn');
+  const errorBox = document.getElementById('cf-error');
+  const successBox = document.getElementById('cf-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const params = new URLSearchParams({
+      'form-name': 'contact',
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      subject: form.subject.value,
+      message: form.message.value.trim(),
+    });
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+
+      if (res.status >= 500) throw new Error('Server error');
+
+      form.hidden = true;
+      successBox.hidden = false;
+    } catch {
+      errorBox.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  });
+</script>
