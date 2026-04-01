@@ -113,6 +113,115 @@ import { donateUrl } from '../data/navigation';
     </div>
   </section>
 
+  <!-- GIVE BY CHECK -->
+  <section class="section" id="give-by-check">
+    <div class="container">
+      <div class="check-grid">
+        <div class="check-info">
+          <p class="section-label">Prefer to Give by Check?</p>
+          <h2>Mail your contribution</h2>
+          <span class="ornament" style="margin: 0.75rem 0 1.25rem;"></span>
+          <p>You can mail your contribution to:</p>
+          <div class="mailing-address">
+            <strong>Fatmata Barrie for Montgomery County</strong><br />
+            PO Box 4496<br />
+            Silver Spring, MD 20914
+          </div>
+          <p style="margin-top:1.25rem;">Please make checks payable to <strong>Fatmata Barrie for Montgomery County</strong>. Fill out the form to let us know your check is on the way — this helps us log your contribution accurately for public financing compliance.</p>
+          <p><em>Reminder: Maximum $500 per cycle. You must be a U.S. citizen or permanent resident alien. Contributions are not tax-deductible.</em></p>
+        </div>
+
+        <div class="check-form-wrap">
+          <h3>Let us know your check is coming</h3>
+          <form
+            name="check-donation"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            class="check-form"
+            id="check-donation-form"
+          >
+            <input type="hidden" name="form-name" value="check-donation" />
+            <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="check-first-name">First Name *</label>
+                <input type="text" id="check-first-name" name="first_name" required />
+              </div>
+              <div class="form-group">
+                <label for="check-last-name">Last Name *</label>
+                <input type="text" id="check-last-name" name="last_name" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="check-address">Home Street Address *</label>
+              <input type="text" id="check-address" name="address" required placeholder="Required for public financing compliance" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="check-city">City *</label>
+                <input type="text" id="check-city" name="city" required />
+              </div>
+              <div class="form-group form-group-sm">
+                <label for="check-state">State *</label>
+                <input type="text" id="check-state" name="state" required value="MD" maxlength="2" />
+              </div>
+              <div class="form-group form-group-sm">
+                <label for="check-zip">ZIP *</label>
+                <input type="text" id="check-zip" name="zip" required maxlength="10" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="check-email">Email Address</label>
+              <input type="email" id="check-email" name="email" placeholder="So we can confirm receipt" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="check-occupation">Occupation *</label>
+                <input type="text" id="check-occupation" name="occupation" required placeholder="e.g. Teacher, Retired, Student" />
+              </div>
+              <div class="form-group">
+                <label for="check-employer">Employer *</label>
+                <input type="text" id="check-employer" name="employer" required placeholder="e.g. MCPS, Self-employed, N/A" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="check-amount">Check Amount *</label>
+              <div class="amount-input-wrap">
+                <span class="amount-dollar">$</span>
+                <input type="number" id="check-amount" name="amount" required min="1" max="500" placeholder="e.g. 25" />
+              </div>
+            </div>
+
+            <div class="form-group form-checkbox">
+              <label>
+                <input type="checkbox" name="citizen_confirm" required />
+                I am a U.S. citizen or permanent resident alien making this contribution with my own personal funds. *
+              </label>
+            </div>
+
+            <div class="form-group form-checkbox">
+              <label>
+                <input type="checkbox" name="moco_resident" />
+                I am a Montgomery County resident (required for donation matching).
+              </label>
+            </div>
+
+            <div id="check-form-status" class="form-status" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">Submit Check Notification</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section donate-bottom-cta">
     <div class="container text-center">
@@ -127,6 +236,34 @@ import { donateUrl } from '../data/navigation';
       <a href={donateUrl} class="btn btn-accent btn-lg" style="margin-top: 1.5rem;" target="_blank" rel="noopener noreferrer">Other Amount</a>
     </div>
   </section>
+
+<script>
+  const form = document.getElementById('check-donation-form') as HTMLFormElement;
+  const status = document.getElementById('check-form-status') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+    status.className = 'form-status';
+
+    const data = new URLSearchParams(new FormData(form) as any);
+    try {
+      const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() });
+      if (res.status >= 500) throw new Error();
+      status.className = 'form-status success';
+      status.textContent = 'Thank you! We\'ve received your notification and will look out for your check.';
+      form.reset();
+    } catch {
+      status.className = 'form-status error';
+      status.textContent = 'Something went wrong. Please try again or email info@fatmatabarrie.com.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Submit Check Notification';
+    }
+  });
+</script>
 
 </PageLayout>
 
@@ -257,8 +394,138 @@ import { donateUrl } from '../data/navigation';
     color: #fff;
   }
 
+  /* CHECK SECTION */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .check-info p { color: var(--text-light); font-size: 1rem; line-height: 1.7; }
+  .check-info h2 { margin-bottom: 0; }
+
+  .mailing-address {
+    background: var(--light-gray);
+    border-left: 4px solid var(--teal);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-top: 0.5rem;
+  }
+
+  .check-form-wrap {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .check-form-wrap h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 1.25rem; }
+
+  .check-form .form-row {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .check-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .check-form .form-group-sm { flex: 0 0 5rem; }
+
+  .check-form label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+
+  .check-form input[type="text"],
+  .check-form input[type="email"],
+  .check-form input[type="number"] {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .check-form input:focus {
+    outline: 2px solid var(--primary);
+    border-color: var(--primary);
+  }
+
+  .amount-input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .amount-dollar {
+    padding: 0.6rem 0.75rem;
+    background: var(--light-gray);
+    font-weight: 700;
+    color: var(--text-light);
+    border-right: 1px solid #ccc;
+  }
+
+  .amount-input-wrap input {
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  .form-checkbox label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .form-checkbox input[type="checkbox"] {
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--primary);
+  }
+
+  .form-status {
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: none;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-status.success { display: block; background: #e6f4ea; color: #1a6b2a; border: 1px solid #a8d5b0; }
+  .form-status.error { display: block; background: #fdecea; color: #9b2c2c; border: 1px solid #f5c6c6; }
+
+  .hidden { display: none; }
+
   @media (max-width: 768px) {
     .donate-top { grid-template-columns: 1fr; gap: 2rem; }
     .rules-grid { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .check-form .form-row { flex-direction: column; gap: 0; }
+    .check-form .form-group-sm { flex: 1; }
   }
 </style>

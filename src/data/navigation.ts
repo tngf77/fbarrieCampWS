@@ -5,6 +5,7 @@ export const mainNav = [
   { label: 'Events', href: '/events' },
   { label: 'Updates', href: '/updates' },
   { label: 'Get Involved', href: '/volunteer' },
+  { label: 'Donate / Give by Check', href: '/donate' },
   { label: 'Contact', href: '/contact' },
 ];
 
