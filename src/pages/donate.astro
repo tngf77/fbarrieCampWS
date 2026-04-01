@@ -22,7 +22,12 @@ import { donateUrl } from '../data/navigation';
         <div class="donate-cta-card">
           <h3>Ready to contribute?</h3>
           <p>Every dollar you give is matched and goes directly to building a people-first campaign.</p>
-          <a href={donateUrl} class="btn btn-accent" style="width: 100%; margin-top: 1rem;">Donate via Donorbox</a>
+          <div class="donate-amounts">
+            {[5, 25, 50, 100, 150, 250, 500].map(amt => (
+              <a href={`${donateUrl}?amount=${amt}`} class="donate-amount-btn" target="_blank" rel="noopener noreferrer">${amt}</a>
+            ))}
+          </div>
+          <a href={donateUrl} class="btn btn-accent" style="width: 100%; margin-top: 1rem;" target="_blank" rel="noopener noreferrer">Other Amount</a>
           <p class="donate-fine">Maximum: $500 per cycle. Montgomery County residents only for matching.</p>
         </div>
       </div>
@@ -113,8 +118,13 @@ import { donateUrl } from '../data/navigation';
     <div class="container text-center">
       <h2 style="color: var(--white);">Every dollar counts.</h2>
       <span class="ornament" style="background: var(--gold);"></span>
-      <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 1rem auto 2rem; font-size: 1.1rem;">Even a $25 donation becomes $150 through matching. That's the power of people-powered politics.</p>
-      <a href={donateUrl} class="btn btn-accent btn-lg">Donate via Donorbox</a>
+      <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 1rem auto 1.5rem; font-size: 1.1rem;">Even a $25 donation becomes $150 through matching. That's the power of people-powered politics.</p>
+      <div class="donate-amounts donate-amounts-light">
+        {[5, 25, 50, 100, 150, 250, 500].map(amt => (
+          <a href={`${donateUrl}?amount=${amt}`} class="donate-amount-btn donate-amount-btn-light" target="_blank" rel="noopener noreferrer">${amt}</a>
+        ))}
+      </div>
+      <a href={donateUrl} class="btn btn-accent btn-lg" style="margin-top: 1.5rem;" target="_blank" rel="noopener noreferrer">Other Amount</a>
     </div>
   </section>
 
@@ -207,6 +217,45 @@ import { donateUrl } from '../data/navigation';
   }
 
   .btn-lg { padding: 1rem 3rem; font-size: 1.1rem; }
+
+  .donate-amounts {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+  }
+
+  .donate-amount-btn {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gold);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    min-width: 3.5rem;
+    text-align: center;
+  }
+
+  .donate-amount-btn:hover {
+    background: var(--gold);
+    color: #fff;
+  }
+
+  .donate-amount-btn-light {
+    border-color: rgba(255,255,255,0.7);
+    color: #fff;
+  }
+
+  .donate-amount-btn-light:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+  }
 
   @media (max-width: 768px) {
     .donate-top { grid-template-columns: 1fr; gap: 2rem; }
