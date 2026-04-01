@@ -201,16 +201,28 @@ import { donateUrl } from '../data/navigation';
 
             <div class="form-group form-checkbox">
               <label>
-                <input type="checkbox" name="citizen_confirm" required />
-                I am a U.S. citizen or permanent resident alien making this contribution with my own personal funds. *
+                <input type="checkbox" name="moco_resident" value="yes" />
+                I am a Montgomery County resident (required for donation matching).
               </label>
             </div>
 
-            <div class="form-group form-checkbox">
-              <label>
-                <input type="checkbox" name="moco_resident" />
-                I am a Montgomery County resident (required for donation matching).
-              </label>
+            <div class="public-financing-box">
+              <p class="pf-title">Public Financing Information</p>
+              <p class="pf-intro">By typing your name below as your digital signature, you affirm that you understand and agree to these Contribution Rules:</p>
+              <ul class="pf-rules">
+                <li>I am at least eighteen years old.</li>
+                <li>This contribution is made in my name from my own funds and is not being reimbursed in any manner.</li>
+                <li>This contribution is not made from the funds of a corporation or labor organization.</li>
+                <li>This contribution is made on a personal credit card or debit card for which I have the legal obligation to pay and is not made either on a corporate or business entity card or on the card of another person.</li>
+                <li>I certify that the information provided is accurate and truthful.</li>
+                <li>I certify that I have not made individual aggregate contributions to Fatmata Barrie for Montgomery County of more than $500 for the election cycle.</li>
+              </ul>
+            </div>
+
+            <div class="form-group">
+              <label for="check-signature">Digital Signature *</label>
+              <input type="text" id="check-signature" name="signature" required placeholder="Type your full legal name (no initials)" />
+              <span class="field-note">Name must match your full contributor name — no initials please.</span>
             </div>
 
             <div id="check-form-status" class="form-status" aria-live="polite"></div>
@@ -520,6 +532,52 @@ import { donateUrl } from '../data/navigation';
   .form-status.error { display: block; background: #fdecea; color: #9b2c2c; border: 1px solid #f5c6c6; }
 
   .hidden { display: none; }
+
+  .public-financing-box {
+    background: #f5f7fa;
+    border: 1px solid #c8d0dc;
+    border-left: 4px solid var(--primary);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .pf-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--primary);
+    margin: 0 0 0.4rem !important;
+  }
+
+  .pf-intro {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin: 0 0 0.6rem !important;
+    line-height: 1.5;
+  }
+
+  .pf-rules {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .pf-rules li {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.55;
+    margin-bottom: 0.35rem;
+  }
+
+  .field-note {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
 
   @media (max-width: 768px) {
     .donate-top { grid-template-columns: 1fr; gap: 2rem; }
