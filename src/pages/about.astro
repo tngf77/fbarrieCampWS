@@ -41,27 +41,34 @@ import { donateUrl } from '../data/navigation';
         <h2>Out in the Community</h2>
         <span class="ornament"></span>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-slot">
-          <img src="/images/Bert Fundraiser with Girl 033026.jpg" alt="Bert Fundraiser" loading="lazy" class="gallery-expandable" data-src="/images/Bert Fundraiser with Girl 033026.jpg" />
+      <div class="gallery-grid" id="gallery-grid">
+        <div class="gallery-slot" data-index="0">
+          <img src="/images/Bert Fundraiser with Girl 033026.jpg" alt="Bert Fundraiser" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
-        <div class="gallery-slot">
-          <img src="/images/Burtonsville ES 033026.jpg" alt="Burtonsville Elementary School" loading="lazy" class="gallery-expandable" data-src="/images/Burtonsville ES 033026.jpg" />
+        <div class="gallery-slot" data-index="1">
+          <img src="/images/Burtonsville ES 033026.jpg" alt="Burtonsville Elementary School" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
-        <div class="gallery-slot">
-          <img src="/images/Capoeira 033026.jpg" alt="Capoeira event" loading="lazy" class="gallery-expandable" data-src="/images/Capoeira 033026.jpg" />
+        <div class="gallery-slot" data-index="2">
+          <img src="/images/Capoeira 033026.jpg" alt="Capoeira event" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
-        <div class="gallery-slot">
-          <img src="/images/Burtonsville ES II 033026.jpg" alt="Burtonsville Elementary School" loading="lazy" class="gallery-expandable" data-src="/images/Burtonsville ES II 033026.jpg" />
+        <div class="gallery-slot" data-index="3">
+          <img src="/images/Burtonsville ES II 033026.jpg" alt="Burtonsville Elementary School" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
-        <div class="gallery-slot">
-          <img src="/images/JUFJ Seder 033026.jpg" alt="JUFJ Seder" loading="lazy" class="gallery-expandable" data-src="/images/JUFJ Seder 033026.jpg" />
+        <div class="gallery-slot" data-index="4">
+          <img src="/images/JUFJ Seder 033026.jpg" alt="JUFJ Seder" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
-        <div class="gallery-slot">
-          <img src="/images/Tsega Fundraiser Group 033026.jpg" alt="Tsega Fundraiser Group" loading="lazy" class="gallery-expandable" data-src="/images/Tsega Fundraiser Group 033026.jpg" />
+        <div class="gallery-slot" data-index="5">
+          <img src="/images/Tsega Fundraiser Group 033026.jpg" alt="Tsega Fundraiser Group" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
-        <div class="gallery-slot gallery-slot-center">
-          <img src="/images/Women Empowerment Event 033026.jpg" alt="Women Empowerment Event" loading="lazy" class="gallery-expandable" data-src="/images/Women Empowerment Event 033026.jpg" />
+        <div class="gallery-slot gallery-slot-center" data-index="6">
+          <img src="/images/Women Empowerment Event 033026.jpg" alt="Women Empowerment Event" loading="lazy" />
+          <div class="photo-expand-hint">Click to expand</div>
         </div>
       </div>
     </div>
@@ -124,30 +131,45 @@ import { donateUrl } from '../data/navigation';
   <SignupForm />
 
   <!-- LIGHTBOX -->
-  <div class="gallery-lightbox" id="galleryLightbox">
-    <button class="gallery-lightbox-close" id="galleryLightboxClose">&times;</button>
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+    <button class="gallery-lightbox-close" id="galleryLightboxClose" aria-label="Close">&times;</button>
+    <button class="gallery-lightbox-prev" id="galleryLightboxPrev" aria-label="Previous">&#8249;</button>
     <img src="" alt="" id="galleryLightboxImg" />
+    <button class="gallery-lightbox-next" id="galleryLightboxNext" aria-label="Next">&#8250;</button>
   </div>
 
   <script>
     const lightbox = document.getElementById('galleryLightbox');
-    const lbImg = document.getElementById('galleryLightboxImg');
-    const lbClose = document.getElementById('galleryLightboxClose');
+    const lbImg = document.getElementById('galleryLightboxImg') as HTMLImageElement;
+    const slots = Array.from(document.querySelectorAll('#gallery-grid .gallery-slot'));
+    let current = 0;
 
-    document.querySelectorAll('.gallery-expandable').forEach(img => {
-      img.addEventListener('click', () => {
-        lbImg.src = img.dataset.src || img.src;
-        lbImg.alt = img.alt;
-        lightbox.classList.add('open');
-      });
-    });
+    function openAt(index: number) {
+      current = index;
+      const img = slots[index].querySelector('img') as HTMLImageElement;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lightbox!.classList.add('open');
+      lightbox!.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
 
-    lbClose.addEventListener('click', () => lightbox.classList.remove('open'));
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('open');
-    });
+    function close() {
+      lightbox!.classList.remove('open');
+      lightbox!.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    slots.forEach((slot, i) => slot.addEventListener('click', () => openAt(i)));
+    document.getElementById('galleryLightboxClose')?.addEventListener('click', close);
+    document.getElementById('galleryLightboxPrev')?.addEventListener('click', () => openAt((current - 1 + slots.length) % slots.length));
+    document.getElementById('galleryLightboxNext')?.addEventListener('click', () => openAt((current + 1) % slots.length));
+    lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('open');
+      if (!lightbox?.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') openAt((current - 1 + slots.length) % slots.length);
+      if (e.key === 'ArrowRight') openAt((current + 1) % slots.length);
     });
   </script>
 
@@ -189,6 +211,8 @@ import { donateUrl } from '../data/navigation';
     overflow: hidden;
     border-radius: var(--border-radius);
     background: var(--cream-dark);
+    position: relative;
+    cursor: pointer;
   }
 
   .gallery-slot img {
@@ -196,16 +220,32 @@ import { donateUrl } from '../data/navigation';
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+    display: block;
   }
 
   .gallery-slot:hover img { transform: scale(1.04); }
 
-  .gallery-slot-center {
-    grid-column: 2;
+  .gallery-slot-center { grid-column: 2; }
+
+  .photo-expand-hint {
+    position: absolute;
+    inset: 0;
+    background: rgba(40, 57, 143, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: background 0.3s, color 0.3s;
   }
 
-  .gallery-expandable {
-    cursor: zoom-in;
+  .gallery-slot:hover .photo-expand-hint {
+    background: rgba(40, 57, 143, 0.45);
+    color: var(--white);
   }
 
   /* Lightbox */
@@ -213,7 +253,7 @@ import { donateUrl } from '../data/navigation';
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.88);
+    background: rgba(0,0,0,0.92);
     z-index: 9999;
     align-items: center;
     justify-content: center;
@@ -222,21 +262,53 @@ import { donateUrl } from '../data/navigation';
   .gallery-lightbox img {
     max-width: 90vw;
     max-height: 88vh;
-    border-radius: var(--border-radius);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     object-fit: contain;
   }
   .gallery-lightbox-close {
-    position: absolute;
+    position: fixed;
     top: 1.25rem;
     right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
     background: none;
     border: none;
     color: #fff;
-    font-size: 2rem;
     cursor: pointer;
     line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s;
   }
+  .gallery-lightbox-close:hover { opacity: 1; }
+
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    font-size: 2.5rem;
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s, background 0.2s;
+  }
+  .gallery-lightbox-prev { left: 1.25rem; }
+  .gallery-lightbox-next { right: 1.25rem; }
+  .gallery-lightbox-prev:hover,
+  .gallery-lightbox-next:hover { opacity: 1; background: rgba(255,255,255,0.2); }
 
   .gallery-placeholder {
     background: var(--mint);
