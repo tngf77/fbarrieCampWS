@@ -1,12 +1,12 @@
 ---
 ---
 
-<section class="signup-section">
+<section class="signup-section" id="signup">
   <div class="signup-inner">
     <div class="signup-left">
       <h2 class="signup-headline">Join Team<br />Barrie<span class="accent-dot">.</span></h2>
       <div class="signup-form-card">
-        <form class="signup-form" method="POST" action="#signup">
+        <form class="signup-form" id="team-barrie-form" novalidate>
           <div class="sf-row">
             <div class="sf-field">
               <label for="sf-fname">First Name</label>
@@ -24,11 +24,21 @@
             </div>
             <div class="sf-field">
               <label for="sf-zip">Zip Code</label>
-              <input type="text" id="sf-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required />
+              <input type="text" id="sf-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required />
             </div>
           </div>
-          <button type="submit" class="signup-submit">Get Updates</button>
+          <div class="sf-message sf-message--error" id="sf-error" hidden>
+            Something went wrong. Please try again or email us at <a href="mailto:info@fatmatabarrie.com">info@fatmatabarrie.com</a>.
+          </div>
+          <button type="submit" class="signup-submit" id="sf-btn">Get Updates</button>
         </form>
+        <div class="sf-success" id="sf-success" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>You're on the list!</strong>
+            <p>Thank you for joining Team Barrie. We'll be in touch soon.</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="signup-photo">
@@ -134,9 +144,86 @@
   }
 
   .signup-submit:hover { background: var(--primary-light); }
+  .signup-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .sf-message {
+    font-size: 0.85rem;
+    border-radius: 4px;
+    padding: 0.65rem 0.75rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .sf-message--error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+  }
+
+  .sf-message--error a { color: #b91c1c; font-weight: 700; }
+
+  .sf-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    color: #166534;
+  }
+
+  .sf-success svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #16a34a;
+  }
+
+  .sf-success strong { display: block; margin-bottom: 0.2rem; font-size: 1rem; }
+  .sf-success p { margin: 0; font-size: 0.88rem; opacity: 0.85; }
 
   @media (max-width: 900px) {
     .signup-inner { grid-template-columns: 1fr; gap: 2rem; }
     .sf-row { flex-direction: column; gap: 0.5rem; }
   }
 </style>
+
+<script>
+  const form = document.getElementById('team-barrie-form');
+  const btn = document.getElementById('sf-btn');
+  const errorBox = document.getElementById('sf-error');
+  const successBox = document.getElementById('sf-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const body = {
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      email: form.email.value.trim(),
+      zip: form.zip.value.trim(),
+    };
+
+    try {
+      const res = await fetch('/.netlify/functions/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) throw new Error('Server error');
+
+      form.hidden = true;
+      successBox.hidden = false;
+    } catch {
+      errorBox.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Get Updates';
+    }
+  });
+</script>

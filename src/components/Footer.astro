@@ -50,6 +50,7 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
         <ul>
           <li><a href={donateUrl}>Donate</a></li>
           <li><a href="/volunteer">Volunteer</a></li>
+          <li><a href="/#signup" class="footer-join-link">Join Team Barrie</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -132,6 +133,13 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
   .footer-wrap .footer-col ul { display: flex; flex-direction: column; gap: 0.4rem; }
   .footer-wrap .footer-col a { color: var(--white); font-size: 0.9rem; transition: color var(--transition); }
   .footer-wrap .footer-col a:hover { color: var(--teal); }
+
+  .footer-wrap .footer-join-link {
+    color: var(--teal) !important;
+    font-weight: 700;
+  }
+
+  .footer-wrap .footer-join-link:hover { color: var(--white) !important; }
 
   .footer-wrap .vote-btn {
     display: inline-block;
