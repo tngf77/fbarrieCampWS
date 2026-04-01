@@ -6,7 +6,9 @@
     <div class="signup-left">
       <h2 class="signup-headline">Join Team<br />Barrie<span class="accent-dot">.</span></h2>
       <div class="signup-form-card">
-        <form class="signup-form" id="team-barrie-form" novalidate>
+        <form class="signup-form" id="team-barrie-form" name="team-barrie" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="team-barrie" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
           <div class="sf-row">
             <div class="sf-field">
               <label for="sf-fname">First Name</label>
@@ -202,18 +204,19 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    const body = {
+    const params = new URLSearchParams({
+      'form-name': 'team-barrie',
       first_name: form.first_name.value.trim(),
       last_name: form.last_name.value.trim(),
       email: form.email.value.trim(),
       zip: form.zip.value.trim(),
-    };
+    });
 
     try {
-      const res = await fetch('/.netlify/functions/signup', {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
       });
 
       if (!res.ok) throw new Error('Server error');
