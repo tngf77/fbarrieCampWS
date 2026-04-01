@@ -128,7 +128,8 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    flex-shrink: 0;
+    flex: 1;
+    justify-content: flex-end;
   }
 
   .nav-links {
@@ -141,11 +142,11 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
   .nav-links a {
     font-family: var(--font-primary);
     font-weight: 700;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--text);
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.7rem;
     transition: color var(--transition);
     white-space: nowrap;
   }
