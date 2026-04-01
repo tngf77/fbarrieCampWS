@@ -219,7 +219,9 @@
         body: params.toString(),
       });
 
-      if (!res.ok) throw new Error('Server error');
+      // Netlify Forms may return a redirect (303) or the page HTML (200).
+      // Only treat a true server error (5xx) as a failure.
+      if (res.status >= 500) throw new Error('Server error');
 
       form.hidden = true;
       successBox.hidden = false;
