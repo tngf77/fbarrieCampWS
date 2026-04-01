@@ -255,16 +255,18 @@ function formatDate(dateStr: string) {
 
   .event-graphic-wrap {
     border-left: 1px solid var(--light-gray);
-    height: 100%;
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--cream);
   }
 
   .event-graphic {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
   }
 
   .no-events { padding: 3rem 0; }
