@@ -148,8 +148,13 @@ const priorities = [
       <span class="ornament"></span>
       <p style="color: var(--text-light); font-size: 1.1rem; margin: 1rem auto 0.75rem; max-width: 620px;">Donate weekly to have the greatest impact in Montgomery County.</p>
       <p style="color: var(--text-light); font-size: 1rem; margin: 0 auto 2rem; max-width: 620px;">Fatmata is building a people-powered movement and needs your help to build a historic voter outreach program. With your support today, she will have the resources to win—and keep the Council out of the hands of big money developers and corporate interests.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+      <div class="donate-amounts">
+        {[5, 25, 50, 100, 150, 250, 500].map(amt => (
+          <a href={`${donateUrl}?amount=${amt}`} class="donate-amount-btn" target="_blank" rel="noopener noreferrer">${amt}</a>
+        ))}
+      </div>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href={donateUrl} class="btn btn-accent" target="_blank" rel="noopener noreferrer">Donate Now</a>
         <a href="/volunteer" class="btn btn-primary">Volunteer</a>
       </div>
     </div>
@@ -269,6 +274,35 @@ const priorities = [
 
   .platform-cta {
     border-top: 3px solid var(--gold);
+  }
+
+  .donate-amounts {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto 0.5rem;
+  }
+
+  .donate-amount-btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--gold);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    min-width: 4rem;
+    text-align: center;
+  }
+
+  .donate-amount-btn:hover {
+    background: var(--gold);
+    color: #fff;
   }
 
   @media (max-width: 900px) {
