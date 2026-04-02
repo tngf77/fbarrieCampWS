@@ -175,9 +175,15 @@ import { donateUrl } from '../data/navigation';
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="check-email">Email Address</label>
-              <input type="email" id="check-email" name="email" placeholder="So we can confirm receipt" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="check-email">Email Address</label>
+                <input type="email" id="check-email" name="email" placeholder="So we can confirm receipt" />
+              </div>
+              <div class="form-group">
+                <label for="check-phone">Phone Number</label>
+                <input type="tel" id="check-phone" name="phone" placeholder="e.g. 301-555-1234" />
+              </div>
             </div>
 
             <div class="form-row">
@@ -463,6 +469,7 @@ import { donateUrl } from '../data/navigation';
 
   .check-form input[type="text"],
   .check-form input[type="email"],
+  .check-form input[type="tel"],
   .check-form input[type="number"] {
     padding: 0.6rem 0.8rem;
     border: 1px solid #ccc;
