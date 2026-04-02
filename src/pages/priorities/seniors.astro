@@ -1,0 +1,223 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Seniors & Aging with Dignity | Fatmata Barrie" description="Fatmata Barrie's platform on supporting Montgomery County seniors — housing stability, healthcare, transportation, and protecting Social Security and Medicare.">
+
+  <HeroSection title="Seniors & Aging with Dignity" subtitle="Montgomery County's seniors built this community. Fatmata will fight to make sure they can stay, thrive, and age with dignity." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          Seniors are the backbone of Montgomery County — they built our neighborhoods, raised families here, paid taxes for decades, and made this community what it is. Yet too many are being pushed out by rising costs, left behind by transit systems that don't meet their needs, and struggling to navigate healthcare as federal protections come under attack. Fatmata will be their champion on the County Council.
+        </p>
+
+        <div class="priority-section">
+          <h2>Housing Stability and Aging in Place</h2>
+          <p>Seniors who have spent their lives in Montgomery County shouldn't be forced out in retirement because their costs outpace their income. Rising property taxes, skyrocketing rents, and the lack of accessible housing options are pushing longtime residents out of the communities they helped build.</p>
+          <p>Fatmata will champion property tax relief programs for seniors and people with disabilities, fight to protect tenants facing unjust evictions, and push for stronger renter protections that give older residents stability and dignity. She will also work to expand options for accessible, affordable housing so seniors can age in place — in their own homes and neighborhoods — rather than being forced into care facilities before they're ready.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Protect Social Security, Medicare, and Federal Benefits</h2>
+          <p>Cuts to Social Security, Medicare, and federal programs like Medicaid don't just happen in Washington — they land here in Montgomery County, in the lives of real people. Seniors on fixed incomes who depend on these programs have no margin for error when benefits are cut or delayed.</p>
+          <p>Fatmata will use the County Council platform to loudly oppose any federal cuts to these essential programs, coordinate local response and support services when federal benefits are disrupted, and ensure that Montgomery County seniors know what resources are available to them. No senior should fall through the cracks because Washington failed them.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Healthcare Access for Older Adults</h2>
+          <p>Seniors often face unique barriers to healthcare — from provider shortages and long waits, to transportation challenges that make getting to appointments difficult, to systems that aren't equipped to serve patients with complex, overlapping conditions. Language barriers compound these challenges for seniors in Montgomery County's diverse communities.</p>
+          <p>Fatmata will push to expand funding for community health clinics that serve older adults, improve care coordination for seniors with complex needs, and strengthen county programs that bring healthcare and wellness services directly into senior communities. She will also fight to ensure culturally and linguistically competent care is available to every senior regardless of background.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Transportation for Seniors Who Don't Drive</h2>
+          <p>For many seniors, the ability to get to a doctor's appointment, grocery store, or senior center is the difference between independence and isolation. Yet Montgomery County's transit system too often fails residents who can't drive — with infrequent service, inaccessible stops, and coverage gaps in the communities that need it most.</p>
+          <p>Fatmata will fight to expand RideOn paratransit and senior shuttle services, increase frequency and coverage of accessible routes, and invest in transit options that allow older adults to maintain independence and stay connected to the community. Getting around should not be a privilege.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Senior Centers, Programs, and Combating Isolation</h2>
+          <p>Social isolation is one of the greatest threats to senior health — associated with cognitive decline, depression, and increased mortality. Montgomery County's senior centers and programs are a critical lifeline, yet they are chronically underfunded relative to need.</p>
+          <p>Fatmata will advocate for robust investment in senior centers and county aging services, support programs that connect seniors with volunteers and community resources, and work to ensure that every senior in Montgomery County — regardless of zip code — has access to meaningful programming, social connection, and the support they need to thrive.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>Seniors vote — and they vote in every election because they understand what's at stake. But beyond politics, how a community treats its elders reflects its values. Montgomery County should be a place where the people who built it can afford to stay, can access the care they need, and can age with dignity and respect. Fatmata will make sure it is.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>If you or a loved one is a Montgomery County senior navigating housing, healthcare, or transportation challenges — Fatmata wants to hear from you. This fight is personal, and your voice will shape her agenda on the Council.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Champion property tax relief and aging-in-place housing options</li>
+            <li>Defend Social Security, Medicare, and federal senior benefits</li>
+            <li>Expand healthcare access and care coordination for older adults</li>
+            <li>Improve transit and paratransit for seniors who don't drive</li>
+            <li>Invest in senior centers and programs that combat isolation</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/education">Education</a></li>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    border-left: 4px solid var(--gold);
+    padding-left: 1.25rem;
+  }
+
+  .priority-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section h2 {
+    font-size: 1.35rem;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .priority-section p {
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+
+  .priority-closing {
+    background: var(--mint);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-top: 1rem;
+  }
+
+  .priority-closing p {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .priority-cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .priority-sidebar {
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul {
+    list-style: disc;
+    padding-left: 1.1rem;
+  }
+
+  .sidebar-card li {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+  }
+
+  .sidebar-nav li { list-style: none; padding-left: 0; }
+  .sidebar-nav ul { padding-left: 0; }
+  .sidebar-nav a {
+    color: var(--primary);
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .sidebar-nav a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+  }
+</style>
