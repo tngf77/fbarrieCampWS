@@ -84,7 +84,7 @@ function formatDate(dateStr: string) {
 
                   <div class="event-actions">
                     <a href={event.rsvpUrl} target="_blank" rel="noopener" class="btn btn-accent">RSVP / Donate Online</a>
-                    <a href={donateUrl} class="btn btn-primary">Donate to the Campaign</a>
+                    <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Donate to the Campaign</a>
                   </div>
                 </div>
 
@@ -109,7 +109,7 @@ function formatDate(dateStr: string) {
       <span class="ornament"></span>
       <p style="color: var(--text-light); font-size: 1.05rem; margin: 1rem auto 2rem; max-width: 500px;">Donate, volunteer, or spread the word — every action moves Montgomery County forward.</p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+        <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">Donate Now</a>
         <a href="/volunteer" class="btn btn-primary">Get Involved</a>
       </div>
     </div>
