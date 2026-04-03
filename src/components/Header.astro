@@ -360,6 +360,24 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
     }
   });
 
+  // Aggressively suppress Google banner after any translation
+  function suppressGoogleBanner() {
+    const banner = document.querySelector('.goog-te-banner-frame') as HTMLElement;
+    if (banner) banner.style.display = 'none';
+    const balloon = document.querySelector('.goog-te-balloon-frame') as HTMLElement;
+    if (balloon) balloon.style.display = 'none';
+    document.body.style.top = '0';
+    document.body.style.position = 'static';
+    // Remove the inline style Google injects on <body>
+    if (document.body.getAttribute('style')?.includes('top:')) {
+      document.body.style.removeProperty('top');
+    }
+  }
+
+  // Watch for Google injecting its banner and immediately remove it
+  const observer = new MutationObserver(() => suppressGoogleBanner());
+  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+
   // Language selection — triggers Google Translate
   document.querySelectorAll('.lang-option').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -376,27 +394,20 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
       langDropdown!.hidden = true;
       langBtn?.setAttribute('aria-expanded', 'false');
 
-      // Trigger Google Translate
       if (lang === 'en') {
-        // Reset to English
-        const frame = document.querySelector('.goog-te-menu-frame') as HTMLIFrameElement;
-        if (frame) {
-          const restore = frame.contentDocument?.querySelector('a') as HTMLElement;
-          restore?.click();
-        }
-        // fallback: reload
-        const cookie = document.cookie.match(/googtrans=([^;]+)/);
-        if (cookie) {
-          document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-          window.location.reload();
-        }
+        // Reset to English — clear cookie and reload
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+        if (langLabel) langLabel.textContent = 'EN';
+        window.location.reload();
       } else {
         const select = document.querySelector('#google_translate_element select') as HTMLSelectElement;
         if (select) {
           select.value = lang;
           select.dispatchEvent(new Event('change'));
+          setTimeout(suppressGoogleBanner, 300);
+          setTimeout(suppressGoogleBanner, 800);
         } else {
-          // Google Translate not ready yet — set cookie and reload
           document.cookie = `googtrans=/en/${lang}; path=/`;
           window.location.reload();
         }
