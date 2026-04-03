@@ -360,23 +360,16 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
     }
   });
 
-  // Aggressively suppress Google banner after any translation
+  // Suppress Google banner — only hide elements, never touch body style (CSS handles that)
   function suppressGoogleBanner() {
-    const banner = document.querySelector('.goog-te-banner-frame') as HTMLElement;
-    if (banner) banner.style.display = 'none';
-    const balloon = document.querySelector('.goog-te-balloon-frame') as HTMLElement;
-    if (balloon) balloon.style.display = 'none';
-    document.body.style.top = '0';
-    document.body.style.position = 'static';
-    // Remove the inline style Google injects on <body>
-    if (document.body.getAttribute('style')?.includes('top:')) {
-      document.body.style.removeProperty('top');
-    }
+    document.querySelectorAll<HTMLElement>(
+      '.goog-te-banner-frame, .goog-te-balloon-frame, .goog-te-ftab-frame, .skiptranslate'
+    ).forEach(el => el.style.display = 'none');
   }
 
-  // Watch for Google injecting its banner and immediately remove it
-  const observer = new MutationObserver(() => suppressGoogleBanner());
-  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+  // Watch only for new nodes being added — no attribute watching (prevents infinite loop)
+  const observer = new MutationObserver(suppressGoogleBanner);
+  observer.observe(document.body, { childList: true, subtree: true });
 
   // Language selection — triggers Google Translate
   document.querySelectorAll('.lang-option').forEach((btn) => {

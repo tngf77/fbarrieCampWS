@@ -52,9 +52,9 @@
 #goog-gt-tt,
 .goog-tooltip,
 .goog-tooltip:hover,
-.goog-te-menu-value:hover { display: none !important; }
-body { top: 0 !important; position: static !important; }
+.goog-te-menu-value:hover,
 .skiptranslate { display: none !important; }
+body { top: 0 !important; }
 
 html {
   scroll-behavior: smooth;
