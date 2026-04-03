@@ -20,10 +20,26 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
       </a>
       </div>
-      <div class="translate-wrap">
-        <span class="translate-icon">&#127760;</span>
-        <div id="google_translate_element"></div>
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false">
+          <span>&#127760;</span>
+          <span class="lang-label" id="lang-label">EN</span>
+          <span class="lang-chevron">&#8964;</span>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown" hidden>
+          <button class="lang-option" data-lang="en">English</button>
+          <button class="lang-option" data-lang="es">Español</button>
+          <button class="lang-option" data-lang="fr">Français</button>
+          <button class="lang-option" data-lang="am">አማርኛ</button>
+          <button class="lang-option" data-lang="zh-CN">中文</button>
+          <button class="lang-option" data-lang="vi">Tiếng Việt</button>
+          <button class="lang-option" data-lang="ko">한국어</button>
+          <button class="lang-option" data-lang="pt">Português</button>
+          <button class="lang-option" data-lang="ar">العربية</button>
+        </div>
       </div>
+      <!-- Hidden Google Translate element -->
+      <div id="google_translate_element" style="display:none"></div>
     </div>
   </div>
   <nav class="nav container flex-between">
@@ -104,41 +120,68 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
     margin-left: auto;
   }
 
-  .translate-wrap {
+  /* Language Switcher */
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-btn {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
-    border-left: 1px solid rgba(255,255,255,0.3);
-    padding-left: 0.75rem;
-  }
-
-  .translate-icon {
-    font-size: 0.85rem;
-    line-height: 1;
-    opacity: 0.85;
-  }
-
-  /* Hide Google branding, keep only the language select */
-  #google_translate_element .goog-te-gadget { font-size: 0 !important; }
-  #google_translate_element .goog-te-gadget > span { display: none !important; }
-  #google_translate_element .goog-te-gadget img { display: none !important; }
-
-  #google_translate_element select {
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.4);
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.45);
-    border-radius: 3px;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-family: var(--font-primary);
-    padding: 2px 4px;
+    font-weight: 600;
     cursor: pointer;
-    outline: none;
-    max-width: 90px;
-    -webkit-appearance: none;
-    appearance: none;
+    transition: background 0.2s;
+    line-height: 1;
+    height: 24px;
   }
 
-  #google_translate_element select option { color: #333; background: white; }
+  .lang-btn:hover { background: rgba(255,255,255,0.15); }
+
+  .lang-chevron {
+    font-size: 0.65rem;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .lang-btn[aria-expanded="true"] .lang-chevron { transform: rotate(180deg); }
+
+  .lang-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    padding: 0.4rem;
+    min-width: 160px;
+    z-index: 200;
+  }
+
+  .lang-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+    font-family: var(--font-primary);
+    color: var(--text);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .lang-option:hover { background: var(--light-gray); }
+  .lang-option.active { font-weight: 700; color: var(--primary); }
 
   .goog-te-banner-frame { display: none !important; }
   .goog-te-balloon-frame { display: none !important; }
@@ -277,30 +320,95 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
 </style>
 
 <script>
+  // Hamburger menu
   const hamburger = document.querySelector('.hamburger');
   const navRight = document.querySelector('.nav-right');
-
   hamburger?.addEventListener('click', () => {
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', String(!expanded));
     navRight?.classList.toggle('open');
   });
 
+  // Scroll shadow
   const header = document.querySelector('.header');
   window.addEventListener('scroll', () => {
     header?.classList.toggle('scrolled', window.scrollY > 0);
   }, { passive: true });
+
+  // Language switcher
+  const langBtn = document.getElementById('lang-btn');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const langLabel = document.getElementById('lang-label');
+  const langSwitcher = document.getElementById('lang-switcher');
+
+  const langLabels: Record<string, string> = {
+    en: 'EN', es: 'ES', fr: 'FR', am: 'AM',
+    'zh-CN': 'ZH', vi: 'VI', ko: 'KO', pt: 'PT', ar: 'AR',
+  };
+
+  langBtn?.addEventListener('click', () => {
+    const isOpen = !langDropdown?.hidden;
+    langDropdown!.hidden = isOpen;
+    langBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close on outside click
+  document.addEventListener('mousedown', (e) => {
+    if (!langSwitcher?.contains(e.target as Node)) {
+      langDropdown!.hidden = true;
+      langBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Language selection — triggers Google Translate
+  document.querySelectorAll('.lang-option').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = (btn as HTMLElement).dataset.lang || 'en';
+
+      // Update button label
+      if (langLabel) langLabel.textContent = langLabels[lang] || 'EN';
+
+      // Mark active
+      document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Close dropdown
+      langDropdown!.hidden = true;
+      langBtn?.setAttribute('aria-expanded', 'false');
+
+      // Trigger Google Translate
+      if (lang === 'en') {
+        // Reset to English
+        const frame = document.querySelector('.goog-te-menu-frame') as HTMLIFrameElement;
+        if (frame) {
+          const restore = frame.contentDocument?.querySelector('a') as HTMLElement;
+          restore?.click();
+        }
+        // fallback: reload
+        const cookie = document.cookie.match(/googtrans=([^;]+)/);
+        if (cookie) {
+          document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          window.location.reload();
+        }
+      } else {
+        const select = document.querySelector('#google_translate_element select') as HTMLSelectElement;
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event('change'));
+        } else {
+          // Google Translate not ready yet — set cookie and reload
+          document.cookie = `googtrans=/en/${lang}; path=/`;
+          window.location.reload();
+        }
+      }
+    });
+  });
 </script>
 
 <script is:inline>
   function googleTranslateElementInit() {
     new google.translate.TranslateElement(
-      {
-        pageLanguage: 'en',
-        includedLanguages: 'es,fr,am,zh-CN,vi,ko,pt,ar,ru,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false,
-      },
+      { pageLanguage: 'en', includedLanguages: 'es,fr,am,zh-CN,vi,ko,pt,ar', autoDisplay: false },
       'google_translate_element'
     );
   }
