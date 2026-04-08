@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://barrie.netlify.app',
+  site: 'https://fatmatabarrie.com',
   output: 'static',
   trailingSlash: 'never',
   integrations: [
