@@ -363,6 +363,23 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
     }
   });
 
+  // On page load, sync button label with active googtrans cookie
+  function getGoogtransCookie() {
+    const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+  const activeCookie = getGoogtransCookie();
+  if (activeCookie) {
+    const parts = activeCookie.split('/');
+    const activeLang = parts[parts.length - 1];
+    if (activeLang && activeLang !== 'en' && langLabel) {
+      langLabel.textContent = langLabels[activeLang] || activeLang.toUpperCase();
+      document.querySelectorAll('.lang-option').forEach((btn) => {
+        if ((btn as HTMLElement).dataset.lang === activeLang) btn.classList.add('active');
+      });
+    }
+  }
+
   // Suppress Google banner — only hide elements, never touch body style (CSS handles that)
   function suppressGoogleBanner() {
     document.querySelectorAll<HTMLElement>(
