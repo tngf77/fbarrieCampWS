@@ -1,14 +1,14 @@
-/* === CSS Custom Properties — Barrie Brand (Design B: Blue/Red) === */
+/* === CSS Custom Properties — Barrie Brand (Red/Blue) === */
 :root {
-  --primary: #28398f;
-  --primary-light: #3a4fad;
-  --primary-dark: #1e2b72;
-  --accent: #f05123;
-  --accent-bright: #e8461e;
-  --teal: #627af5;
+  --primary: #0832A0;
+  --primary-light: #1A45B8;
+  --primary-dark: #062080;
+  --accent: #E41C23;
+  --accent-bright: #C41520;
+  --teal: #4A6CD4;
   --mint: #e8ecff;
-  --gold: #f05123;
-  --gold-dark: #d93e18;
+  --gold: #E41C23;
+  --gold-dark: #C41520;
   --white: #ffffff;
   --cream: #faf0ed;
   --cream-dark: #f0e4df;
