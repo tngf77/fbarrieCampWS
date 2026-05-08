@@ -49,9 +49,24 @@ const organizations = [
 
 const electedOfficials = [
   {
+    name: 'Will Jawando',
+    title: 'Montgomery County Councilmember At-Large',
+    photo: '',
+  },
+  {
     name: 'Delegate Pam Queen',
     title: 'Maryland House of Delegates, District 14',
     photo: '/images/endorsements/pam-queen.png',
+  },
+  {
+    name: 'Delegate Bernice Mireku-North',
+    title: 'Maryland House of Delegates, District 14',
+    photo: '',
+  },
+  {
+    name: 'Lisa Henderson',
+    title: 'Gaithersburg City Councilmember',
+    photo: '',
   },
   {
     name: 'Kristin Mink',
@@ -107,7 +122,11 @@ const electedOfficials = [
         {electedOfficials.map((official) => (
           <div class="official-card">
             <div class="official-photo-wrap">
-              <img src={official.photo} alt={official.name} class="official-photo" />
+              {official.photo ? (
+                <img src={official.photo} alt={official.name} class="official-photo" />
+              ) : (
+                <div class="official-initials">{official.name.split(' ').filter((_,i,a) => i === 0 || i === a.length - 1).map(n => n[0]).join('')}</div>
+              )}
             </div>
             <h3>{official.name}</h3>
             <p>{official.title}</p>
@@ -214,6 +233,20 @@ const electedOfficials = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .official-initials {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
   .official-card h3 {
