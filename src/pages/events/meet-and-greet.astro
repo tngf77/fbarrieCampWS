@@ -1,16 +1,17 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { donateUrl } from '../../data/navigation';
 ---
 
 <PageLayout
-  title="Meet & Greet with Fatmata Barrie | June 3, 2026"
-  description="Join Fatmata Barrie for an intimate meet and greet on Tuesday, June 3 in Germantown. Register to receive the address."
+  title="Register: Disability Services Meet & Greet | Fatmata Barrie"
+  description="Join Fatmata Barrie for a Disability Services Meet and Greet on June 3, 2026, hosted by Lisette Engel in Germantown, MD. Register to receive the address."
 >
 
   <section class="event-hero">
     <div class="container event-hero-inner">
       <p class="event-label">You're Invited</p>
-      <h1>Meet &amp; Greet<br>with Fatmata Barrie</h1>
+      <h1>Disability Services<br />Meet &amp; Greet</h1>
       <div class="event-meta">
         <span>Tuesday, June 3, 2026</span>
         <span class="sep">·</span>
@@ -18,7 +19,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <span class="sep">·</span>
         <span>Germantown, MD</span>
       </div>
-      <p class="event-tagline">Register below to receive the address and join us for an intimate evening with Fatmata.</p>
+      <p class="event-tagline">Hosted by Lisette Engel. Register below to receive the address and join us for an evening with Fatmata.</p>
     </div>
   </section>
 
@@ -28,9 +29,19 @@ import PageLayout from '../../layouts/PageLayout.astro';
       <div class="form-col">
         <div class="form-card" id="form-wrap">
           <h2>Reserve Your Spot</h2>
-          <p class="form-sub">Space is limited. RSVP to confirm your attendance and receive the address by email.</p>
+          <p class="form-sub">Space is limited. RSVP to confirm your attendance — the address will be sent to your email.</p>
 
-          <form id="rsvp-form" novalidate>
+          <form
+            id="rsvp-form"
+            name="disability-meet-greet"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            novalidate
+          >
+            <input type="hidden" name="form-name" value="disability-meet-greet" />
+            <div class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></div>
+
             <div class="field-row">
               <div class="field">
                 <label for="firstName">First Name <span class="req">*</span></label>
@@ -41,10 +52,12 @@ import PageLayout from '../../layouts/PageLayout.astro';
                 <input type="text" id="lastName" name="lastName" required autocomplete="family-name" />
               </div>
             </div>
+
             <div class="field">
               <label for="email">Email Address <span class="req">*</span></label>
               <input type="email" id="email" name="email" required autocomplete="email" />
             </div>
+
             <div class="field">
               <label for="phone">Phone Number <span class="opt">(optional)</span></label>
               <input type="tel" id="phone" name="phone" autocomplete="tel" />
@@ -57,16 +70,18 @@ import PageLayout from '../../layouts/PageLayout.astro';
             </button>
           </form>
 
-          <!-- Success state -->
           <div id="success-wrap" class="success-wrap" hidden>
-            <div class="success-icon">✓</div>
+            <div class="success-icon">&#10003;</div>
             <h2>You're registered!</h2>
-            <p>Check your inbox — we've sent the event details and address to your email.</p>
+            <p>Check your inbox — the event address is on its way to you.</p>
+            <div class="success-recap">
+              <strong>Disability Services Meet &amp; Greet</strong><br />
+              Tuesday, June 3, 2026 &nbsp;·&nbsp; 5:30 PM – 7:00 PM<br />
+              Hosted by Lisette Engel &nbsp;·&nbsp; Germantown, MD
+            </div>
             <div class="success-donate">
-              <p><strong>One more thing:</strong> help Fatmata win in November.</p>
-              <a href="https://donorbox.org/fatmata-barrie-four-montgomery-county-disability"
-                 target="_blank" rel="noopener noreferrer"
-                 class="btn btn-accent">
+              <p><strong>Want to support the campaign?</strong> Every contribution helps Fatmata fight for every Montgomery County resident.</p>
+              <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">
                 Make a Donation
               </a>
             </div>
@@ -87,8 +102,12 @@ import PageLayout from '../../layouts/PageLayout.astro';
               <span>5:30 PM – 7:00 PM</span>
             </li>
             <li>
+              <span class="detail-label">Host</span>
+              <span>Lisette Engel</span>
+            </li>
+            <li>
               <span class="detail-label">Location</span>
-              <span>Germantown, MD<br><em>(address sent by email upon registration)</em></span>
+              <span>Germantown, MD<br /><em>(address sent by email after registration)</em></span>
             </li>
           </ul>
         </div>
@@ -96,9 +115,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
         <div class="sidebar-card donate-card">
           <h3>Support the Campaign</h3>
           <p>Can't make it but want to show your support? A donation of any size makes a real difference.</p>
-          <a href="https://donorbox.org/fatmata-barrie-four-montgomery-county-disability"
-             target="_blank" rel="noopener noreferrer"
-             class="btn btn-accent donate-btn">
+          <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent donate-btn">
             Donate Now
           </a>
         </div>
@@ -110,53 +127,53 @@ import PageLayout from '../../layouts/PageLayout.astro';
 </PageLayout>
 
 <script>
-  const form = document.getElementById('rsvp-form') as HTMLFormElement;
-  const formWrap = document.getElementById('form-wrap');
-  const successWrap = document.getElementById('success-wrap');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const form = document.getElementById('rsvp-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
   const errorEl = document.getElementById('form-error');
+  const successWrap = document.getElementById('success-wrap');
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (errorEl) errorEl.textContent = '';
 
-    const firstName = (document.getElementById('firstName') as HTMLInputElement).value.trim();
-    const lastName = (document.getElementById('lastName') as HTMLInputElement).value.trim();
-    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
-    const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+    const firstName = (document.getElementById('firstName') as HTMLInputElement)?.value.trim();
+    const lastName = (document.getElementById('lastName') as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
 
     if (!firstName || !lastName || !email) {
       if (errorEl) errorEl.textContent = 'Please fill in all required fields.';
       return;
     }
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Registering…';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Registering…';
+    }
 
     try {
-      const res = await fetch('/.netlify/functions/register-event', {
+      const data = new FormData(form);
+      await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, phone }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString(),
       });
 
-      if (res.ok) {
-        form.hidden = true;
-        if (successWrap) successWrap.hidden = false;
-        // scroll to top of card
-        formWrap?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        throw new Error('Server error');
-      }
+      form.hidden = true;
+      if (successWrap) successWrap.hidden = false;
+      document.getElementById('form-wrap')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch {
-      if (errorEl) errorEl.textContent = 'Something went wrong. Please try again or email us directly.';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Register for the Event';
+      if (errorEl) errorEl.textContent = 'Something went wrong. Please try again.';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register for the Event';
+      }
     }
   });
 </script>
 
 <style>
+  .hidden-field { display: none; }
+
   .event-hero {
     background: var(--primary);
     padding: 4rem 0 3.5rem;
@@ -254,18 +271,12 @@ import PageLayout from '../../layouts/PageLayout.astro';
     box-shadow: 0 0 0 3px rgba(8,50,160,0.1);
   }
 
-  .form-error {
-    color: var(--accent);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    min-height: 1.2em;
-  }
+  .form-error { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; min-height: 1.2em; }
 
   .submit-btn { width: 100%; justify-content: center; font-size: 1rem; padding: 0.85rem; }
   .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-  /* Success state */
-  .success-wrap { text-align: center; padding: 1rem 0; }
+  .success-wrap { text-align: center; padding: 0.5rem 0; }
 
   .success-icon {
     width: 56px;
@@ -281,7 +292,17 @@ import PageLayout from '../../layouts/PageLayout.astro';
   }
 
   .success-wrap h2 { color: var(--primary); margin-bottom: 0.5rem; }
-  .success-wrap > p { color: var(--text-light); line-height: 1.7; margin-bottom: 2rem; }
+  .success-wrap > p { color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .success-recap {
+    background: var(--bg);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
 
   .success-donate {
     background: var(--cream);
@@ -290,9 +311,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
     border-left: 4px solid var(--accent);
   }
 
-  .success-donate p { margin-bottom: 1rem; color: var(--text); }
+  .success-donate p { margin-bottom: 1rem; color: var(--text); font-size: 0.95rem; }
 
-  /* Sidebar */
   .event-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
 
   .sidebar-card {
@@ -315,7 +335,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
   .event-details-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
 
-  .event-details-list li { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.9rem; }
+  .event-details-list li { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.9rem; color: var(--text); }
 
   .detail-label {
     font-family: var(--font-primary);
