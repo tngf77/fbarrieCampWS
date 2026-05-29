@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { donateUrl } from '../../data/navigation';
+const eventDonateUrl = 'https://donorbox.org/fatmata-barrie-four-montgomery-county-disability';
 ---
 
 <PageLayout
@@ -81,7 +81,7 @@ import { donateUrl } from '../../data/navigation';
             </div>
             <div class="success-donate">
               <p><strong>Want to support the campaign?</strong> Every contribution helps Fatmata fight for every Montgomery County resident.</p>
-              <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+              <a href={eventDonateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">
                 Make a Donation
               </a>
             </div>
@@ -115,7 +115,7 @@ import { donateUrl } from '../../data/navigation';
         <div class="sidebar-card donate-card">
           <h3>Support the Campaign</h3>
           <p>Can't make it but want to show your support? A donation of any size makes a real difference.</p>
-          <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent donate-btn">
+          <a href={eventDonateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent donate-btn">
             Donate Now
           </a>
         </div>
