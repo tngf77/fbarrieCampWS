@@ -4,7 +4,26 @@ import HeroSection from '../components/HeroSection.astro';
 import SignupForm from '../components/SignupForm.astro';
 import { donateUrl } from '../data/navigation';
 
-const events = [
+const upcomingEvents = [
+  {
+    id: 'disability-meet-greet-jun-2026',
+    type: 'Meet & Greet',
+    title: 'Disability Services Meet & Greet',
+    date: '2026-06-03',
+    timeStart: '5:30 PM',
+    timeEnd: '7:00 PM',
+    location: 'Germantown, MD',
+    locationNote: 'Address provided upon registration',
+    description: 'Join Fatmata Barrie for an intimate meet and greet focused on disability services in Montgomery County. Come connect with Fatmata, share your story, and help shape her agenda on the County Council.',
+    hosts: ['Lisette Engel'],
+    rsvpUrl: '/events/meet-and-greet',
+    rsvpLabel: 'Register for the Event',
+    contactEmail: 'events@fatmatabarrie.com',
+    graphic: null,
+  },
+];
+
+const pastEvents = [
   {
     id: 'fundraiser-apr-2026',
     type: 'Fundraiser',
@@ -13,11 +32,7 @@ const events = [
     timeStart: '4:00 PM',
     timeEnd: '6:00 PM',
     location: 'Germantown, MD',
-    locationNote: 'Address provided upon registration',
-    description: 'Join us for a fundraiser in support of Fatmata Barrie\'s campaign for Montgomery County Council At-Large. Come meet Fatmata, connect with neighbors, and help power a campaign that\'s funded entirely by people — not corporations or PACs.',
     hosts: ['Comfort Yirenkyi', 'Amy Bisle', 'Mumin Barre', 'Guy Djoken', 'Torian Richardson'],
-    rsvpUrl: 'https://donorbox.org/april11',
-    contactEmail: 'events@fatmatabarrie.com',
     graphic: '/images/Dono Fundraiser New Graphic.jpeg',
   },
 ];
@@ -32,24 +47,26 @@ function formatDate(dateStr: string) {
 
   <HeroSection title="Events" subtitle="Come meet Fatmata and get involved in person." />
 
+  <!-- UPCOMING EVENTS -->
   <section class="section">
     <div class="container">
+      <div class="section-header">
+        <p class="section-label">Upcoming</p>
+        <h2>Events</h2>
+        <span class="ornament"></span>
+      </div>
 
-      {events.length === 0 ? (
+      {upcomingEvents.length === 0 ? (
         <div class="no-events text-center">
-          <p class="section-label">Coming Soon</p>
-          <h2>No upcoming events right now.</h2>
-          <span class="ornament"></span>
           <p style="color: var(--text-light); margin: 1rem auto 2rem; max-width: 480px;">Check back soon — events will be posted here as they're scheduled. Sign up below to be the first to know.</p>
         </div>
       ) : (
         <div class="events-list">
-          {events.map(event => (
+          {upcomingEvents.map(event => (
             <div class="event-card" id={event.id}>
-
               <div class="event-main">
                 <div class="event-info">
-                  <span class={`event-badge badge-${event.type.toLowerCase()}`}>{event.type}</span>
+                  <span class={`event-badge badge-${event.type.toLowerCase().replace(' ', '-')}`}>{event.type}</span>
                   <h2 class="event-title">{event.title}</h2>
 
                   <div class="event-meta">
@@ -65,17 +82,19 @@ function formatDate(dateStr: string) {
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                       <span>{event.location} <span class="location-note">— {event.locationNote}</span></span>
                     </div>
-                    <div class="meta-row">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                      <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>
-                    </div>
+                    {event.contactEmail && (
+                      <div class="meta-row">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>
+                      </div>
+                    )}
                   </div>
 
                   <p class="event-description">{event.description}</p>
 
                   {event.hosts && event.hosts.length > 0 && (
                     <div class="event-hosts">
-                      <p class="hosts-label">Host Committee</p>
+                      <p class="hosts-label">{event.hosts.length === 1 ? 'Host' : 'Host Committee'}</p>
                       <ul>
                         {event.hosts.map(host => <li>{host}</li>)}
                       </ul>
@@ -83,21 +102,60 @@ function formatDate(dateStr: string) {
                   )}
 
                   <div class="event-actions">
-                    <a href={event.rsvpUrl} target="_blank" rel="noopener" class="btn btn-accent">RSVP / Donate Online</a>
+                    <a href={event.rsvpUrl} class="btn btn-accent">{event.rsvpLabel || 'RSVP'}</a>
                     <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Donate to the Campaign</a>
                   </div>
                 </div>
 
-                <div class="event-graphic-wrap">
-                  <img src={event.graphic} alt={`Event graphic: ${event.title}`} class="event-graphic" />
-                </div>
+                {event.graphic && (
+                  <div class="event-graphic-wrap">
+                    <img src={event.graphic} alt={`Event graphic: ${event.title}`} class="event-graphic" />
+                  </div>
+                )}
               </div>
-
             </div>
           ))}
         </div>
       )}
+    </div>
+  </section>
 
+  <!-- PAST EVENTS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Past Events</p>
+        <h2>Thank You for Showing Up</h2>
+        <span class="ornament"></span>
+      </div>
+
+      <div class="past-events-list">
+        {pastEvents.map(event => (
+          <div class="past-event-card" id={event.id}>
+            {event.graphic && (
+              <div class="past-event-graphic-wrap">
+                <img src={event.graphic} alt={`Event graphic: ${event.title}`} class="past-event-graphic" />
+              </div>
+            )}
+            <div class="past-event-info">
+              <span class={`event-badge badge-${event.type.toLowerCase()}`}>{event.type}</span>
+              <h3 class="past-event-title">{event.title}</h3>
+              <div class="past-event-meta">
+                <span>{formatDate(event.date)}</span>
+                <span class="sep">·</span>
+                <span>{event.timeStart} – {event.timeEnd}</span>
+                <span class="sep">·</span>
+                <span>{event.location}</span>
+              </div>
+              {event.hosts && event.hosts.length > 0 && (
+                <p class="past-event-hosts">
+                  <span class="hosts-label">{event.hosts.length === 1 ? 'Host' : 'Host Committee'}:</span> {event.hosts.join(', ')}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -269,17 +327,88 @@ function formatDate(dateStr: string) {
     box-shadow: var(--shadow-sm);
   }
 
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .section-header h2 { margin-bottom: 0.5rem; }
+
+  .badge-meet-\&-greet, .badge-meet---greet {
+    background: rgba(8,50,160,0.1);
+    color: var(--primary);
+  }
+
+  /* Past events */
+  .past-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .past-event-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    opacity: 0.8;
+  }
+
+  .past-event-graphic-wrap {
+    width: 180px;
+    flex-shrink: 0;
+    align-self: stretch;
+    overflow: hidden;
+  }
+
+  .past-event-graphic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+  }
+
+  .past-event-info {
+    padding: 1.5rem 2rem;
+  }
+
+  .past-event-title {
+    font-size: 1.15rem;
+    color: var(--text);
+    margin: 0.4rem 0 0.6rem;
+  }
+
+  .past-event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .past-event-meta .sep { color: var(--light-gray); }
+
+  .past-event-hosts {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin: 0;
+  }
+
   .no-events { padding: 3rem 0; }
 
   @media (max-width: 900px) {
     .event-main { grid-template-columns: 1fr; }
     .event-graphic-wrap { border-left: none; border-top: 1px solid var(--light-gray); max-height: 420px; }
     .event-graphic { object-position: top; }
+    .past-event-graphic-wrap { width: 120px; }
   }
 
   @media (max-width: 600px) {
     .event-info { padding: 1.5rem; }
     .event-actions { flex-direction: column; }
     .event-actions .btn { text-align: center; }
+    .past-event-card { flex-direction: column; }
+    .past-event-graphic-wrap { width: 100%; height: 160px; }
+    .past-event-info { padding: 1.25rem; }
   }
 </style>
