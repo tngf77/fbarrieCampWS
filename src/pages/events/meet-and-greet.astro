@@ -1,0 +1,341 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Meet & Greet with Fatmata Barrie | June 3, 2026"
+  description="Join Fatmata Barrie for an intimate meet and greet on Tuesday, June 3 in Germantown. Register to receive the address."
+>
+
+  <section class="event-hero">
+    <div class="container event-hero-inner">
+      <p class="event-label">You're Invited</p>
+      <h1>Meet &amp; Greet<br>with Fatmata Barrie</h1>
+      <div class="event-meta">
+        <span>Tuesday, June 3, 2026</span>
+        <span class="sep">·</span>
+        <span>5:30 PM – 7:00 PM</span>
+        <span class="sep">·</span>
+        <span>Germantown, MD</span>
+      </div>
+      <p class="event-tagline">Register below to receive the address and join us for an intimate evening with Fatmata.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container event-layout">
+
+      <div class="form-col">
+        <div class="form-card" id="form-wrap">
+          <h2>Reserve Your Spot</h2>
+          <p class="form-sub">Space is limited. RSVP to confirm your attendance and receive the address by email.</p>
+
+          <form id="rsvp-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="firstName">First Name <span class="req">*</span></label>
+                <input type="text" id="firstName" name="firstName" required autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <label for="lastName">Last Name <span class="req">*</span></label>
+                <input type="text" id="lastName" name="lastName" required autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number <span class="opt">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" />
+            </div>
+
+            <p id="form-error" class="form-error" aria-live="polite"></p>
+
+            <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+              Register for the Event
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div id="success-wrap" class="success-wrap" hidden>
+            <div class="success-icon">✓</div>
+            <h2>You're registered!</h2>
+            <p>Check your inbox — we've sent the event details and address to your email.</p>
+            <div class="success-donate">
+              <p><strong>One more thing:</strong> help Fatmata win in November.</p>
+              <a href="https://donorbox.org/fatmata-barrie-four-montgomery-county-disability"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn-accent">
+                Make a Donation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="event-sidebar">
+        <div class="sidebar-card event-detail-card">
+          <h3>Event Details</h3>
+          <ul class="event-details-list">
+            <li>
+              <span class="detail-label">Date</span>
+              <span>Tuesday, June 3, 2026</span>
+            </li>
+            <li>
+              <span class="detail-label">Time</span>
+              <span>5:30 PM – 7:00 PM</span>
+            </li>
+            <li>
+              <span class="detail-label">Location</span>
+              <span>Germantown, MD<br><em>(address sent by email upon registration)</em></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card donate-card">
+          <h3>Support the Campaign</h3>
+          <p>Can't make it but want to show your support? A donation of any size makes a real difference.</p>
+          <a href="https://donorbox.org/fatmata-barrie-four-montgomery-county-disability"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-accent donate-btn">
+            Donate Now
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</PageLayout>
+
+<script>
+  const form = document.getElementById('rsvp-form') as HTMLFormElement;
+  const formWrap = document.getElementById('form-wrap');
+  const successWrap = document.getElementById('success-wrap');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const errorEl = document.getElementById('form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (errorEl) errorEl.textContent = '';
+
+    const firstName = (document.getElementById('firstName') as HTMLInputElement).value.trim();
+    const lastName = (document.getElementById('lastName') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+
+    if (!firstName || !lastName || !email) {
+      if (errorEl) errorEl.textContent = 'Please fill in all required fields.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Registering…';
+
+    try {
+      const res = await fetch('/.netlify/functions/register-event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email, phone }),
+      });
+
+      if (res.ok) {
+        form.hidden = true;
+        if (successWrap) successWrap.hidden = false;
+        // scroll to top of card
+        formWrap?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      if (errorEl) errorEl.textContent = 'Something went wrong. Please try again or email us directly.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Register for the Event';
+    }
+  });
+</script>
+
+<style>
+  .event-hero {
+    background: var(--primary);
+    padding: 4rem 0 3.5rem;
+    text-align: center;
+  }
+
+  .event-hero-inner { max-width: 680px; margin: 0 auto; }
+
+  .event-label {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.75rem;
+  }
+
+  .event-hero h1 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .event-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sep { color: rgba(255,255,255,0.4); }
+
+  .event-tagline {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .event-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .form-card h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.4rem; }
+
+  .form-sub { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.75rem; line-height: 1.6; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .field { display: flex; flex-direction: column; margin-bottom: 1.25rem; }
+
+  .field label {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .req { color: var(--accent); }
+  .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-light); font-size: 0.8rem; }
+
+  .field input {
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(8,50,160,0.1);
+  }
+
+  .form-error {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    min-height: 1.2em;
+  }
+
+  .submit-btn { width: 100%; justify-content: center; font-size: 1rem; padding: 0.85rem; }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* Success state */
+  .success-wrap { text-align: center; padding: 1rem 0; }
+
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+  }
+
+  .success-wrap h2 { color: var(--primary); margin-bottom: 0.5rem; }
+  .success-wrap > p { color: var(--text-light); line-height: 1.7; margin-bottom: 2rem; }
+
+  .success-donate {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent);
+  }
+
+  .success-donate p { margin-bottom: 1rem; color: var(--text); }
+
+  /* Sidebar */
+  .event-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .event-details-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .event-details-list li { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.9rem; }
+
+  .detail-label {
+    font-family: var(--font-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-light);
+  }
+
+  .event-details-list em { font-size: 0.82rem; color: var(--text-light); }
+
+  .donate-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1rem; }
+
+  .donate-btn { width: 100%; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .event-layout { grid-template-columns: 1fr; }
+    .event-sidebar { position: static; order: -1; }
+    .field-row { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
+  }
+</style>
