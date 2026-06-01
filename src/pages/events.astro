@@ -21,6 +21,22 @@ const upcomingEvents = [
     contactEmail: 'events@fatmatabarrie.com',
     graphic: null,
   },
+  {
+    id: 'immigration-meet-greet-jun-2026',
+    type: 'Meet & Greet',
+    title: 'Immigration & Immigrant Rights Meet & Greet',
+    date: '2026-06-08',
+    timeStart: '7:00 PM',
+    timeEnd: null,
+    location: 'Takoma Park, MD',
+    locationNote: 'Address provided upon registration',
+    description: 'Join Fatmata Barrie for an evening focused on immigration and immigrant rights in Montgomery County. Come connect with Fatmata and community members to discuss the issues that matter most.',
+    hosts: ['Annie Smiley', 'Hashem Mekki'],
+    rsvpUrl: '/events/immigration-meet-greet',
+    rsvpLabel: 'Register for the Event',
+    contactEmail: 'events@fatmatabarrie.com',
+    graphic: null,
+  },
 ];
 
 const pastEvents = [
@@ -76,7 +92,7 @@ function formatDate(dateStr: string) {
                     </div>
                     <div class="meta-row">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                      <span>{event.timeStart} – {event.timeEnd}</span>
+                      <span>{event.timeStart}{event.timeEnd ? ` – ${event.timeEnd}` : ''}</span>
                     </div>
                     <div class="meta-row">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
