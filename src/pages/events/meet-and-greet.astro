@@ -59,8 +59,8 @@ const eventDonateUrl = 'https://donorbox.org/fatmata-barrie-four-montgomery-coun
             </div>
 
             <div class="field">
-              <label for="phone">Phone Number <span class="opt">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" />
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" />
             </div>
 
             <p id="form-error" class="form-error" aria-live="polite"></p>
@@ -140,7 +140,9 @@ const eventDonateUrl = 'https://donorbox.org/fatmata-barrie-four-montgomery-coun
     const lastName = (document.getElementById('lastName') as HTMLInputElement)?.value.trim();
     const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
 
-    if (!firstName || !lastName || !email) {
+    const phone = (document.getElementById('phone') as HTMLInputElement)?.value.trim();
+
+    if (!firstName || !lastName || !email || !phone) {
       if (errorEl) errorEl.textContent = 'Please fill in all required fields.';
       return;
     }
