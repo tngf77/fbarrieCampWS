@@ -90,6 +90,9 @@ const eventDonateUrl = 'https://donorbox.org/fatmata-barrie-four-montgomery-coun
       </div>
 
       <aside class="event-sidebar">
+        <div class="sidebar-card event-graphic-card">
+          <img src="/images/Disability.jpg" alt="Disability Services Meet & Greet" class="event-graphic" />
+        </div>
         <div class="sidebar-card event-detail-card">
           <h3>Event Details</h3>
           <ul class="event-details-list">
@@ -353,6 +356,9 @@ const eventDonateUrl = 'https://donorbox.org/fatmata-barrie-four-montgomery-coun
   .donate-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1rem; }
 
   .donate-btn { width: 100%; justify-content: center; }
+
+  .event-graphic-card { padding: 0; overflow: hidden; }
+  .event-graphic { width: 100%; height: auto; display: block; border-radius: var(--border-radius); }
 
   @media (max-width: 768px) {
     .event-layout { grid-template-columns: 1fr; }
