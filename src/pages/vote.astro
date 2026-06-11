@@ -1,0 +1,267 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SignupForm from '../components/SignupForm.astro';
+
+const votingSites = [
+  { name: 'Activity Center at Bohrer Park', address: '506 S. Frederick Ave, Gaithersburg, MD 20877' },
+  { name: 'Bauer Drive Community Recreation Center', address: '14625 Bauer Drive, Rockville, MD 20853' },
+  { name: 'Damascus Community Recreation Center', address: '25520 Oak Drive, Damascus, MD 20872' },
+  { name: 'Germantown Community Recreation Center', address: '18905 Kingsview Road, Germantown, MD 20874' },
+  { name: 'Isiah "Ike" Leggett Executive Office Building', address: '101 Monroe St, Rockville, MD 20850' },
+  { name: 'Jane E. Lawton Community Recreation Center', address: '4301 Willow Lane, Chevy Chase, MD 20815' },
+  { name: 'Marilyn J. Praisner Community Recreation Center', address: '14906 Old Columbia Pike, Burtonsville, MD 20866' },
+  { name: 'Mid-County Community Recreation Center', address: '2004 Queensguard Road, Silver Spring, MD 20906' },
+  { name: 'Nancy H. Dacek North Potomac Community Recreation Center', address: '13850 Travilah Road, Rockville, MD 20850' },
+  { name: 'Potomac Community Recreation Center', address: '11315 Falls Road, Potomac, MD 20854' },
+  { name: 'Sandy Spring Volunteer Fire Department', address: '17921 Brooke Road, Sandy Spring, MD 20860' },
+  { name: 'Silver Spring Civic Building', address: '1 Veterans Place, Silver Spring, MD 20910' },
+  { name: 'Wheaton Library and Community Recreation Center', address: '11701 Georgia Avenue, Wheaton, MD 20902' },
+  { name: 'White Oak Community Recreation Center', address: '1700 April Lane, Silver Spring, MD 20904' },
+];
+---
+
+<PageLayout
+  title="Vote | Fatmata Barrie for Montgomery County Council"
+  description="Early voting information for Montgomery County — June 11–18, 2026. Find your early voting location and cast your ballot for Fatmata Barrie."
+>
+
+  <HeroSection
+    title="Vote for Fatmata Barrie"
+    subtitle="Early voting is open June 11–18. Find your location and make your voice heard."
+  />
+
+  <section class="section">
+    <div class="container narrow">
+
+      <div class="voting-banner">
+        <div class="banner-item">
+          <span class="banner-label">Early Voting</span>
+          <span class="banner-value">June 11–18, 2026</span>
+        </div>
+        <div class="banner-divider"></div>
+        <div class="banner-item">
+          <span class="banner-label">Hours</span>
+          <span class="banner-value">7:00 AM – 8:00 PM</span>
+        </div>
+        <div class="banner-divider"></div>
+        <div class="banner-item">
+          <span class="banner-label">Days Open</span>
+          <span class="banner-value">Every day including weekends</span>
+        </div>
+      </div>
+
+      <div class="section-intro">
+        <h2>14 Early Voting Locations in Montgomery County</h2>
+        <p>You can vote at <strong>any</strong> of the 14 early voting centers below — you do not need to go to your assigned polling place during early voting.</p>
+      </div>
+
+      <div class="sites-grid">
+        {votingSites.map((site, i) => (
+          <div class="site-card">
+            <span class="site-number">{i + 1}</span>
+            <div class="site-info">
+              <h3>{site.name}</h3>
+              <p>{site.address}</p>
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(site.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="directions-link"
+              >
+                Get Directions →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="more-info">
+        <h2>More Voting Information</h2>
+        <div class="info-cards">
+          <div class="info-card">
+            <h3>Check Your Registration</h3>
+            <p>Make sure you're registered to vote in Montgomery County before heading to the polls.</p>
+            <a href="https://voterservices.elections.maryland.gov/voterregistrationcheck" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Check Registration</a>
+          </div>
+          <div class="info-card">
+            <h3>Find Your Sample Ballot</h3>
+            <p>Preview your ballot before you vote so you're ready when you get there.</p>
+            <a href="https://voterservices.elections.maryland.gov/SampleBallot" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Sample Ballot</a>
+          </div>
+          <div class="info-card">
+            <h3>Maryland Elections</h3>
+            <p>Official voting information from the Maryland State Board of Elections.</p>
+            <a href="https://elections.maryland.gov" target="_blank" rel="noopener noreferrer" class="btn btn-primary">elections.maryland.gov</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .narrow { max-width: 860px; }
+
+  .voting-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--primary);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .banner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .banner-label {
+    font-family: var(--font-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .banner-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .banner-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .section-intro {
+    margin-bottom: 2rem;
+  }
+
+  .section-intro h2 {
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-intro p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .sites-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 3rem;
+  }
+
+  .site-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s;
+  }
+
+  .site-card:hover { border-color: var(--primary); }
+
+  .site-number {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background: var(--accent);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .site-info h3 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+
+  .site-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
+  }
+
+  .directions-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .directions-link:hover { color: var(--primary); }
+
+  .more-info h2 {
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+    color: var(--primary);
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    .voting-banner { gap: 1.25rem; }
+    .banner-divider { display: none; }
+    .info-cards { grid-template-columns: 1fr; }
+  }
+</style>

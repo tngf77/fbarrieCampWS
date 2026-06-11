@@ -4,6 +4,7 @@ export const mainNav = [
   { label: 'Endorsements', href: '/endorsements' },
   { label: 'Events', href: '/events' },
   { label: 'Updates', href: '/updates' },
+  { label: 'Vote', href: '/vote' },
   { label: 'Get Involved', href: '/volunteer' },
   { label: 'Donate / Give by Check', href: '/donate' },
   { label: 'Contact', href: '/contact' },
