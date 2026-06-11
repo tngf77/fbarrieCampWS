@@ -34,6 +34,20 @@ const votingSites = [
   <section class="section">
     <div class="container narrow">
 
+      <div class="countdown-wrap">
+        <p class="countdown-label">Countdown to Election Day — June 24, 2026</p>
+        <div class="countdown-clock" id="countdown">
+          <div class="countdown-unit"><span class="count-num" id="cd-days">--</span><span class="count-label">Days</span></div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit"><span class="count-num" id="cd-hours">--</span><span class="count-label">Hours</span></div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit"><span class="count-num" id="cd-minutes">--</span><span class="count-label">Minutes</span></div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit"><span class="count-num" id="cd-seconds">--</span><span class="count-label">Seconds</span></div>
+        </div>
+        <p class="countdown-sub" id="countdown-sub">Early voting opens June 11 — don't wait until Election Day!</p>
+      </div>
+
       <div class="voting-banner">
         <div class="banner-item">
           <span class="banner-label">Early Voting</span>
@@ -104,8 +118,108 @@ const votingSites = [
 
 </PageLayout>
 
+<script>
+  const electionDay = new Date('2026-06-24T07:00:00');
+
+  function update() {
+    const now = new Date();
+    const diff = electionDay.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      document.getElementById('countdown-sub')!.textContent = 'Election Day is here — go vote!';
+      ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+        document.getElementById(id)!.textContent = '00';
+      });
+      return;
+    }
+
+    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days')!.textContent    = String(days).padStart(2, '0');
+    document.getElementById('cd-hours')!.textContent   = String(hours).padStart(2, '0');
+    document.getElementById('cd-minutes')!.textContent = String(minutes).padStart(2, '0');
+    document.getElementById('cd-seconds')!.textContent = String(seconds).padStart(2, '0');
+
+    if (days === 0) {
+      document.getElementById('countdown-sub')!.textContent = 'Election Day is TODAY — polls open 7am to 8pm!';
+    } else if (days <= 7) {
+      document.getElementById('countdown-sub')!.textContent = `Only ${days} day${days === 1 ? '' : 's'} left — early voting is open now!`;
+    }
+  }
+
+  update();
+  setInterval(update, 1000);
+</script>
+
 <style>
   .narrow { max-width: 860px; }
+
+  .countdown-wrap {
+    text-align: center;
+    background: var(--accent);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .countdown-label {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 1rem;
+  }
+
+  .countdown-clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+  }
+
+  .count-num {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+
+  .count-label {
+    font-family: var(--font-primary);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.25rem;
+  }
+
+  .countdown-sep {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
+
+  .countdown-sub {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+  }
 
   .voting-banner {
     display: flex;
