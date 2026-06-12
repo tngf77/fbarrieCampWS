@@ -35,6 +35,12 @@
               <input type="tel" id="sf-phone" name="phone" placeholder="e.g. 301-555-1234" />
             </div>
           </div>
+          <div class="sf-opt-in">
+            <label class="sf-checkbox-label">
+              <input type="checkbox" name="sms_opt_in" id="sf-sms" value="yes" />
+              <span>I agree to receive text messages from Fatmata Barrie for Montgomery County. Message &amp; data rates may apply. Message frequency varies. Reply STOP to opt out. <a href="/privacy">Privacy Policy</a></span>
+            </label>
+          </div>
           <div class="sf-message sf-message--error" id="sf-error" hidden>
             Something went wrong. Please try again or email us at <a href="mailto:info@fatmatabarrie.com">info@fatmatabarrie.com</a>.
           </div>
@@ -155,6 +161,29 @@
 
   .signup-submit:hover { background: var(--primary-light); }
   .signup-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .sf-opt-in { margin-bottom: 0.75rem; }
+
+  .sf-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .sf-checkbox-label input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+
+  .sf-checkbox-label a { color: var(--teal); }
 
   .sf-message {
     font-size: 0.85rem;

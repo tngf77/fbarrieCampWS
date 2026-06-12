@@ -63,6 +63,13 @@ import PageLayout from '../../layouts/PageLayout.astro';
               <input type="tel" id="phone" name="phone" required autocomplete="tel" />
             </div>
 
+            <div class="field sms-opt-in">
+              <label class="checkbox-label">
+                <input type="checkbox" name="sms_opt_in" id="sms-opt-in" value="yes" />
+                <span>I agree to receive text messages from Fatmata Barrie for Montgomery County. Message &amp; data rates may apply. Message frequency varies. Reply STOP to opt out. <a href="/privacy">Privacy Policy</a></span>
+              </label>
+            </div>
+
             <p id="form-error" class="form-error" aria-live="polite"></p>
 
             <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
@@ -275,6 +282,29 @@ import PageLayout from '../../layouts/PageLayout.astro';
 
   .submit-btn { width: 100%; justify-content: center; font-size: 1rem; padding: 0.85rem; }
   .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .sms-opt-in { margin-bottom: 0.5rem; }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+
+  .checkbox-label a { color: var(--teal); }
 
   .success-wrap { text-align: center; padding: 0.5rem 0; }
 
