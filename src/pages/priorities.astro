@@ -1,0 +1,359 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { donateUrl } from '../data/navigation';
+
+const priorities = [
+  {
+    id: 'democracy',
+    title: 'Defending Democracy',
+    summary: 'Rights are being rolled back across the country. As a Councilmember, Fatmata will ensure Montgomery County remains a place where civil liberties are protected, immigrants are safe, and every resident is treated with dignity.',
+    bullets: [
+      'Ensure local law enforcement does not participate in ICE raids',
+      'Fight for residents affected by DOGE and government shutdowns',
+      'Keep Montgomery County free from racism, hate, and discrimination',
+    ],
+    slug: '/priorities/democracy',
+  },
+  {
+    id: 'education',
+    title: 'Education & Special Education',
+    summary: 'Every child deserves a quality education, and every family deserves a fierce advocate. As a Special Education Attorney, Fatmata has spent her career fighting for students — and she will bring that commitment to the County Council.',
+    bullets: [
+      'Protect communities from federal cuts to education funding',
+      'Champion community schools and under-resourced communities',
+      'Stand up for educators and fight to address the teacher shortage',
+      'Improve school capacity planning across the county',
+    ],
+    slug: '/priorities/education',
+  },
+  {
+    id: 'affordability',
+    title: 'Affordability & Housing Stability',
+    summary: 'Montgomery County families are being squeezed — median home prices near $620,000 and rents over $1,800 a month. Fatmata will take bold steps to expand truly affordable housing and ensure residents can afford to live, work, and build futures here.',
+    bullets: [
+      'Expand truly affordable housing, not just housing supply',
+      'Partner with nonprofit and mission-driven developers',
+      'Address food deserts and the cost of everyday essentials',
+    ],
+    slug: '/priorities/affordability',
+  },
+  {
+    id: 'business',
+    title: 'Business & Economy',
+    summary: 'Small businesses are the backbone of our communities and a major engine of local jobs and economic growth. Rising costs and taxes are driving businesses out — Fatmata will fight to bring them back and help new ones thrive.',
+    bullets: [
+      'Provide incentives to local businesses that hire locally',
+      'Expand small business loan access for residents',
+      'Ensure minority, veteran, and women-owned businesses can thrive',
+      'Support PLAs on county projects for fair wages and conditions',
+    ],
+    slug: '/priorities/business',
+  },
+  {
+    id: 'seniors',
+    title: 'Seniors & Aging with Dignity',
+    summary: "Montgomery County's seniors built this community — and they deserve to stay, thrive, and age with dignity. Fatmata will fight to protect housing stability, defend Social Security and Medicare, improve healthcare access, expand transit options for non-drivers, and invest in senior centers and programs that combat isolation.",
+    bullets: [
+      'Champion property tax relief and aging-in-place housing',
+      'Defend Social Security, Medicare, and federal senior benefits',
+      'Expand healthcare access and care coordination for older adults',
+      'Improve transit and paratransit for seniors who don\'t drive',
+    ],
+    slug: '/priorities/seniors',
+  },
+  {
+    id: 'womens-health',
+    title: "Women's Health & Reproductive Freedom",
+    summary: "Women's health is essential to strong families and communities — yet too many women face barriers to care and dismissal of their concerns. As a woman who has experienced fibroids firsthand, Fatmata will fight to ensure every woman gets the care she deserves.",
+    bullets: [
+      'Expand access to comprehensive women\'s healthcare',
+      'Address maternal health disparities for Black women',
+      'Support reproductive freedom and healthcare access',
+      'Strengthen culturally competent care for all women',
+    ],
+    slug: '/priorities/womens-health',
+  },
+  {
+    id: 'safety',
+    title: 'Safer Communities',
+    summary: 'Real safety comes from investment in people and in our communities. Fatmata will pursue a balanced approach that strengthens neighborhoods, expands youth opportunities, and builds lasting trust between communities and local government.',
+    bullets: [
+      'Invest in prevention, youth programs, and mentorship',
+      'Expand mental health and crisis response services',
+      'Promote transparency and accountability in public safety',
+      'Improve traffic and pedestrian safety across the county',
+    ],
+    slug: '/priorities/safety',
+  },
+  {
+    id: 'health',
+    title: 'Health',
+    summary: 'Too many Montgomery County residents face rising costs, provider shortages, and language barriers when seeking care. Fatmata will invest in community health clinics, mental health services, and culturally competent care for all.',
+    bullets: [
+      'Expand access to affordable healthcare services',
+      'Address the youth mental health crisis',
+      'Improve maternal health outcomes',
+      'Strengthen language access and culturally competent care',
+    ],
+    slug: '/priorities/health',
+  },
+  {
+    id: 'climate',
+    title: 'Climate Justice',
+    summary: 'Climate change is already here — from extreme heat to flooding and poor air quality. Low-income communities and communities of color bear the greatest burden. Fatmata will lead with solutions that protect the environment and ensure every community benefits.',
+    bullets: [
+      'Advance climate justice and equitable environmental policies',
+      'Invest in clean energy and sustainable infrastructure',
+      'Protect green space and expand tree canopy',
+      'Ensure healthier communities through environmental protection',
+    ],
+    slug: '/priorities/climate',
+  },
+  {
+    id: 'transportation',
+    title: 'Transportation',
+    summary: 'Montgomery County residents face some of the worst commutes in the country — and too many lack reliable public transit. Fatmata will work to expand transit options, improve roads, and give residents real alternatives to sitting in traffic.',
+    bullets: [
+      'Improve WMATA access and push for Purple Line completion',
+      'Increase bike lanes and protections for cyclists',
+      'Expand RideOn services to more areas and with more frequency',
+      'Promote road safety across the county',
+    ],
+    slug: '/priorities/transportation',
+  },
+];
+---
+
+<PageLayout title="Priorities | Fatmata Barrie for Montgomery County Council" description="Nine priorities for Montgomery County — Fatmata Barrie's platform on affordability, business, climate, democracy, education, health, safety, transportation, and women's health.">
+
+  <HeroSection title="The Priorities" subtitle="Nine priorities for Montgomery County." />
+
+  <section class="section">
+    <div class="container">
+      <div class="priority-grid">
+        {priorities.map((p) => (
+          <div class="priority-card" id={p.id}>
+            <button class="card-header" aria-expanded="false" aria-controls={`panel-${p.id}`}>
+              <span class="card-title">{p.title}</span>
+              <span class="card-chevron" aria-hidden="true">&#8964;</span>
+            </button>
+            <div class="card-panel" id={`panel-${p.id}`} role="region" hidden>
+              <p class="card-summary">{p.summary}</p>
+              <ul class="card-bullets">
+                {p.bullets.map(b => <li>{b}</li>)}
+              </ul>
+              <a href={p.slug} class="btn btn-primary card-readmore">Read More &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section platform-cta">
+    <div class="container text-center">
+      <h2>Ready to move forward?</h2>
+      <span class="ornament"></span>
+      <p style="color: var(--text-light); font-size: 1.1rem; margin: 1rem auto 0.75rem; max-width: 620px;">Donate weekly to have the greatest impact in Montgomery County.</p>
+      <p style="color: var(--text-light); font-size: 1rem; margin: 0 auto 2rem; max-width: 620px;">Fatmata is building a people-powered movement and needs your help to build a historic voter outreach program. With your support today, she will have the resources to win—and keep the Council out of the hands of big money developers and corporate interests.</p>
+      <div class="donate-amounts">
+        {[5, 25, 50, 100, 150, 250, 500].map(amt => (
+          <a href={`${donateUrl}?amount=${amt}`} class="donate-amount-btn" target="_blank" rel="noopener noreferrer">${amt}</a>
+        ))}
+      </div>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href={donateUrl} class="btn btn-accent" target="_blank" rel="noopener noreferrer">Donate Now</a>
+        <a href="/volunteer" class="btn btn-primary">Volunteer</a>
+      </div>
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .priority-card {
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .priority-card:has(.card-header[aria-expanded="true"]) {
+    box-shadow: var(--shadow-md);
+    border-color: var(--teal);
+  }
+
+  .card-header {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+    min-height: 90px;
+  }
+
+  .card-header:hover { background: var(--cream); }
+
+  .card-header[aria-expanded="true"] { background: var(--cream); }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .card-chevron {
+    font-size: 1.25rem;
+    color: var(--teal);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+
+  .card-header[aria-expanded="true"] .card-chevron {
+    transform: rotate(180deg);
+  }
+
+  .card-panel {
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid var(--light-gray);
+  }
+
+  .card-summary {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.65;
+    margin: 1rem 0 0.85rem;
+  }
+
+  .card-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-bullets li {
+    position: relative;
+    padding-left: 1.15rem;
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .card-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .card-readmore {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  .platform-cta {
+    border-top: 3px solid var(--gold);
+  }
+
+  .donate-amounts {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto 0.5rem;
+  }
+
+  .donate-amount-btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--gold);
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    min-width: 4rem;
+    text-align: center;
+  }
+
+  .donate-amount-btn:hover {
+    background: var(--gold);
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .priority-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .priority-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.card-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+
+      // Close all others
+      document.querySelectorAll('.card-header').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const p = document.getElementById(b.getAttribute('aria-controls'));
+        if (p) p.hidden = true;
+      });
+
+      // Toggle clicked
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      }
+    });
+  });
+
+  // Open from URL hash
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const btn = document.querySelector(`#${hash} .card-header`);
+    if (btn) {
+      btn.setAttribute('aria-expanded', 'true');
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (panel) panel.hidden = false;
+    }
+  }
+</script>

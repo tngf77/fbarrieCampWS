@@ -1,9 +1,12 @@
 export const mainNav = [
   { label: 'Meet Fatmata', href: '/about' },
-  { label: 'Platform', href: '/platform' },
+  { label: 'Priorities', href: '/priorities' },
   { label: 'Endorsements', href: '/endorsements' },
+  { label: 'Events', href: '/events' },
   { label: 'Updates', href: '/updates' },
+  { label: 'Vote', href: '/vote' },
   { label: 'Get Involved', href: '/volunteer' },
+  { label: 'Donate / Give by Check', href: '/donate' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -13,6 +16,7 @@ export const socialLinks = {
   facebook: 'https://www.facebook.com/barrie4countycouncil',
   instagram: 'https://www.instagram.com/barrie4council/',
   twitter: 'https://twitter.com/barrie4council',
+  bluesky: 'https://bsky.app/profile/barrie4council.bsky.social',
 };
 
 export const contactInfo = {

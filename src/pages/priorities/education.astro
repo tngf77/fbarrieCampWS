@@ -1,0 +1,198 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import SignupForm from '../../components/SignupForm.astro';
+import { donateUrl } from '../../data/navigation';
+---
+
+<PageLayout title="Education & Special Education | Fatmata Barrie" description="Fatmata Barrie's platform on education, special education, and ensuring every child in Montgomery County gets the support they need.">
+
+  <HeroSection title="Education & Special Education" subtitle="Every child deserves a quality education — and a fierce advocate." />
+
+  <section class="section">
+    <div class="container priority-layout">
+
+      <div class="priority-body">
+
+        <p class="priority-intro">
+          As a Special Education Attorney, Fatmata has spent her career fighting for students and families to make sure they have access to a quality education. She understands the needs of parents, students, and educators — as well as what's needed to ensure all students are able to thrive. As a Councilmember, Fatmata will fight for every child in Montgomery County.
+        </p>
+
+        <div class="priority-section">
+          <h2>Protect Students from Federal Education Cuts</h2>
+          <p>Federal funding supports critical programs in Montgomery County schools — from Title I funding for low-income students, to IDEA funding for special education, to grants that support English language learners. Fatmata will work with county leaders to ensure cuts from the Department of Education are not felt by our community. Whether to special education and IDEA or to community school funding, she will work to ensure there is a budget reallocation process so students and families don't feel the impact.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Increase Accessibility Through ASL and BASL Services</h2>
+          <p>Every student and family deserves to fully participate in Montgomery County's educational system. Fatmata will fight to increase funding and resources for ASL and BASL services to raise accessibility standards across county schools — ensuring that Deaf and hard-of-hearing students, families, and community members are never left out of the conversation.</p>
+          <p>Language access is equally fundamental for families who communicate in languages other than English. Fatmata will push to expand interpretation and translation services across county schools and public offices so that no family is shut out because of how they communicate.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Champion Community Schools</h2>
+          <p>Fatmata believes all students — regardless of family circumstance — deserve a quality education. Community schools serve some of our county's most under-resourced communities and need special attention to ensure children aren't left behind. Fatmata will fight for resources and community outreach, pushing for more equitable distribution of funding, counselors, nurses, and enrichment programs across the county.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Stand Up for Educators</h2>
+          <p>Our educators are on the front lines in our communities — many times doing much more than teaching within school walls. Fatmata will fight to make sure they have access to the resources and support they need, as well as work with state legislators to find solutions for the teacher shortage across the state.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Improve School Capacity Planning</h2>
+          <p>So many of our recently rebuilt schools are already approaching capacity again. Fatmata believes we need a better way to predict growth in the county so we have more kids in classrooms and fewer kids in trailers. She will push for smarter, more transparent school capacity planning that is coordinated with land use decisions and responsive to community input.</p>
+        </div>
+
+        <div class="priority-section">
+          <h2>Why This Matters for Montgomery County</h2>
+          <p>Education is the great equalizer — but only when it works for everyone. When we invest in every child, regardless of their zip code, disability status, or family income, we invest in the future of Montgomery County. Fatmata will never stop fighting for that promise.</p>
+        </div>
+
+        <div class="priority-closing">
+          <p>Every child in Montgomery County deserves a champion. Fatmata has been that champion in the courtroom — and she will be that champion on the County Council. Help her get there.</p>
+          <div class="priority-cta-buttons">
+            <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">Donate to the Campaign</a>
+            <a href="/volunteer" class="btn btn-primary">Get Involved</a>
+            <a href="/priorities" class="btn btn-outline">Back to All Priorities</a>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="priority-sidebar">
+        <div class="sidebar-card">
+          <h3>Key Actions</h3>
+          <ul>
+            <li>Protect communities from federal cuts to education funding</li>
+            <li>Champion community schools and under-resourced communities</li>
+            <li>Stand up for educators and fight to address the teacher shortage</li>
+            <li>Improve school capacity planning across the county</li>
+          </ul>
+        </div>
+        <div class="sidebar-card sidebar-nav">
+          <h3>Other Priorities</h3>
+          <ul>
+            <li><a href="/priorities/affordability">Affordability &amp; Housing</a></li>
+            <li><a href="/priorities/business">Business &amp; Economy</a></li>
+            <li><a href="/priorities/climate">Climate Justice</a></li>
+            <li><a href="/priorities/democracy">Defending Democracy</a></li>
+            <li><a href="/priorities/health">Health</a></li>
+            <li><a href="/priorities/safety">Safer Communities</a></li>
+            <li><a href="/priorities/transportation">Transportation</a></li>
+            <li><a href="/priorities/seniors">Seniors &amp; Aging</a></li>
+            <li><a href="/priorities/womens-health">Women's Health</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SignupForm />
+
+</PageLayout>
+
+<style>
+  .priority-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .priority-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    border-left: 4px solid var(--teal);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .priority-section { margin-bottom: 2.5rem; }
+
+  .priority-section h2 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: var(--primary); margin-bottom: 0.75rem; }
+
+  .priority-section p { color: var(--text); line-height: 1.75; margin-bottom: 0.75rem; }
+
+  .priority-closing {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border-left: 4px solid var(--accent);
+    margin-top: 1rem;
+  }
+
+  .priority-closing p { font-size: 1.05rem; line-height: 1.75; color: var(--text); margin-bottom: 1.5rem; }
+
+  .priority-cta-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+  .priority-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .sidebar-card ul li {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .sidebar-nav ul li::before { background: var(--teal); }
+  .sidebar-nav ul li a { color: var(--primary); font-size: 0.9rem; transition: color var(--transition); }
+  .sidebar-nav ul li a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .priority-layout { grid-template-columns: 1fr; }
+    .priority-sidebar { position: static; }
+    .priority-cta-buttons { flex-direction: column; }
+    .priority-cta-buttons .btn { text-align: center; }
+  }
+</style>

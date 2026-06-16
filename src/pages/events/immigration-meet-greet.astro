@@ -1,0 +1,391 @@
+---
+const eventDonateUrl = 'https://donorbox.org/immigration_rights';
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Register: Immigration & Immigrant Rights Meet & Greet | Fatmata Barrie"
+  description="Join Fatmata Barrie for an Immigration & Immigrant Rights Meet and Greet on June 8, 2026, hosted by Annie Smiley and Hashem Mekki in Takoma Park, MD. Register to receive the address."
+>
+
+  <section class="event-hero">
+    <div class="container event-hero-inner">
+      <p class="event-label">You're Invited</p>
+      <h1>Immigration &amp; Immigrant Rights<br />Meet &amp; Greet</h1>
+      <div class="event-meta">
+        <span>Monday, June 8, 2026</span>
+        <span class="sep">·</span>
+        <span>7:00 PM</span>
+        <span class="sep">·</span>
+        <span>Takoma Park, MD</span>
+      </div>
+      <p class="event-tagline">Hosted by Annie Smiley &amp; Hashem Mekki. Register below to receive the address and join us for an evening with Fatmata.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container event-layout">
+
+      <div class="form-col">
+        <div class="form-card" id="form-wrap">
+          <h2>Reserve Your Spot</h2>
+          <p class="form-sub">Space is limited. RSVP to confirm your attendance — the address will be sent to your email.</p>
+
+          <form
+            id="rsvp-form"
+            name="immigration-meet-greet"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            novalidate
+          >
+            <input type="hidden" name="form-name" value="immigration-meet-greet" />
+            <div class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="firstName">First Name <span class="req">*</span></label>
+                <input type="text" id="firstName" name="firstName" required autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <label for="lastName">Last Name <span class="req">*</span></label>
+                <input type="text" id="lastName" name="lastName" required autocomplete="family-name" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+            </div>
+
+            <div class="field sms-opt-in">
+              <label class="checkbox-label">
+                <input type="checkbox" name="sms_opt_in" id="sms-opt-in" value="yes" />
+                <span>I agree to receive text messages from Fatmata Barrie for Montgomery County. Message &amp; data rates may apply. Message frequency varies. Reply STOP to opt out. <a href="/privacy">Privacy Policy</a></span>
+              </label>
+            </div>
+
+            <p id="form-error" class="form-error" aria-live="polite"></p>
+
+            <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+              Register for the Event
+            </button>
+          </form>
+
+          <div id="success-wrap" class="success-wrap" hidden>
+            <div class="success-icon">&#10003;</div>
+            <h2>You're registered!</h2>
+            <p>Check your inbox — the event address is on its way to you.</p>
+            <div class="success-recap">
+              <strong>Immigration &amp; Immigrant Rights Meet &amp; Greet</strong><br />
+              Monday, June 8, 2026 &nbsp;·&nbsp; 7:00 PM<br />
+              Hosted by Annie Smiley &amp; Hashem Mekki &nbsp;·&nbsp; Takoma Park, MD
+            </div>
+            <div class="success-donate">
+              <p><strong>Want to support the campaign?</strong> Every contribution helps Fatmata fight for every Montgomery County resident.</p>
+              <a href={eventDonateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+                Make a Donation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="event-sidebar">
+        <div class="sidebar-card event-detail-card">
+          <h3>Event Details</h3>
+          <ul class="event-details-list">
+            <li>
+              <span class="detail-label">Date</span>
+              <span>Monday, June 8, 2026</span>
+            </li>
+            <li>
+              <span class="detail-label">Time</span>
+              <span>7:00 PM</span>
+            </li>
+            <li>
+              <span class="detail-label">Hosts</span>
+              <span>Annie Smiley &amp; Hashem Mekki</span>
+            </li>
+            <li>
+              <span class="detail-label">Location</span>
+              <span>Takoma Park, MD<br /><em>(address sent by email after registration)</em></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card donate-card">
+          <h3>Support the Campaign</h3>
+          <p>Whether you're joining us or not, your contribution helps Fatmata fight for every Montgomery County resident. Every dollar counts.</p>
+          <a href={eventDonateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent donate-btn">
+            Donate Now
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</PageLayout>
+
+<script>
+  const form = document.getElementById('rsvp-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const errorEl = document.getElementById('form-error');
+  const successWrap = document.getElementById('success-wrap');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (errorEl) errorEl.textContent = '';
+
+    const firstName = (document.getElementById('firstName') as HTMLInputElement)?.value.trim();
+    const lastName = (document.getElementById('lastName') as HTMLInputElement)?.value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement)?.value.trim();
+    const phone = (document.getElementById('phone') as HTMLInputElement)?.value.trim();
+
+    if (!firstName || !lastName || !email || !phone) {
+      if (errorEl) errorEl.textContent = 'Please fill in all required fields.';
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Registering…';
+    }
+
+    try {
+      const data = new FormData(form);
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString(),
+      });
+
+      form.hidden = true;
+      if (successWrap) successWrap.hidden = false;
+      document.getElementById('form-wrap')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch {
+      if (errorEl) errorEl.textContent = 'Something went wrong. Please try again.';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register for the Event';
+      }
+    }
+  });
+</script>
+
+<style>
+  .hidden-field { display: none; }
+
+  .event-hero {
+    background: var(--primary);
+    padding: 4rem 0 3.5rem;
+    text-align: center;
+  }
+
+  .event-hero-inner { max-width: 680px; margin: 0 auto; }
+
+  .event-label {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.75rem;
+  }
+
+  .event-hero h1 {
+    color: white;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .event-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sep { color: rgba(255,255,255,0.4); }
+
+  .event-tagline {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .event-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .form-card h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.4rem; }
+
+  .form-sub { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.75rem; line-height: 1.6; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .field { display: flex; flex-direction: column; margin-bottom: 1.25rem; }
+
+  .field label {
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .req { color: var(--accent); }
+
+  .field input {
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(8,50,160,0.1);
+  }
+
+  .form-error { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; min-height: 1.2em; }
+
+  .submit-btn { width: 100%; justify-content: center; font-size: 1rem; padding: 0.85rem; }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .sms-opt-in { margin-bottom: 0.5rem; }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+
+  .checkbox-label a { color: var(--teal); }
+
+  .success-wrap { text-align: center; padding: 0.5rem 0; }
+
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+  }
+
+  .success-wrap h2 { color: var(--primary); margin-bottom: 0.5rem; }
+  .success-wrap > p { color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .success-recap {
+    background: var(--bg);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .success-donate {
+    background: var(--cream);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent);
+  }
+
+  .success-donate p { margin-bottom: 1rem; color: var(--text); font-size: 0.95rem; }
+
+  .event-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 90px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-card h3 {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .event-details-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+
+  .event-details-list li { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.9rem; color: var(--text); }
+
+  .detail-label {
+    font-family: var(--font-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-light);
+  }
+
+  .event-details-list em { font-size: 0.82rem; color: var(--text-light); }
+
+  .donate-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1rem; }
+
+  .donate-btn { width: 100%; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .event-layout { grid-template-columns: 1fr; }
+    .event-sidebar { position: static; order: -1; }
+    .field-row { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
+  }
+</style>

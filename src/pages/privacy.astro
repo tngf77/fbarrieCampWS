@@ -1,0 +1,45 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<PageLayout
+  title="Privacy Policy | Fatmata Barrie for Montgomery County"
+  description="Privacy policy for Fatmata Barrie for Montgomery County — how we collect, use, and protect your information."
+>
+  <HeroSection title="Privacy Policy" subtitle="Paid for by Fatmata Barrie for Montgomery County" />
+
+  <section class="section">
+    <div class="container narrow prose">
+      <p class="updated">Last updated: June 2026</p>
+
+      <h2>Information We Collect</h2>
+      <p>When you sign up, register for an event, or contact us, we collect your name, email address, phone number, and zip code. We collect only what you provide directly to us.</p>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use your information to send campaign updates, event invitations, volunteer opportunities, and fundraising appeals by email and/or text message — but only if you have opted in. We may also use your information to contact you about ways to get involved in the campaign.</p>
+
+      <h2>Text Messaging (SMS)</h2>
+      <p>By checking the SMS opt-in box on any of our forms, you consent to receive recurring text messages from the Fatmata Barrie for Montgomery County campaign. Message frequency varies. Message and data rates may apply. You can opt out at any time by replying <strong>STOP</strong> to any message. For help, reply <strong>HELP</strong> or email <a href="mailto:info@fatmatabarrie.com">info@fatmatabarrie.com</a>.</p>
+
+      <h2>We Do Not Sell Your Data</h2>
+      <p>Text messaging opt-in data, consent and related collected personal information will not be shared with or sold to any third parties, unless required by law.</p>
+
+      <h2>Data Security</h2>
+      <p>We take reasonable steps to protect your information. Our forms are processed through Netlify and submitted data is stored securely.</p>
+
+      <h2>Contact</h2>
+      <p>Questions? Email us at <a href="mailto:info@fatmatabarrie.com">info@fatmatabarrie.com</a>.</p>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .narrow { max-width: 720px; }
+  .updated { color: var(--text-light); font-size: 0.9rem; margin-bottom: 2rem; }
+  .prose h2 { font-size: 1.25rem; color: var(--primary); margin: 2rem 0 0.5rem; }
+  .prose p { line-height: 1.75; color: var(--text); margin-bottom: 1rem; }
+  .prose a { color: var(--teal); }
+  .prose strong { color: var(--text); }
+</style>

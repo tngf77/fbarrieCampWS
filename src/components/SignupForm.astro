@@ -1,33 +1,62 @@
 ---
 ---
 
-<section class="signup-section">
+<section class="signup-section" id="signup">
   <div class="signup-inner">
-    <h2 class="signup-headline">Join Team<br />Barrie<span class="accent-dot">.</span></h2>
-    <div class="signup-form-card">
-      <form class="signup-form" method="POST" action="#signup">
-        <div class="sf-row">
-          <div class="sf-field">
-            <label for="sf-fname">First Name</label>
-            <input type="text" id="sf-fname" name="first_name" required />
+    <div class="signup-left">
+      <h2 class="signup-headline">Join Team<br />Barrie<span class="accent-dot">.</span></h2>
+      <div class="signup-form-card">
+        <form class="signup-form" id="team-barrie-form" name="team-barrie" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="team-barrie" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <div class="sf-row">
+            <div class="sf-field">
+              <label for="sf-fname">First Name</label>
+              <input type="text" id="sf-fname" name="first_name" required />
+            </div>
+            <div class="sf-field">
+              <label for="sf-lname">Last Name</label>
+              <input type="text" id="sf-lname" name="last_name" required />
+            </div>
           </div>
-          <div class="sf-field">
-            <label for="sf-lname">Last Name</label>
-            <input type="text" id="sf-lname" name="last_name" required />
+          <div class="sf-row">
+            <div class="sf-field">
+              <label for="sf-email">Email Address</label>
+              <input type="email" id="sf-email" name="email" required />
+            </div>
+            <div class="sf-field">
+              <label for="sf-zip">Zip Code</label>
+              <input type="text" id="sf-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required />
+            </div>
+          </div>
+          <div class="sf-row">
+            <div class="sf-field">
+              <label for="sf-phone">Phone Number</label>
+              <input type="tel" id="sf-phone" name="phone" placeholder="e.g. 301-555-1234" />
+            </div>
+          </div>
+          <div class="sf-opt-in">
+            <label class="sf-checkbox-label">
+              <input type="checkbox" name="sms_opt_in" id="sf-sms" value="yes" />
+              <span>Text messaging opt-in data, consent and related collected personal information will not be shared with or sold to any third parties, unless required by law. <a href="/privacy">Privacy Policy</a></span>
+            </label>
+          </div>
+          <div class="sf-message sf-message--error" id="sf-error" hidden>
+            Something went wrong. Please try again or email us at <a href="mailto:info@fatmatabarrie.com">info@fatmatabarrie.com</a>.
+          </div>
+          <button type="submit" class="signup-submit" id="sf-btn">Get Updates</button>
+        </form>
+        <div class="sf-success" id="sf-success" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>You're on the list!</strong>
+            <p>Thank you for joining Team Barrie. We'll be in touch soon.</p>
           </div>
         </div>
-        <div class="sf-row">
-          <div class="sf-field">
-            <label for="sf-email">Email Address</label>
-            <input type="email" id="sf-email" name="email" required />
-          </div>
-          <div class="sf-field">
-            <label for="sf-zip">Zip Code</label>
-            <input type="text" id="sf-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required />
-          </div>
-        </div>
-        <button type="submit" class="signup-submit">Get Updates</button>
-      </form>
+      </div>
+    </div>
+    <div class="signup-photo">
+      <img src="/images/Campaign Kickoff 033026.jpg" alt="Campaign Kickoff" class="signup-photo-img" />
     </div>
   </div>
 </section>
@@ -49,7 +78,23 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
+  }
+
+  .signup-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .signup-photo { align-self: start; }
+
+  .signup-photo-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    display: block;
   }
 
   .signup-headline {
@@ -80,6 +125,8 @@
     color: var(--dark-gray);
     margin-bottom: 0.3rem;
   }
+
+  .sf-field input[type="tel"] { width: 100%; }
 
   .sf-field input {
     padding: 0.7rem 0.65rem;
@@ -113,9 +160,112 @@
   }
 
   .signup-submit:hover { background: var(--primary-light); }
+  .signup-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
-  @media (max-width: 768px) {
+  .sf-opt-in { margin-bottom: 0.75rem; }
+
+  .sf-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .sf-checkbox-label input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+
+  .sf-checkbox-label a { color: var(--teal); }
+
+  .sf-message {
+    font-size: 0.85rem;
+    border-radius: 4px;
+    padding: 0.65rem 0.75rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .sf-message--error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+  }
+
+  .sf-message--error a { color: #b91c1c; font-weight: 700; }
+
+  .sf-success {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    color: #166534;
+  }
+
+  .sf-success svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #16a34a;
+  }
+
+  .sf-success strong { display: block; margin-bottom: 0.2rem; font-size: 1rem; }
+  .sf-success p { margin: 0; font-size: 0.88rem; opacity: 0.85; }
+
+  @media (max-width: 900px) {
     .signup-inner { grid-template-columns: 1fr; gap: 2rem; }
     .sf-row { flex-direction: column; gap: 0.5rem; }
   }
 </style>
+
+<script>
+  const form = document.getElementById('team-barrie-form');
+  const btn = document.getElementById('sf-btn');
+  const errorBox = document.getElementById('sf-error');
+  const successBox = document.getElementById('sf-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const params = new URLSearchParams({
+      'form-name': 'team-barrie',
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      email: form.email.value.trim(),
+      zip: form.zip.value.trim(),
+    });
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+
+      // Netlify Forms may return a redirect (303) or the page HTML (200).
+      // Only treat a true server error (5xx) as a failure.
+      if (res.status >= 500) throw new Error('Server error');
+
+      form.hidden = true;
+      successBox.hidden = false;
+    } catch {
+      errorBox.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Get Updates';
+    }
+  });
+</script>

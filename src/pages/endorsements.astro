@@ -26,27 +26,47 @@ const organizations = [
     description: 'The largest property service workers union in the country, representing building cleaners, security officers, and airport workers.',
   },
   {
-    name: 'Montgomery County Retired Education Association',
+    name: 'Montgomery County Public Schools Retirees Association',
     logo: '/images/endorsements/mcrea.jpg',
     description: 'Representing retired educators who dedicated their careers to Montgomery County students and schools.',
+  },
+  {
+    name: 'Progressive Maryland',
+    logo: '/images/endorsements/progressive-maryland.png',
+    description: 'A powerful grassroots movement of 120,000 members strong, dedicated to building community power and winning a more equitable future for every working family in our state.',
+  },
+  {
+    name: 'Jews United for Justice Campaign Fund',
+    logo: '/images/jufj-c4-logo.png',
+    description: 'Jews United for Justice mobilizes Jewish Marylanders to pursue justice through community organizing, advocacy, and civic action — fighting for racial equity, workers\' rights, and a more just Maryland.',
+  },
+  {
+    name: 'Progressive Neighbors',
+    logo: '/images/progressive-neighbors-endorsed.webp',
+    description: 'A grassroots organization of Montgomery County neighbors committed to electing progressive candidates who will fight for equity, justice, and a stronger community for all residents.',
   },
 ];
 
 const electedOfficials = [
   {
     name: 'Delegate Pam Queen',
-    title: 'Maryland House of Delegates',
+    title: 'Maryland House of Delegates, District 14',
     photo: '/images/endorsements/pam-queen.png',
   },
   {
-    name: 'Brenda Wolff',
-    title: 'Montgomery County Board of Education Member',
-    photo: '/images/endorsements/brenda-wolff.jpg',
+    name: 'Kristin Mink',
+    title: 'District 5 Councilmember\nMontgomery County Council',
+    photo: '/images/Kristin Mink Resized.jpg',
   },
   {
     name: 'Cherri Branson',
-    title: 'Former District 5 County Councilmember &amp; Director of Procurement',
-    photo: '/images/endorsements/cherri-branson.jpg',
+    title: 'Former District 5 County Councilmember, Former Director of Procurement and Community Leader',
+    photo: '/images/Branson-001.webp',
+  },
+  {
+    name: 'Brenda Wolff',
+    title: 'Montgomery County Board of Education Vice President and Former President',
+    photo: '/images/endorsements/brenda-wolff.jpg',
   },
 ];
 ---
@@ -87,7 +107,11 @@ const electedOfficials = [
         {electedOfficials.map((official) => (
           <div class="official-card">
             <div class="official-photo-wrap">
-              <img src={official.photo} alt={official.name} class="official-photo" />
+              {official.photo ? (
+                <img src={official.photo} alt={official.name} class="official-photo" />
+              ) : (
+                <div class="official-initials">{official.name.split(' ').filter((_,i,a) => i === 0 || i === a.length - 1).map(n => n[0]).join('')}</div>
+              )}
             </div>
             <h3>{official.name}</h3>
             <p>{official.title}</p>
@@ -100,11 +124,11 @@ const electedOfficials = [
   <!-- CTA -->
   <section class="section endorse-cta">
     <div class="container text-center">
-      <h2>Join the movement.</h2>
+      <h2 style="color: white;">Join the movement.</h2>
       <span class="ornament" style="background: var(--gold);"></span>
       <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin: 1rem auto 2rem; max-width: 550px;">Want to endorse Fatmata? Reach out to the campaign. Ready to support? Donate or volunteer today.</p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href={donateUrl} class="btn btn-accent">Donate Now</a>
+        <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="btn btn-accent">Donate Now</a>
         <a href="/volunteer" class="btn btn-outline-light">Get Involved</a>
       </div>
     </div>
@@ -137,10 +161,11 @@ const electedOfficials = [
   }
 
   .org-logo {
-    width: 100%;
-    max-width: 160px;
-    height: auto;
-    border-radius: 4px;
+    display: block;
+    width: auto;
+    max-width: 140px;
+    height: 100px;
+    object-fit: contain;
     margin-bottom: 1rem;
   }
 
@@ -158,8 +183,9 @@ const electedOfficials = [
 
   .officials-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
+    justify-content: center;
   }
 
   .official-card {
@@ -168,7 +194,7 @@ const electedOfficials = [
     border-radius: var(--border-radius);
     padding: 1.75rem;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 14px rgba(30, 80, 180, 0.35);
     transition: border-color 0.3s, transform 0.2s;
   }
 
@@ -194,6 +220,20 @@ const electedOfficials = [
     object-fit: cover;
   }
 
+  .official-initials {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
   .official-card h3 {
     font-size: 1.1rem;
     margin-bottom: 0.35rem;
@@ -204,6 +244,7 @@ const electedOfficials = [
     color: var(--text-light);
     font-size: 0.85rem;
     line-height: 1.4;
+    white-space: pre-line;
   }
 
   .endorse-cta {

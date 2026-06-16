@@ -8,6 +8,7 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
       <p class="election-label">Primary Election Day</p>
       <h2 class="election-date">Tuesday, June 23, 2026</h2>
       <p class="election-time">7:00 AM &ndash; 8:00 PM</p>
+      <p class="detail" style="margin-top: 0.4rem; color: rgba(255,255,255,0.75);">Vote at your assigned polling place only</p>
     </div>
 
     <div class="footer-grid">
@@ -15,16 +16,18 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
         <h3>Early Voting</h3>
         <p>June 11 &ndash; June 18, 2026</p>
         <p class="detail">7:00 AM &ndash; 8:00 PM daily</p>
+        <p class="detail" style="margin-top: 0.4rem;">Vote at <strong>any</strong> early voting site in Montgomery County — you are not limited to your assigned precinct.</p>
       </div>
       <div class="footer-col">
         <h3>Register to Vote</h3>
-        <p>Online/Mail: June 2, 2026</p>
-        <p class="detail">Same-day registration available during early voting &amp; Election Day</p>
+        <p>Deadline: June 2, 2026</p>
+        <p class="detail">Register online or by mail — or update your address, party, or name — by June 2.</p>
+        <p class="detail" style="margin-top: 0.4rem;"><strong>First time registering?</strong> Same-day registration is available at early voting sites (June 11–18) and on Election Day.</p>
       </div>
       <div class="footer-col">
         <h3>Mail-in Ballots</h3>
-        <p>Request by mail: June 16</p>
-        <p class="detail">Request online: June 19 &middot; Postmarked by June 23</p>
+        <p>Request now through June 16 (by mail) or June 19 (online)</p>
+        <p class="detail">Completed ballot must be postmarked by June 23 — or drop it off in person at any early voting site or ballot drop box before polls close on Election Day.</p>
       </div>
     </div>
 
@@ -39,7 +42,7 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
         <h3>Quick Links</h3>
         <ul>
           <li><a href="/about">About Fatmata</a></li>
-          <li><a href="/platform">Platform</a></li>
+          <li><a href="/priorities">Priorities</a></li>
           <li><a href="/updates">Updates</a></li>
           <li><a href="/volunteer">Volunteer</a></li>
           <li><a href="/contact">Contact</a></li>
@@ -48,8 +51,9 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
       <div class="footer-col">
         <h3>Support</h3>
         <ul>
-          <li><a href={donateUrl}>Donate</a></li>
+          <li><a href={donateUrl} target="_blank" rel="noopener noreferrer">Donate</a></li>
           <li><a href="/volunteer">Volunteer</a></li>
+          <li><a href="/#signup" class="footer-join-link">Join Team Barrie</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -63,6 +67,9 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
           </a>
           <a href={socialLinks.twitter} target="_blank" rel="noopener" aria-label="Twitter">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href={socialLinks.bluesky} target="_blank" rel="noopener" aria-label="Bluesky">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
           </a>
         </div>
         {contactInfo.email && <p><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a></p>}
@@ -130,6 +137,13 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
   .footer-wrap .footer-col a { color: var(--white); font-size: 0.9rem; transition: color var(--transition); }
   .footer-wrap .footer-col a:hover { color: var(--teal); }
 
+  .footer-wrap .footer-join-link {
+    color: var(--teal) !important;
+    font-weight: 700;
+  }
+
+  .footer-wrap .footer-join-link:hover { color: var(--white) !important; }
+
   .footer-wrap .vote-btn {
     display: inline-block;
     padding: 0.75rem 2.5rem;
@@ -138,13 +152,13 @@ import { socialLinks, contactInfo, donateUrl } from '../data/navigation';
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--primary);
-    background: var(--teal);
+    color: var(--white);
+    background: var(--accent);
     border-radius: 4px;
     transition: all var(--transition);
   }
 
-  .footer-wrap .vote-btn:hover { background: #0a8884; color: var(--white); }
+  .footer-wrap .vote-btn:hover { background: var(--accent-bright); color: var(--white); }
 
   .footer-wrap .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 0 0 2rem; }
 

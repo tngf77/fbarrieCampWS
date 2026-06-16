@@ -5,21 +5,46 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
 <header class="header">
   <div class="announcement-bar">
     <span class="announcement-message">Fatmata is running on the public financing system. No corporate money. Your donation is matched!</span>
-    <div class="announcement-social">
+    <div class="announcement-right">
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn" id="lang-btn" aria-haspopup="true" aria-expanded="false">
+          <span>&#127760;</span>
+          <span class="lang-label" id="lang-label">EN</span>
+          <span class="lang-chevron">&#8964;</span>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown" hidden>
+          <button class="lang-option" data-lang="en">English</button>
+          <button class="lang-option" data-lang="es">Español</button>
+          <button class="lang-option" data-lang="fr">Français</button>
+          <button class="lang-option" data-lang="am">አማርኛ</button>
+          <button class="lang-option" data-lang="zh-CN">中文</button>
+          <button class="lang-option" data-lang="vi">Tiếng Việt</button>
+          <button class="lang-option" data-lang="ko">한국어</button>
+          <button class="lang-option" data-lang="pt">Português</button>
+          <button class="lang-option" data-lang="ar">العربية</button>
+        </div>
+      </div>
+      <div class="announcement-social">
       <a href={socialLinks.facebook} target="_blank" rel="noopener" aria-label="Facebook">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
       </a>
       <a href={socialLinks.instagram} target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
       </a>
       <a href={socialLinks.twitter} target="_blank" rel="noopener" aria-label="Twitter">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
+      <a href={socialLinks.bluesky} target="_blank" rel="noopener" aria-label="Bluesky">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+      </a>
+      </div>
+      <!-- Hidden Google Translate element -->
+      <div id="google_translate_element" style="display:none"></div>
     </div>
   </div>
   <nav class="nav container flex-between">
     <a href="/" class="logo">
-      <img src="/images/logo-fb.png" alt="Fatmata Barrie" class="logo-img" />
+      <img src="/images/Initials sub-Logo.png" alt="Fatmata Barrie" class="logo-img" />
       <span class="logo-text">Fatmata <span>Barrie</span></span>
     </a>
 
@@ -33,7 +58,7 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
           <li><a href={item.href}>{item.label}</a></li>
         ))}
       </ul>
-      <a href={donateUrl} class="nav-donate-btn">Donate</a>
+      <a href={donateUrl} target="_blank" rel="noopener noreferrer" class="nav-donate-btn">Donate</a>
     </div>
   </nav>
 </header>
@@ -54,32 +79,33 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
   .announcement-bar {
     background: var(--primary);
     color: var(--white);
-    text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 0.65rem 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
   }
 
   .announcement-message {
-    font-size: 0.78rem;
+    font-size: 0.88rem;
     font-weight: 400;
     letter-spacing: 0.02em;
+    flex: 1;
+    text-align: center;
   }
 
   .announcement-social {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.6rem;
   }
 
   .announcement-social a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: rgba(255,255,255,0.15);
     color: var(--white);
@@ -88,30 +114,106 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
 
   .announcement-social a:hover { background: rgba(255,255,255,0.3); }
 
+  .announcement-right {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  /* Language Switcher */
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 0.88rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    line-height: 1;
+    height: 32px;
+  }
+
+  .lang-btn:hover { background: rgba(255,255,255,0.2); }
+
+  .lang-chevron {
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .lang-btn[aria-expanded="true"] .lang-chevron { transform: rotate(180deg); }
+
+  .lang-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    padding: 0.4rem;
+    min-width: 160px;
+    z-index: 200;
+  }
+
+  .lang-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+    font-family: var(--font-primary);
+    color: var(--text);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .lang-option:hover { background: var(--light-gray); }
+  .lang-option.active { font-weight: 700; color: var(--primary); }
+
+  .goog-te-banner-frame { display: none !important; }
+  .goog-te-balloon-frame { display: none !important; }
+  body { top: 0 !important; }
+
   .nav {
     height: 70px;
     border-bottom: 1px solid var(--light-gray);
+    flex-wrap: nowrap;
   }
 
   .logo {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     text-decoration: none;
+    flex-shrink: 0;
   }
 
   .logo-img {
-    height: 40px;
+    height: 36px;
     width: auto;
     display: block;
   }
 
   .logo-text {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .logo-text span {
@@ -121,41 +223,46 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
   .nav-right {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.75rem;
+    flex: 1;
+    justify-content: flex-end;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0;
+    flex-wrap: nowrap;
   }
 
   .nav-links a {
     font-family: var(--font-primary);
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--text);
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.7rem;
     transition: color var(--transition);
+    white-space: nowrap;
   }
 
   .nav-links a:hover { color: var(--primary); }
 
   .nav-donate-btn {
     display: inline-block;
-    padding: 0.55rem 1.5rem;
+    padding: 0.5rem 1.1rem;
     font-family: var(--font-primary);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     color: var(--white) !important;
     background: var(--accent);
     border-radius: 4px;
     transition: all var(--transition);
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .nav-donate-btn:hover {
@@ -178,7 +285,7 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
     transition: all var(--transition);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .hamburger { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
 
     .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -200,29 +307,134 @@ import { mainNav, donateUrl, socialLinks } from '../data/navigation';
       box-shadow: var(--shadow-lg);
       gap: 1rem;
       border-top: 1px solid var(--light-gray);
+      z-index: 999;
     }
 
     .nav-right.open { display: flex; }
 
     .nav-links { flex-direction: column; gap: 0; }
-    .nav-links a { padding: 0.75rem 0; min-height: 44px; display: flex; align-items: center; }
+    .nav-links a { padding: 0.75rem 0; min-height: 44px; display: flex; align-items: center; font-size: 0.85rem; }
 
     .nav-donate-btn { text-align: center; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+
+    .logo-img { height: 32px; }
+    .logo-text { font-size: 0.95rem; }
   }
 </style>
 
 <script>
+  // Hamburger menu
   const hamburger = document.querySelector('.hamburger');
   const navRight = document.querySelector('.nav-right');
-
   hamburger?.addEventListener('click', () => {
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', String(!expanded));
     navRight?.classList.toggle('open');
   });
 
+  // Scroll shadow
   const header = document.querySelector('.header');
   window.addEventListener('scroll', () => {
     header?.classList.toggle('scrolled', window.scrollY > 0);
   }, { passive: true });
+
+  // Language switcher
+  const langBtn = document.getElementById('lang-btn');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const langLabel = document.getElementById('lang-label');
+  const langSwitcher = document.getElementById('lang-switcher');
+
+  const langLabels: Record<string, string> = {
+    en: 'EN', es: 'ES', fr: 'FR', am: 'AM',
+    'zh-CN': 'ZH', vi: 'VI', ko: 'KO', pt: 'PT', ar: 'AR',
+  };
+
+  langBtn?.addEventListener('click', () => {
+    const isOpen = !langDropdown?.hidden;
+    langDropdown!.hidden = isOpen;
+    langBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close on outside click
+  document.addEventListener('mousedown', (e) => {
+    if (!langSwitcher?.contains(e.target as Node)) {
+      langDropdown!.hidden = true;
+      langBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // On page load, sync button label with active googtrans cookie
+  function getGoogtransCookie() {
+    const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+  const activeCookie = getGoogtransCookie();
+  if (activeCookie) {
+    const parts = activeCookie.split('/');
+    const activeLang = parts[parts.length - 1];
+    if (activeLang && activeLang !== 'en' && langLabel) {
+      langLabel.textContent = langLabels[activeLang] || activeLang.toUpperCase();
+      document.querySelectorAll('.lang-option').forEach((btn) => {
+        if ((btn as HTMLElement).dataset.lang === activeLang) btn.classList.add('active');
+      });
+    }
+  }
+
+  // Suppress Google banner — only hide elements, never touch body style (CSS handles that)
+  function suppressGoogleBanner() {
+    document.querySelectorAll<HTMLElement>(
+      '.goog-te-banner-frame, .goog-te-balloon-frame, .goog-te-ftab-frame, .skiptranslate'
+    ).forEach(el => el.style.display = 'none');
+  }
+
+  // Watch only for new nodes being added — no attribute watching (prevents infinite loop)
+  const observer = new MutationObserver(suppressGoogleBanner);
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Language selection — triggers Google Translate
+  document.querySelectorAll('.lang-option').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = (btn as HTMLElement).dataset.lang || 'en';
+
+      // Update button label
+      if (langLabel) langLabel.textContent = langLabels[lang] || 'EN';
+
+      // Mark active
+      document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Close dropdown
+      langDropdown!.hidden = true;
+      langBtn?.setAttribute('aria-expanded', 'false');
+
+      if (lang === 'en') {
+        // Reset to English — clear cookie and reload
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+        if (langLabel) langLabel.textContent = 'EN';
+        window.location.reload();
+      } else {
+        const select = document.querySelector('#google_translate_element select') as HTMLSelectElement;
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event('change'));
+          setTimeout(suppressGoogleBanner, 300);
+          setTimeout(suppressGoogleBanner, 800);
+        } else {
+          document.cookie = `googtrans=/en/${lang}; path=/`;
+          window.location.reload();
+        }
+      }
+    });
+  });
 </script>
+
+<script is:inline>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      { pageLanguage: 'en', includedLanguages: 'es,fr,am,zh-CN,vi,ko,pt,ar', autoDisplay: false },
+      'google_translate_element'
+    );
+  }
+</script>
+<script is:inline src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
