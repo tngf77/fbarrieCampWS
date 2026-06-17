@@ -8,7 +8,7 @@ const organizations = [
   {
     name: 'Montgomery County Education Association (MCEA)',
     logo: '/images/endorsements/mcea.png',
-    description: 'The county\'s largest educators union, representing over 14,000 teachers and education professionals. The MCEA Apple Ballot is considered one of the most influential endorsements in Montgomery County politics.',
+    description: 'Proud recipient of the MCEA Apple Ballot — the most trusted and influential endorsement in Montgomery County politics. MCEA is the county\'s largest educators union, representing over 14,000 teachers and education professionals.',
   },
   {
     name: 'CASA in Action',
@@ -44,6 +44,16 @@ const organizations = [
     name: 'Progressive Neighbors',
     logo: '/images/progressive-neighbors-endorsed.webp',
     description: 'A grassroots organization of Montgomery County neighbors committed to electing progressive candidates who will fight for equity, justice, and a stronger community for all residents.',
+  },
+  {
+    name: 'Montgomery County Muslim Council',
+    logo: null,
+    description: 'A community organization representing Muslim residents of Montgomery County, advocating for civic engagement, justice, and the full participation of Muslim Americans in public life.',
+  },
+  {
+    name: 'CAIR Action',
+    logo: null,
+    description: 'The advocacy arm of the Council on American-Islamic Relations, the nation\'s largest Muslim civil liberties and advocacy organization, fighting for the civil rights of American Muslims.',
   },
 ];
 
@@ -86,7 +96,10 @@ const electedOfficials = [
       <div class="org-grid">
         {organizations.map((org) => (
           <div class="endorsement-card">
-            <img src={org.logo} alt={org.name} class="org-logo" />
+            {org.logo
+              ? <img src={org.logo} alt={org.name} class="org-logo" />
+              : <div class="org-logo-placeholder">{org.name.split(' ').slice(0, 2).map(w => w[0]).join('')}</div>
+            }
             <h3>{org.name}</h3>
             <p>{org.description}</p>
           </div>
@@ -166,6 +179,22 @@ const electedOfficials = [
     max-width: 140px;
     height: 100px;
     object-fit: contain;
+    margin-bottom: 1rem;
+  }
+
+  .org-logo-placeholder {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     margin-bottom: 1rem;
   }
 
